@@ -459,3 +459,49 @@ def separate_m_and_SD(md_table):
     rows_2_and_on = "\n".join(row.replace('+-', '|') for row in rows[2:])
     new_table = row0_new + "\n" + row1_new + "\n" + rows_2_and_on
     return new_table 
+
+def combine_m_and_SD(md_table):
+    """
+    Joins .mean and .sd columns into +- format (reverses separate_m_and_SD)
+    """
+    rows = [row.strip("|").split(" | ") for row in md_table.split("\n")]
+    rows_new = ["|"] * (len(rows)-1)
+    for col in range(len(rows[0])):
+        if rows[0][col][-5:].lower() == ".mean":
+            if col < len(rows[0])-1 and rows[0][col+1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col+1].strip()[:-3].lower().strip():
+                rows_new[0] += " " + rows[0][col].strip()[:-5] + " |"
+                rows_new[1] += " --- |"
+                for row in range(2, len(rows)-1):
+                    rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col+1].strip() + " |"
+                continue
+            elif col > 0 and rows[0][col-1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col-1].strip()[:-3].lower().strip():
+                rows_new[0] += " " + rows[0][col].strip()[:-5].strip() + " |"
+                rows_new[1] += " --- |"
+                for row in range(2, len(rows)-1):
+                    rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col-1].strip() + " |"
+                continue
+        elif rows[0][col].strip()[-3:].lower() == ".sd":
+            continue
+        rows_new[0] += " " + rows[0][col].strip() + " |"
+        rows_new[1] += " --- |"
+        for row in range(2, len(rows)-1):
+            rows_new[row] += " " + rows[row][col].strip() + " |"
+        continue
+    return "\n".join(rows_new)
+
+def remove_headers(md_table):
+    rows = md_table.split("\n")
+    row = 0
+    while row < len(rows):
+        split = rows[row].strip("|").split(" | ")
+        elt0 = split[0].strip()
+        same = True
+        for i in range(1, len(split)):
+            if elt0 != split[i].strip():
+                same = False
+                break
+        if same:
+            rows.pop(row)
+        else:
+            row += 1
+    return "\n".join(rows)

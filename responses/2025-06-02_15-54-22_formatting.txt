@@ -1,0 +1,18 @@
+<table>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;table frame=&quot;hsides&quot; rules=&quot;groups&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th colspan=&quot;4&quot;&gt;Liver Function Tests&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Groups&lt;/th&gt;&lt;th&gt;Total Bilirubin [mg/dl]&lt;/th&gt;&lt;th&gt;Aspartate Transaminase (AST) [U/l]&lt;/th&gt;&lt;th&gt;Alanine Transaminase (ALT) [U/l]&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;NC&lt;/td&gt;&lt;td&gt;3.43 +- 0.40&lt;/td&gt;&lt;td&gt;120.67 +- 1.53&lt;/td&gt;&lt;td&gt;36.00 +- 2.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CC&lt;/td&gt;&lt;td&gt;2.13 +- 0.95&lt;/td&gt;&lt;td&gt;214.67 +- 1.53 *&lt;/td&gt;&lt;td&gt;53.67 +- 1.53&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CT&lt;/td&gt;&lt;td&gt;5.27 +- 0.59&lt;/td&gt;&lt;td&gt;265.00 +- 2.00 *&lt;/td&gt;&lt;td&gt;95.67 +- 1.53 *&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NDV8&lt;/td&gt;&lt;td&gt;4.43 +- 0.40&lt;/td&gt;&lt;td&gt;153.33 +- 1.53&lt;/td&gt;&lt;td&gt;38.67 +- 1.53&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NDV16&lt;/td&gt;&lt;td&gt;5.75 +- 0.35&lt;/td&gt;&lt;td&gt;125.33 +- 93.82&lt;/td&gt;&lt;td&gt;41.67 +- 1.53&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NDV32&lt;/td&gt;&lt;td&gt;4.87 +- 0.35&lt;/td&gt;&lt;td&gt;105.00 +- 1.00&lt;/td&gt;&lt;td&gt;47.00 +- 1.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;NDV64&lt;/td&gt;&lt;td&gt;5.13 +- 0.67&lt;/td&gt;&lt;td&gt;115.00 +- 11.27&lt;/td&gt;&lt;td&gt;52.67 +- 2.51&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV8&lt;/td&gt;&lt;td&gt;4.47 +- 0.35&lt;/td&gt;&lt;td&gt;98.67 +- 1.53&lt;/td&gt;&lt;td&gt;26.33 +- 1.15&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV16&lt;/td&gt;&lt;td&gt;3.00 +- 0.50&lt;/td&gt;&lt;td&gt;173.33 +- 1.53&lt;/td&gt;&lt;td&gt;57.00 +- 1.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV32&lt;/td&gt;&lt;td&gt;2.87 +- 0.35&lt;/td&gt;&lt;td&gt;121.00 +- 2.00&lt;/td&gt;&lt;td&gt;49.00 +- 1.00&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV64&lt;/td&gt;&lt;td&gt;3.40 +- 0.40&lt;/td&gt;&lt;td&gt;153.67 +- 1.53&lt;/td&gt;&lt;td&gt;49.33 +- 0.58&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV8 + T&lt;/td&gt;&lt;td&gt;2.77 +- 0.45&lt;/td&gt;&lt;td&gt;166.67 +- 56.62&lt;/td&gt;&lt;td&gt;103.00 +- 2.00 *&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV16 + T&lt;/td&gt;&lt;td&gt;2.43 +- 0.40&lt;/td&gt;&lt;td&gt;108.00 +- 1.00&lt;/td&gt;&lt;td&gt;56.33 +- 1.53&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV32 + T&lt;/td&gt;&lt;td&gt;10.67 +- 4.72 *&lt;/td&gt;&lt;td&gt;122.33 +- 2.52&lt;/td&gt;&lt;td&gt;160.33 +- 25.66 *&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;CNDV64 + T&lt;/td&gt;&lt;td&gt;14.33 +- 4.04 *&lt;/td&gt;&lt;td&gt;170.67 +- 1.53&lt;/td&gt;&lt;td&gt;146.33 +- 32.52 *&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</table>
+<instructions>
+Above is a table representing animal toxicity data. Complete the following instructions in order and write the answer within angle brackets each on a new line. Do not include any other text besides your answer. Verify your information's source before adding it to your answer.
+1. Do the groups go vertically, where each treatment group occupies a separate column, or do they go horizontally, where each group occupies a row? Write <vertical> if vertical and <horizontal> if horizontal
+2. Are there any extra title columns on the left that should be combined? If so, write <n> where n is the number for how many columns that should be combined into a singular title column. n = 1 if there are no extra columns. 
+3. In the numerical cells, are there any special characters that should be removed, such as *? If so, list any of them present in the brackets.
+</instructions>
+<example>
+<horizontal>
+<1>
+<*,~>
+</example>
+---
+<horizontal>
+<1>
+<*>
