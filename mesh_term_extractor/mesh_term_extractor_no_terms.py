@@ -34,10 +34,10 @@ def format_time(seconds):
     return f"{int(d_hours):02d}:{int(d_minutes):02d}:{int(d_seconds):02d}"
 
 if __name__ == "__main__":
-    read_directory = "mesh_term_extractor"
+    read_directory = "/fs/ess/PCON0020/PMC"
     write_directory = "data.csv"
     rows = []
-    fieldnames = ["PMID", "PMCID", "outer folder", "tar file", "MeSH terms"]
+    fieldnames = ["PMID", "PMCID", "outer folder", "tar file"]
     
     program_start_time = datetime.now()
     last_time = time.perf_counter()
@@ -57,6 +57,8 @@ if __name__ == "__main__":
                 for filelist in os.listdir(xml_folder):
                     if filelist.lower().endswith(".csv"):
                         filelist_path = os.path.join(xml_folder, filelist)
+                        # df = pd.read_csv(filelist_path)
+                        # total_length = len(df)
                         with open(filelist_path, newline="", encoding="utf-8") as read_file:      
                             reader = csv.reader(read_file)
                             header = next(reader)
@@ -66,21 +68,17 @@ if __name__ == "__main__":
                             print(f"*** time elapsed: {format_time(seconds_passed)}")
                             for row in reader:
                                 i += 1
-                                term_list = get_mesh_terms(row[4])
-                                rows.append({"PMID" : row[4], "PMCID" : row[2], "outer folder" : outer_folder, "tar file" : filelist[:-4], "MeSH terms" : term_list})
-                                if last_time-time.perf_counter()+0.11 > 0: time.sleep(last_time-time.perf_counter()+0.11)
-                                last_time = time.perf_counter()
-                                if i%10 == 0:
-                                    now = datetime.now()
-                                    df = pd.read_csv(filelist_path)
-                                    delta = now - filelist_start_time
-                                    seconds_passed = int(delta.total_seconds())
-                                    projected_seconds = int(delta.total_seconds()*len(df)/i)
-                                    print(f"({i}/{len(df)}) PMIDs processed")
-                                    print(f"{format_time(seconds_passed)}/{format_time(projected_seconds)}")
+                                rows.append({"PMID" : row[4], "PMCID" : row[2], "outer folder" : outer_folder, "tar file" : filelist[:-4]})
+                                # if last_time-time.perf_counter()+0.11 > 0: time.sleep(last_time-time.perf_counter()+0.11)
+                                # last_time = time.perf_counter()
+                                # if i%1000 == 0:
+                                #     now = datetime.now()
+                                #     delta = now - filelist_start_time
+                                #     seconds_passed = int(delta.total_seconds())
+                                #     projected_seconds = int(delta.total_seconds()*total_length/i)
+                                #     print(f"({i}/{total_length}) PMIDs processed")
+                                #     print(f"{format_time(seconds_passed)}/{format_time(projected_seconds)}")
     except KeyboardInterrupt:
-        print("Sorting...")
-        rows.sort(key=lambda row: row["PMID"])
         print("Writing...")
         today = date.today().strftime("%Y-%m-%d")
         now = datetime.now().strftime("%H-%M-%S")
@@ -91,8 +89,8 @@ if __name__ == "__main__":
         print("Done!")
         early = True
     if not early:
-        print("Sorting...")
-        rows.sort(key=lambda row: row["PMID"])
+        # print("Sorting...")
+        # rows.sort(key=lambda row: row["PMID"])
         print("Writing...")
         with open(write_directory, mode="w", newline="", encoding="utf-8") as write_file:
             writer = csv.DictWriter(write_file, fieldnames=fieldnames)
