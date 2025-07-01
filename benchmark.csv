@@ -1,19 +1,11 @@
-PMID|PMCID|notes
-18784769|PMC8935289|NTP study, special characters in table
-18784768|PMC8935288|NTP study, multiple qualitative and quantitative data entries
-18784764|PMC8950436|NTP study, special characters in table
-38809813|PMC11181103|terminal times in rows, treatment groups and biomarkers combined in columns
-18784761|PMC8950459|NTP study, terminal time in treatment groups, qualitative data, multiple values in a box
-24503698|PMC8935284|treatment table with many groups, nonstandard table values
-33371333|PMC7767363|Jeong
-30947706|PMC6449948|Raihan
-29567262|PMC9322224|summary line and blank spaces in table
-7138770|PMC2011196|qualitative data in text
-6499798|PMC1568273|table with both treatment and biomarker categories in columns, weirdly formatted numbers, multiple biomarker column rows
-6332662|PMC1236068|terminal date in rows
-18685711|PMC8935287|NTP study, qualitative values
-27696470|PMC5373957|groups in columns, ambiguous biomarkers without text, multiple column title rows
-14982793|PMC353060|weird results table
-32025747|PMC7716188|quantitative data in text
-39550414|PMC11569245|tables with both treatment and biomarker categories in columns
-40379951|PMC12126362|table with groups in both columns and rows, table dependent on text
+PMID,PMCID,notes
+28422745,PMC5514907,all fulltext
+33371333,PMC7767363,lab test data
+30947706,PMC6449948,lab test and frequency test in same table and treatment table
+29567262,PMC9322224,lab test data
+7138770,PMC2011196,frequency data
+6499798,PMC1568273,frequency data with treatment data in columns (try the standard string thing idea?)
+27696470,PMC5373957,bunch of weird lab test data
+32025747,PMC7716188,all fulltext
+39550580,PMC11568600,lab test data
+14734827,PMC7090859,frequency data and treatment in same table and weird frequency table
