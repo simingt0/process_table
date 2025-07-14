@@ -1,11 +1,11 @@
 PMID,PMCID,notes
 28422745,PMC5514907,all fulltext
 33371333,PMC7767363,lab test data
-30947706,PMC6449948,lab test and frequency test in same table and treatment table
+30947706,PMC6449948,lab test and frequency test in same table
 29567262,PMC9322224,lab test data
-7138770,PMC2011196,frequency data
-6499798,PMC1568273,frequency data with treatment data in columns (try the standard string thing idea?)
 27696470,PMC5373957,bunch of weird lab test data
 32025747,PMC7716188,all fulltext
 39550580,PMC11568600,lab test data
-14734827,PMC7090859,frequency data and treatment in same table and weird frequency table
+34595563,PMC8536644,individual subject lab test
+27439414,PMC5043003,ordinary lab test and frequency data as well as individual and observation data
+38626325,PMC11131026,weird lab test and frequency tables

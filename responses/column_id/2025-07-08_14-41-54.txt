@@ -1,0 +1,24 @@
+PMC6449948
+---
+Tab1
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that the same type can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.
+2. Treatment Medication (treatment)
+If the column contains information on the name of a medication or treatment, label it as treatment. If the column is only about one specific treatment name (ie. a column called 'tamoxifen dosage'), list the treatment name as additional information like so: <tamoxifen dosage|treatment|tamoxifen>. There should also be a dosage label for this column. If the data in the column describes the name of the medication/treatment given to each group (ie. a column called 'medication'), do not add any additional information. If there are multiple treatment columns representing multiple treatments administered to a single group, in the label, add a number after (1, 2, 3, etc.) such that the column labeled treatment1 corresponds to any column labeled dose1 (ie. <tamoxifen dosage|treatment1|tamoxifen>).
+3. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If there is data on the units as well, add the units as additional information, with each different form of units being its own element in the list. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column. If there is no units information, do not add any additional information. If this label is linked to one of multiple treatments on one group, add the respective number to the end of 'dose' as shown in the treatment section. This is what a label might look like: <medication|dosage1|mg/kg|mug/kg>
+4. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+5. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information.
+---
+<group name|group>
+<medication|treatment>
+<tamoxifen dosage|treatment|tamoxifen>
+<tamoxifen dosage|dose|mg/kg>
+<sample size|size>
+<animal model|animal|mouse>
