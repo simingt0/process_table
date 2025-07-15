@@ -6,7 +6,7 @@ from collections import defaultdict
 import html
 import pandas as pd
 
-PMC = "PMC5043003"
+PMC = "PMC11131026"
 
 #fetching xml file
 os.makedirs("papers", exist_ok=True)
@@ -35,21 +35,15 @@ for p in table_passages:
         table_xml = p.find("infon", {"key": "xml"}).text
         if "<table" not in table_xml:
             continue
-        if tables[table_id]["df"] is None:
-            tables[table_id]["df"] = table_utils.markdown_to_dataframe(table_utils.single_html_table_to_markdown(html.unescape(table_xml)))
-        else:
-            tables[f"{table_id}_cont"]["df"] = table_utils.markdown_to_dataframe(table_utils.single_html_table_to_markdown(html.unescape(table_xml)))
+        tables[table_id]["df"] = table_utils.markdown_to_dataframe(table_utils.single_html_table_to_markdown(html.unescape(table_xml)))
 for tid, info in tables.items():
     out = pd.DataFrame(index=info["df"].index)
     for col in info["df"].columns:
-        # Ensure values are strings (so split always works)
         s = info["df"][col].astype(str)
-        # Split on '+-' (escaped as regex), max 1 split, expand into two columns
         parts = s.str.partition('+-')
         
-        out[f"{col}_1"] = parts[0]
-        # If there was no '+-', splits[1] will be NaN; replace with empty string
-        out[f"{col}_2"] = parts[2]
+        out[f"{col}_mean"] = parts[0]
+        out[f"{col}_SD"] = parts[2]
     info["df_split"] = out
 
 
