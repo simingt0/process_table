@@ -431,6 +431,7 @@ def combine_markdown_group_cols(md_table, num_cols):
     Combines the first columns of the markdown until all group terms are combined.
     The terms are separated by "."
     """
+    if num_cols < 2: return md_table
     rows = md_table.split("\n")
     processed = ""
     for row in rows:

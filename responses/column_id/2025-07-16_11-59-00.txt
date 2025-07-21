@@ -1,0 +1,48 @@
+PMC7767363
+---
+ijms-21-09764-t001
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added. There should only be one column labeled this.
+2. Treatment Medication (treatment)
+If the column contains information on the name of a medication or treatment, label it as treatment. If the column is only about one specific treatment name (ie. a column called 'tamoxifen dosage'), list the treatment name as additional information like so: <tamoxifen dosage|treatment|tamoxifen>. There should also be a dosage label for this column. If the data in the column describes the name of the medication/treatment given to each group (ie. a column called 'medication'), do not add any additional information.
+3. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If there is data on the units as well, add the units as additional information, with each different form of units being its own element in the list. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column. If there is no units information, do not add any additional information. A dosage label may look like this: <medication|dosage|mg/kg|mug/kg>
+4. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+5. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this.6. Biomarker (biomarker)
+If the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>
+# Table
+Caption: Hematological and biochemical parameters measured after ApDC treatment (n = 3).
+| Unnamed_0 | Unnamed_1 | Control(PBS).Mean | Control(PBS).SD | DM1(60 mug/kg).Mean | DM1(60 mug/kg).SD | ApDC(3.85 mg/kg).Mean | ApDC(3.85 mg/kg) .SD |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Hematology,10/muL | Platelet, counts | 697.50 | 64.16 | 632.40 | 101.64 | 425.33 | 66.11 |
+| Hematology,10/muL | Red blood cells, M/muL | 8.38 | 0.27 | 8.08 | 0.35 | 7.69 | 0.34 |
+| Hematology,10/muL | Hematocrits, % | 45.86 | 2.37 | 46.38 | 1.41 | 43.17 | 1.20 |
+| Hematology,10/muL | Neutrophil, absolute | 0.54 | 0.09 | 0.37 | 0.15 | 0.31 | 0.11 |
+| Hematology,10/muL | Lymphocyte | 2.22 | 0.50 | 1.78 | 0.89 | 1.55 | 0.18 |
+| Clinical chemistry,U/L | ALT | 26.28 | 6.33 | 32.29 | 14.33 | 42.93 | 14.86 |
+| Clinical chemistry,U/L | AST | 89.46 | 17.86 | 89.20 | 11.66 | 95.35 | 20.89 |
+| Clinical chemistry,U/L | ALP | 295.11 | 99.65 | 292.01 | 84.44 | 211.76 | 44.13 |
+| Clinical chemistry,U/L | GGT | 4.97 | 1.00 | 7.02 | 2.11 | 6.28 | 3.67 |
+| Clinical chemistry,U/L | Total bilirubin | 0.06 | 0.03 | 0.07 | 0.03 | 0.07 | 0.02 |
+Footnotes:
+Hematological parameters and biochemical parameters were measured with a hematology system and an automated biochemistry analyzer 3 days after inoculation, respectively.
+
+---
+<Unnamed_0|biomarker|Hematology|mean|10/muL>
+<Unnamed_1|biomarker|Platelet|mean|counts>
+<Control(PBS).Mean|biomarker|Control(PBS)|mean|counts>
+<Control(PBS).SD|biomarker|Control(PBS)|variation|counts>
+<DM1(60 mug/kg).Mean|treatment|DM1>
+<DM1(60 mug/kg).Mean|dose|mug/kg>
+<DM1(60 mug/kg).Mean|biomarker|DM1|mean|counts>
+<DM1(60 mug/kg).SD|biomarker|DM1|variation|counts>
+<ApDC(3.85 mg/kg).Mean|treatment|ApDC>
+<ApDC(3.85 mg/kg).Mean|dose|mg/kg>
+<ApDC(3.85 mg/kg).Mean|biomarker|ApDC|mean|counts>
+<ApDC(3.85 mg/kg).SD|biomarker|ApDC|variation|counts>

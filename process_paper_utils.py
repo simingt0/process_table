@@ -75,53 +75,75 @@ def id_tables_prompt(abstract: str, tables) -> str:
 
     return prompt
 
-def formatting_prompt(abstract, table):
+def gft_prompt(abstract, methods, results):
+    prompt = f"# Instructions\nYou will be given the abstract, methods, and results of a paper with an animal toxicity study. Find each treatment group found in the paper that is related to an animal toxicity study. List each group and any parameters found in the following format on its own line, delimited by |: <group|species|n|terminal time|treatment1|dose1|units1|treatment2|dose2|units2>. group is the name given to the group (make up a short but descriptively unique one if the paper does not give one that is different from the others), species is the animal species (not the strain), and n is the sample size. terminal time is the time at which the group is euthanized/the metrics are measured. If the terminal time is used to distinguish between biomarker metrics rather than treatment groups, instead leave it blank. There are two slots for treatment medications, and in each, treatment is the medication name, dose is the numerical dosage amount, and units is the respective units. If there is only one treatment applied, leave treatment2, dose2, and units2 blank. If there is no treatment applied (ie. control group), leave all six parameters blank. Do not omit these from the list, just put the delimiters back to back with no whitespace like so: <control|mouse|10|30 days||||||>. If you are not sure of any of these, leave the space blank, and make sure to verify the source of your information before adding it to the answer. An example of a treatment group could look like this: <IBU100|rat|20||ibuprofen|100|mug/kg|||>.\n# Abstract\n{abstract}\n# Methods\n{methods}\n# Results\n{results}\n"
+    return prompt
+
+def formatting_prompt(abstract, methods, table):
     """
     Returns prompt for formatting
     """
-    formatting_prompt = f"# Instructions\nYou will be given the abstract of a paper and a table representing animal toxicity data from a study in that paper. Do not include any other text besides your answer. Verify your information's source before adding it to your answer. Do the groups go vertically, where each treatment group occupies a separate column, or do they go horizontally, where each group occupies a row? Write <vertical> if vertical and <horizontal> if horizontal.\n# Abstract\n{abstract}\n# Table\n{table}"
+    #TODO: one shot
+    formatting_prompt = f"# Instructions\nYou will be given the abstract of a paper and a table representing animal toxicity data from a study in that paper. Your task is to identify the structure of the table in context of the study.\n 1. Using the text and the table, identify what the treatment groups are and what the measured metrics are.\n2. Observe how the table is oriented: do the groups go vertically, where each column corresponds to a treatment group and each row corresponds to a metric, or do they go horizontally, the inverse? Write <vertical> if vertical and <horizontal> if horizontal.\n3. If the groups go vertically, are there any columns on the very left that should be combined? If so, add that to the end of the answer like so: <vertical|n>, where n is the number of columns that should be combined into one. If the groups go horizontally, skip this step and answer as so: <horizontal>.\n# Abstract\n{abstract}\n# Methods\n{methods}\n# Table\n{table}" \
+    "Do not include any extra text or whitespace besides your answer."
     return formatting_prompt
 
 def id_columns_prompt(table):
     """
     Returns prompt for identifying columns in a table
     """
-    prompt = f"# Instructions\nYou will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles.\n" \
+    prompt = f"# Instructions\nYou will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles. If you are unsure if a label is applicable or not, just omit it; not every column has to have a label.\n" \
     "# Labels\n" \
-    "1. Group Name (group)\nIf the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added. There should only be one column labeled this.\n" \
-    "2. Treatment Medication (treatment)\nIf the column contains information on the name of a medication or treatment, label it as treatment. If the column is only about one specific treatment name (ie. a column called 'tamoxifen dosage'), list the treatment name as additional information like so: <tamoxifen dosage|treatment|tamoxifen>. There should also be a dosage label for this column. If the data in the column describes the name of the medication/treatment given to each group (ie. a column called 'medication'), do not add any additional information.\n" \
-    "3. Treatment Dosage (dose)\nIf the column contains information on the dosage amount of a medication, label it with dose. If there is data on the units as well, add the units as additional information, with each different form of units being its own element in the list. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column. If there is no units information, do not add any additional information. A dosage label may look like this: <medication|dosage|mg/kg|mug/kg>\n" \
-    "4. Sample Size (size)\nIf the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.\n" \
-    "5. Animal Model (animal)\nIf the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this." \
+    "1. Group Name (group)\nIf the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.\n" \
+    "2. Treatment Dosage (dose)\nIf the column contains information on the dosage amount of a medication, label it with dose. If the dosage information is directly linked to a column that gives information on what medication is used (it should contain multiple medications, indicating which one was used in each treatment group), indicate the column title in additional information, prefacing with 'link:'. Note that this linked column could be the same column as the one being labeled if that column lists different medications used and their respective dosages. If the column is instead related to the dosage of a singular medication/treatment, then return the name of that as additional information, prefacing with 'name:'. Also, if there is data on the units, add the units as additional information, prefacing the list entry with 'units:', with each different form of units as its own element in the list. Note that in the list of additional information, while there can only be one item for 'link' or 'name', there could be multiple 'units' listed. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column before answering. If there is no units information, do not add any additional information. A dosage label linked to a column may look like this: <medication|dose|link:Treatment Medication|units:mg/kg|units:mug/kg>. One that is about a specific treatment may look like this: <Treatment.Tamoxifen|dose|name:Tamoxifen|units:mug/kg>\n" \
+    "3. Sample Size (size)\nIf the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.\n" \
+    "4. Animal Model (animal)\nIf the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this." \
+    "5. Terminal Time (time)\nIf the column contains information about the time at which the measurements were taken or when the treatment group was euthanized, label it as time. Be careful as these columns could also be group columns, where the treatment groups differ in when they were euthanized. They can also be biomarker columns, where the metrics differ based on what time they were measured. Do not add any additional information." \
     "6. Biomarker (biomarker)\nIf the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>\n" \
     "# Table\n"
     prompt += table
     return prompt
 
-def format_tables(pmc, abstract, tables):
+def format_tables(pmc, abstract, methods, tables):
     """
     Prompts LLM for formatting instructions then performs them
     - Inverts
+    - Combines mean and SD if separated in groups
+    - Expands mean and SD into biomarkers
     - TODO: Special characters
     """
     formatted_tables = copy.deepcopy(tables)
     for tid, info in tables.items():
         if info["label"].lower() != "b": continue
-        info_combined = ""
         if not info["markdown"]: continue
+        formatted_markdown = table_utils.combine_m_and_SD(info["markdown"])
+        info_combined = ""
         if info["caption"]:
             info_combined += f"Caption: {info["caption"]}\n"
-        info_combined += info["markdown"] + "\n"
+        info_combined += formatted_markdown + "\n"
         if len(info["footnotes"]) > 0:
             info_combined += "Footnotes:\n"
             for fn in info["footnotes"]:
                 info_combined += fn + "\n"
-        prompt = formatting_prompt(abstract, info_combined)
+        prompt = formatting_prompt(abstract, methods, info_combined)
         answer = chatgpt_request(prompt, 10, 0)
         time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         with open(f"responses/table_formatting/{time}.txt", "w", encoding="utf-8") as file:
             file.write(f"{pmc}\n---\n{tid}\n---\n{prompt}\n---\n{answer}")
         if "vertical" in answer:
-            markdown_table = table_utils.transpose_markdown_table(copy.deepcopy(info["markdown"]))
-            formatted_tables[tid]["markdown"] = markdown_table
+            num_cols = int(answer.split("|",1)[1].rstrip(">").strip())
+            formatted_markdown = table_utils.combine_markdown_group_cols(formatted_markdown, num_cols)
+            formatted_tables[tid]["markdown"] = table_utils.transpose_markdown_table(copy.deepcopy(formatted_markdown))
+        formatted_tables[tid]["markdown"] = table_utils.separate_m_and_SD(formatted_tables[tid]["markdown"])
     return formatted_tables
+
+def groups_from_text(abstract, methods, results):
+    prompt = gft_prompt(abstract, methods, results)
+    answer = chatgpt_request(prompt)
+    treatment_groups = [group.strip().strip("<>").split("|") for 
+    group in answer.split("\n") if group]
+    print(answer)
+    print(treatment_groups)
+    return treatment_groups
+
+# def link_groups(table_groups, text_groups):

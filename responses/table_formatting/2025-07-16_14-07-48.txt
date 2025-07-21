@@ -1,0 +1,27 @@
+PMC7767363
+---
+ijms-21-09764-t001
+---
+# Instructions
+You will be given the abstract of a paper and a table representing animal toxicity data from a study in that paper. Do not include any other text besides your answer. Verify your information's source before adding it to your answer. Do the groups go vertically, where each column corresponds to a treatment group and each row corresponds to a biomarker, or do they go horizontally, the inverse? Write <vertical> if vertical and <horizontal> if horizontal.
+# Abstract
+In this study, HER2 RNA aptamers were conjugated to mertansine (DM1) and the anti-cancer effectiveness of the conjugate was evaluated in HER2-overexpressing breast cancer models. The conjugate of HER2 aptamer and anticancer drug DM1 (aptamer-drug conjugate, ApDC) was prepared and analyzed using HPLC and mass spectrometry. The cell-binding affinity and cytotoxicity of the conjugate were determined using confocal microscopy and WST-1 assay. The in vivo anti-tumoral efficacy of ApDC was also evaluated in mice carrying BT-474 breast tumors overexpressing HER2. The synthesized HER2-specific RNA aptamers were able to specifically and efficiently bind to HER-positive BT-474 breast cancer cells, but not to HER2-negative MDA-MB-231 breast cancer cells. Also, the HER2-specific ApDC showed strong toxicity to the target cells, BT-474, but not to MDA-MB-231 cells. According to the in vivo analyses drawn from the mouse xenografts of BT-747 tumor, the ApDC was able to more effectively inhibit the tumor growth. Compared to the control group, the mice treated with the ApDC showed a significant reduction of tumor growth. Besides, any significant body weight losses or hepatic toxicities were monitored in the ApDC-treated mice. This research suggests the HER2 aptamer-DM1 conjugate as a target-specific anti-cancer modality and provides experimental evidence supporting its enhanced effectiveness for HER2-overexpressing target tumors. This type of aptamer-conjugated anticancer drug would be utilized as a platform structure for the development of versatile targeted high-performance anticancer drugs by adopting the easy deformability and high affinity of aptamers.
+# Table
+Caption: Hematological and biochemical parameters measured after ApDC treatment (n = 3).
+| Unnamed_0 | Unnamed_1 | Control(PBS).Mean | Control(PBS).SD | DM1(60 mug/kg).Mean | DM1(60 mug/kg).SD | ApDC(3.85 mg/kg).Mean | ApDC(3.85 mg/kg) .SD |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Hematology,10/muL | Platelet, counts | 697.50 | 64.16 | 632.40 | 101.64 | 425.33 | 66.11 |
+| Hematology,10/muL | Red blood cells, M/muL | 8.38 | 0.27 | 8.08 | 0.35 | 7.69 | 0.34 |
+| Hematology,10/muL | Hematocrits, % | 45.86 | 2.37 | 46.38 | 1.41 | 43.17 | 1.20 |
+| Hematology,10/muL | Neutrophil, absolute | 0.54 | 0.09 | 0.37 | 0.15 | 0.31 | 0.11 |
+| Hematology,10/muL | Lymphocyte | 2.22 | 0.50 | 1.78 | 0.89 | 1.55 | 0.18 |
+| Clinical chemistry,U/L | ALT | 26.28 | 6.33 | 32.29 | 14.33 | 42.93 | 14.86 |
+| Clinical chemistry,U/L | AST | 89.46 | 17.86 | 89.20 | 11.66 | 95.35 | 20.89 |
+| Clinical chemistry,U/L | ALP | 295.11 | 99.65 | 292.01 | 84.44 | 211.76 | 44.13 |
+| Clinical chemistry,U/L | GGT | 4.97 | 1.00 | 7.02 | 2.11 | 6.28 | 3.67 |
+| Clinical chemistry,U/L | Total bilirubin | 0.06 | 0.03 | 0.07 | 0.03 | 0.07 | 0.02 |
+Footnotes:
+Hematological parameters and biochemical parameters were measured with a hematology system and an automated biochemistry analyzer 3 days after inoculation, respectively.
+
+---
+<horizontal>
