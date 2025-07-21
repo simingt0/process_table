@@ -145,5 +145,3 @@ def groups_from_text(abstract, methods, results):
     print(answer)
     print(treatment_groups)
     return treatment_groups
-
-# def link_groups(table_groups, text_groups):
