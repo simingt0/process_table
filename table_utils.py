@@ -492,7 +492,9 @@ def combine_m_and_SD(md_table):
 
 def remove_headers(md_table):
     rows = md_table.split("\n")
-    row = 0
+    row = 2
+    last_header = None
+    header_col = []
     while row < len(rows):
         split = rows[row].strip("|").split(" | ")
         elt0 = split[0].strip()
@@ -502,7 +504,19 @@ def remove_headers(md_table):
                 same = False
                 break
         if same:
+            last_header = elt0
             rows.pop(row)
         else:
             row += 1
-    return "\n".join(rows)
+            header_col.append(last_header)
+    formatted_md = "\n".join(rows)
+    if not all(header is None for header in header_col):
+        print(header_col)
+        formatted_df = markdown_to_dataframe(formatted_md)
+        # print(formatted_df)
+        formatted_df.insert(0, "Header", header_col)
+        # print(formatted_df)
+        return dataframe_to_markdown(formatted_df)
+    return formatted_md
+
+    

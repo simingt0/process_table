@@ -1,0 +1,113 @@
+PMC9322224
+---
+# Instructions
+You will be given the abstract of a research paper which includes at least one animal toxicity study then a list of all the tables included in that paper, each one labeled with its title. For each table identify it as one of three categories: treatment group table (G), biomarker table (B), or other (O). Treatment group tables should contain information on the specific treatment groups, such as the medications, the dosages, the sample size, etc. Tables that only give information on the chemicals used (such as the sourcing) should not be labeled G and should instead be labeled O. Even if the table meets these criteria, only label the table G if it describes the groups of specifically an animal toxicity study within the paper. Otherwise, label it O. Biomarker tables may contain treatment group dosage information, but the main difference between is that biomarker tables should contain biomarker data observed from the treatment groups. This can frequency data (such as survival or number occurences of a condition) or metric data (such as ALT levels or compound concentration), and the table must describe the results of specifically an animal toxicity study within the paper to be labeled B. Otherwise, label it O. Any other irrelevant papers should be labeled O, such as results of in vitro assays or gene expression tables. For each table on a new line, include the label in the following format in the order that the tables are given: <table name|label>. Do not include any extra text in your answer or extra whitespace inside the labels. Here is an example input and output:
+# Example Input
+<abstract>Abstract
+Background: Compound ABC is a novel small molecule with potential therapeutic applications in metabolic disorders. To evaluate its safety profile, we conducted two complementary toxicity studies: an in vitro cytotoxicity assay and an in vivo rodent toxicity assessment.
+Methods:
+In vitro assay: Human hepatocellular carcinoma (HepG2) and rat cardiomyoblast (H9c2) cell lines were exposed to ABC at concentrations of 1-200 µM for 24, 48, and 72 hours. Cell viability was measured by MTT assay, and apoptosis was assessed by flow cytometry using Annexin V/PI staining and caspase-3 activation.
+In vivo study: Male and female Sprague-Dawley rats (n = 10 per sex per group) received daily oral doses of ABC at 0 (vehicle control), 10, 50, or 200 mg/kg for 28 days. Clinical observations, body weight, and food consumption were recorded. At study termination, hematology, serum biochemistry (ALT, AST, BUN, creatinine), and organ histopathology (liver, kidney, heart) were evaluated.
+Results:
+In vitro, ABC induced a concentration- and time-dependent decrease in cell viability, with IC₅₀ values of 45 µM (HepG2) and 120 µM (H9c2) at 48 h. Apoptotic indices increased significantly at ≥50 µM, accompanied by a 3-fold rise in caspase-3 activity. In vivo, no mortality or adverse clinical signs were observed at ≤50 mg/kg. Rats dosed at 200 mg/kg exhibited transient body weight suppression (5% lower vs. control), mild elevations in ALT and creatinine (1.4- and 1.3-fold, respectively), and minimal hepatocellular vacuolation on histology. No significant changes were seen in hematological parameters or cardiac histopathology.
+Conclusions: ABC demonstrates moderate cytotoxicity in vitro, primarily via apoptosis, and is well tolerated in rats at doses up to 50 mg/kg/day. The no-observed-adverse-effect level (NOAEL) in this 28-day study is 50 mg/kg. These findings support further preclinical development of ABC, with emphasis on mechanistic studies of hepatic metabolism and long-term safety.</abstract>
+<example table 1>Caption: Overview of dosing regimens for both in vitro and in vivo studies.
+| Study | Model | Group | Dose / Concentration | Frequency / Exposure | Route | Replicates (n) |
+| --- | --- | --- | --- | --- | --- | --- |
+| In vitro | HepG2 & H9c2 cell lines | Control | 0 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | Low | 10 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | Medium | 50 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | High | 100 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vivo | Sprague-Dawley rat | Control | 0 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | Low | 10 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | Medium | 50 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | High | 200 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+Footnotes:
+1 In vitro replicates refer to independent wells measured per concentration and timepoint.
+2 In vivo 'n' indicates number of animals per sex in each treatment group.
+</example table 1>
+<example table 2>Caption: Summary of cell-based toxicity endpoints following 48 h exposure to ABC.
+| Group | Viability (% of control) | Apoptotic Cells (%) | Caspase-3 Activity (fold of control) |
+| --- | --- | --- | --- |
+| Control (0 µM) | 100 +- 5 | 5 +- 1 | 1.0 +- 0.1 |
+| Low (10 µM) | 95 +- 4 |  8 +- 2 | 1.2 +- 0.1 |
+| Medium (50 µM) | 60 +- 6 | 25 +- 3 | 3.0 +- 0.2 |
+| High (100 µM) | 30 +- 5 | 50 +- 4 | 5.5 +- 0.4 |
+Footnotes:
+3 Viability measured by MTT assay, expressed as percent of untreated control.
+4 Apoptotic fraction determined by Annexin V/PI staining via flow cytometry.
+5 Caspase-3 activity normalized to control, measured enzymatically.
+</example table 2>
+<example table 3>Caption: Key serum biomarker changes in Sprague-Dawley rats after 28 days of ABC dosing.
+| Group | ALT (U/L) | AST (U/L) | Creatinine (mg/dL) | BUN (mg/dL) |
+| --- | --- | --- | --- | --- |
+| Control (0 mg/kg) | 35 +- 5 | 42 +- 6 | 0.6 +- 0.1 | 14 +- 2 |
+| Low (10 mg/kg) | 38 +- 6 | 45 +- 7 | 0.7 +- 0.1 | 15 +- 2 |
+| Medium (50 mg/kg) | 45 +- 7 | 52 +- 8 | 0.8 +- 0.1 | 18 +- 3 |
+| High (200 mg/kg) | 50 +- 8 | 60 +- 10 | 0.9 +- 0.1 | 20 +- 3 |
+Footnotes:
+6 Alanine aminotransferase (ALT) and aspartate aminotransferase (AST) reflect hepatic function.
+7 BUN: blood urea nitrogen, indicates renal function.
+</example table 3>
+# Example output
+<example table 1|G>
+<example table 2|O>
+<example table 3|B>
+# Input
+<abstract>Many controversial reports are available on the use of aspartame as it releases methanol as one of its metabolite during metabolism. The present study proposes to investigate whether long term (90 days) aspartame (40 mg/kg b.wt) administration could induce oxidative stress and alter the memory in Wistar strain male albino rats. To mimic the human methanol metabolism, methotrexate (MTX)-treated rats were included as a model to study the effects of aspartame. Wistar strain albino rats were administered with aspartame (40 mg/kg b.wt) orally and studied along with controls and MTX-treated controls. Aspartame interfered in the body weight and corticosterone levels in the rats. A marked increase in the mRNA and protein expression of neuronal nitric oxide synthase (nNOS) and induced nitric oxide synthase (iNOS) which resulted in the increased nitric oxide radical's level indicating that aspartame is a stressor. These reactive nitrogen species could be responsible for the altered cell membrane integrity and even cause death of neurons by necrosis or apoptosis. The animals showed a marked decrease in learning, spatial working and spatial recognition memory deficit in the Morris water maze and Y-maze performance task which could have resulted due to reduced hippocampal acetylcholine esterase (AChE) activity. The animal brain homogenate also revealed the decrease in the phosphorylation of NMDAR1-CaMKII-ERK/CREB signalling pathway, which well documents the inhibition of phosphorylation leads to the excitotoxicity of the neurons and memory decline. This effect may be due to methanol which may also activate the NOS levels, microglia and astrocytes, inducing neurodegeneration in brain. Neuronal shrinkage of hippocampal layer due to degeneration of pyramidal cells revealed the abnormal neuronal morphology of pyramidal cell layers in the aspartame treated animals. These findings demonstrate that aspartame metabolites could be a contributing factor for the development of oxidative stress in the brain.</abstract>
+<t1-jfda-26-02-903>Caption: Effect of Aspartame (40 mg/kg b.wt) on Na+/K+ ATPase, Ca+ ATPase and Mg2+ ATPase (mumoles of phosphorous liberated/min/mg protein) in brain regions.
+| Parameter | Control | MTX treated | Asp + MTX treated |
+| --- | --- | --- | --- |
+| Cerebralcortex | Cerebralcortex | Cerebralcortex | Cerebralcortex |
+| Na/KATPase | 0.73 +- 0.04 | 0.71 +- 0.04 | 0.29 +- 0.04*# |
+| CaATPase | 0.44 +- 0.04 | 0.45 +- 0.04 | 0.28 +- 0.03*# |
+| Mg | 0.70 +- 0.03 | 0.69 +- 0.02 | 0.38 +- 0.02*# |
+| Cerebellum | Cerebellum | Cerebellum | Cerebellum |
+| Na/KATPase | 0.53 +- 0.04 | 0.52 +- 0.03 | 0.35 +- 0.03*# |
+| CaATPase | 0.34 +- 0.04 | 0.34 +- 0.03 | 0.20 +- 0.04*# |
+| Mg | 0.49 +- 0.03 | 0.51 +- 0.03 | 0.22 +- 0.04*# |
+| Midbrain | Midbrain | Midbrain | Midbrain |
+| Na/KATPase | 0.70 +- 0.05 | 0.69 +- 0.03 | 0.28 +- 0.03*# |
+| CaATPase | 0.45 +- 0.04 | 0.47 +- 0.04 | 0.25 +- 0.01*# |
+| Mg | 0.53 +- 0.04 | 0.53 +- 0.04 | 0.26 +- 0.03*# |
+| Pons medulla | Pons medulla | Pons medulla | Pons medulla |
+| Na/KATPase | 0.63 +- 0.03 | 0.63 +- 0.03 | 0.41 +- 0.03*# |
+| CaATPase | 0.39 +- 0.04 | 0.39 +- 0.04 | 0.27 +- 0.02*# |
+| Mg | 0.70 +- 0.02 | 0.72 +- 0.03 | 0.38 +- 0.03*# |
+| Hippocampus | Hippocampus | Hippocampus | Hippocampus |
+| Na/KATPase | 0.86 +- 0.04 | 0.85 +- 0.05 | 0.49 +- 0.03*# |
+| CaATPase | 0.43 +- 0.05 | 0.41 +- 0.03 | 0.27 +- 0.02*# |
+| Mg | 0.53 +- 0.03 | 0.51 +- 0.04 | 0.29 +- 0.04*# |
+| Hypothalamus | Hypothalamus | Hypothalamus | Hypothalamus |
+| Na/KATPase | 0.53 +- 0.05 | 0.50 +- 0.05 | 0.34 +- 0.03*# |
+| CaATPase | 0.45 +- 0.04 | 0.44 +- 0.02 | 0.36 +- 0.02*# |
+| Mg | 0.48 +- 0.02 | 0.47 +- 0.03 | 0.27 +- 0.03*# |
+Footnotes:
+The data from various groups for the individual parameters are presented as table with mean +- SD. Significance fixed at P <= 0.05. Aspartame treated group when compared to control*, MTX treated groups #.
+Comparison and analysis were done by the one-way analysis of variance (ANOVA) (n = 6) control group was compared with MTX control group and aspartame MTX group, MTX control group was compared with Aspartame MTX group.
+Control, MTX control - Methotrexate treated group, Asp + MTX - Aspartame + Methotrexate treated group.
+</t1-jfda-26-02-903>
+<t2-jfda-26-02-903>Caption: LD50 of Aspartame in Wistar albino rats as per Karber's method. The LD50 of aspartame is 10.95 g/kg body weight.
+| Karber's method to LD50for Aspartame in Wistar female rat. Group | Karber's method to LD50for Aspartame in Wistar female rat.Dose (g/kg) | Karber's method to LD50for Aspartame in Wistar female rat.Dose difference (g/kg) =A | Karber's method to LD50for Aspartame in Wistar female rat.Dead | Karber's method to LD50for Aspartame in Wistar female rat.MeanB | Karber's method to LD50for Aspartame in Wistar female rat .ProductAB |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 12 | - | 5 | 5 |  |
+| 2 | 9 | 3 | 5 | 5 | 15 |
+| 3 | 6 | 3 | 3 | 1.5 | 4.5 |
+| 4 | 3 | 1.5 | 1 | 0.5 | 0.75 |
+| 5 | 1.5 | 1.5 | 0 | 0 | 0 |
+|  | LD50= 15 - (20.25/5) = 10.95 g/kg |  |  |  | Total = 20.25 |
+</t2-jfda-26-02-903>
+<t3-jfda-26-02-903>Caption: The sense and antisense primer sequences of the gene of interest for PCR amplification.
+| Gene | Sequence | Amplified product (bp) | Annealing temp/cycles |
+| --- | --- | --- | --- |
+| beta-actin | Sense: TCATGCCATCCTGCGTCTGGACCTAntisense: CGGACTCATCGTACTCCTGCTTG | 598 | 55  C/35 |
+| Hsp70 | Sense: GAGTCCTACGCCTTCAATATGAAGAntisense: CATCAAGAGTCTGTCTCTAGCCAA | 347 | 55  C/35 |
+| iNOS | Sense: TCTGTGCCTTTGCTCATGACAntisense: CATGGTGAACACGTTCTTGG | 305 | 55  C/35 |
+| nNOS | Sense: CCTTCCGAAGCTTCTGGCAACAGCAntisense: TGGACTCAGATCTAAGGCGGTTGG | 474 | 66  C/35 |
+| c-fos | Sense: AGTGGTGAAGACCATGTCAGGAntisense: CATTGGGGATCTTGCAGG | 296 | 55  C/35 |
+</t3-jfda-26-02-903>
+
+---
+<t1-jfda-26-02-903|B>
+<t2-jfda-26-02-903|G>
+<t3-jfda-26-02-903|O>

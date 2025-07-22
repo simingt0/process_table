@@ -1,0 +1,71 @@
+PMC9322224
+---
+t1-jfda-26-02-903
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles. If you are unsure if a label is applicable or not, just omit it; not every column has to have a label.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.
+2. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If the dosage information is directly linked to a column that gives information on what medication is used (it should contain multiple medications, indicating which one was used in each treatment group), indicate the column title in additional information, prefacing with 'link:'. Note that this linked column could be the same column as the one being labeled if that column lists different medications used and their respective dosages. If the column is instead related to the dosage of a singular medication/treatment, then return the name of that as additional information, prefacing with 'name:'. Also, if there is data on the units, add the units as additional information, prefacing the list entry with 'units:', with each different form of units as its own element in the list. Note that in the list of additional information, while there can only be one item for 'link' or 'name', there could be multiple 'units' listed. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column before answering. If there is no units information, do not add any additional information. A dosage label linked to a column may look like this: <medication|dose|link:Treatment Medication|units:mg/kg|units:mug/kg>. One that is about a specific treatment may look like this: <Treatment.Tamoxifen|dose|name:Tamoxifen|units:mug/kg>
+3. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+4. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this.5. Terminal Time (time)
+If the column contains information about the time at which the measurements were taken or when the treatment group was euthanized, label it as time. Be careful as these columns could also be group columns, where the treatment groups differ in when they were euthanized. They can also be biomarker columns, where the metrics differ based on what time they were measured. Do not add any additional information.6. Biomarker (biomarker)
+If the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>
+# Table
+Caption: Effect of Aspartame (40 mg/kg b.wt) on Na+/K+ ATPase, Ca+ ATPase and Mg2+ ATPase (mumoles of phosphorous liberated/min/mg protein) in brain regions.
+| Parameter | Cerebralcortex | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD | Mg.mean | Mg.SD | Cerebellum | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD | Mg.mean | Mg.SD | Midbrain | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD | Mg.mean | Mg.SD | Pons medulla | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD | Mg.mean | Mg.SD | Hippocampus | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD | Mg.mean | Mg.SD | Hypothalamus | Na/KATPase.mean | Na/KATPase.SD | CaATPase.mean | CaATPase.SD |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Control | Cerebralcortex | 0.73 | 0.04 | 0.44 | 0.04 | 0.70 | 0.03 | Cerebellum | 0.53 | 0.04 | 0.34 | 0.04 | 0.49 | 0.03 | Midbrain | 0.70 | 0.05 | 0.45 | 0.04 | 0.53 | 0.04 | Pons medulla | 0.63 | 0.03 | 0.39 | 0.04 | 0.70 | 0.02 | Hippocampus | 0.86 | 0.04 | 0.43 | 0.05 | 0.53 | 0.03 | Hypothalamus | 0.53 | 0.05 | 0.45 | 0.04 |
+| MTX treated | Cerebralcortex | 0.71 | 0.04 | 0.45 | 0.04 | 0.69 | 0.02 | Cerebellum | 0.52 | 0.03 | 0.34 | 0.03 | 0.51 | 0.03 | Midbrain | 0.69 | 0.03 | 0.47 | 0.04 | 0.53 | 0.04 | Pons medulla | 0.63 | 0.03 | 0.39 | 0.04 | 0.72 | 0.03 | Hippocampus | 0.85 | 0.05 | 0.41 | 0.03 | 0.51 | 0.04 | Hypothalamus | 0.50 | 0.05 | 0.44 | 0.02 |
+| Asp + MTX treated | Cerebralcortex | 0.29 | 0.04*# | 0.28 | 0.03*# | 0.38 | 0.02*# | Cerebellum | 0.35 | 0.03*# | 0.20 | 0.04*# | 0.22 | 0.04*# | Midbrain | 0.28 | 0.03*# | 0.25 | 0.01*# | 0.26 | 0.03*# | Pons medulla | 0.41 | 0.03*# | 0.27 | 0.02*# | 0.38 | 0.03*# | Hippocampus | 0.49 | 0.03*# | 0.27 | 0.02*# | 0.29 | 0.04*# | Hypothalamus | 0.34 | 0.03*# | 0.36 | 0.02*# |
+Footnotes:
+The data from various groups for the individual parameters are presented as table with mean +- SD. Significance fixed at P <= 0.05. Aspartame treated group when compared to control*, MTX treated groups #.
+Comparison and analysis were done by the one-way analysis of variance (ANOVA) (n = 6) control group was compared with MTX control group and aspartame MTX group, MTX control group was compared with Aspartame MTX group.
+Control, MTX control - Methotrexate treated group, Asp + MTX - Aspartame + Methotrexate treated group.
+
+---
+<Parameter|group>
+<Cerebralcortex|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>
+<Mg.mean|biomarker|Mg ATPase|mean|mumoles/min/mg protein>
+<Mg.SD|biomarker|Mg ATPase|variation|mumoles/min/mg protein>
+<Cerebellum|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>
+<Mg.mean|biomarker|Mg ATPase|mean|mumoles/min/mg protein>
+<Mg.SD|biomarker|Mg ATPase|variation|mumoles/min/mg protein>
+<Midbrain|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>
+<Mg.mean|biomarker|Mg ATPase|mean|mumoles/min/mg protein>
+<Mg.SD|biomarker|Mg ATPase|variation|mumoles/min/mg protein>
+<Pons medulla|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>
+<Mg.mean|biomarker|Mg ATPase|mean|mumoles/min/mg protein>
+<Mg.SD|biomarker|Mg ATPase|variation|mumoles/min/mg protein>
+<Hippocampus|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>
+<Mg.mean|biomarker|Mg ATPase|mean|mumoles/min/mg protein>
+<Mg.SD|biomarker|Mg ATPase|variation|mumoles/min/mg protein>
+<Hypothalamus|group>
+<Na/KATPase.mean|biomarker|Na/K ATPase|mean|mumoles/min/mg protein>
+<Na/KATPase.SD|biomarker|Na/K ATPase|variation|mumoles/min/mg protein>
+<CaATPase.mean|biomarker|Ca ATPase|mean|mumoles/min/mg protein>
+<CaATPase.SD|biomarker|Ca ATPase|variation|mumoles/min/mg protein>

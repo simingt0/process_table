@@ -1,0 +1,44 @@
+PMC11568600
+---
+Tab1
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles. If you are unsure if a label is applicable or not, just omit it; not every column has to have a label.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.
+2. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If the dosage information is directly linked to a column that gives information on what medication is used (it should contain multiple medications, indicating which one was used in each treatment group), indicate the column title in additional information, prefacing with 'link:'. Note that this linked column could be the same column as the one being labeled if that column lists different medications used and their respective dosages. If the column is instead related to the dosage of a singular medication/treatment, then return the name of that as additional information, prefacing with 'name:'. Also, if there is data on the units, add the units as additional information, prefacing the list entry with 'units:', with each different form of units as its own element in the list. Note that in the list of additional information, while there can only be one item for 'link' or 'name', there could be multiple 'units' listed. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column before answering. If there is no units information, do not add any additional information. A dosage label linked to a column may look like this: <medication|dose|link:Treatment Medication|units:mg/kg|units:mug/kg>. One that is about a specific treatment may look like this: <Treatment.Tamoxifen|dose|name:Tamoxifen|units:mug/kg>
+3. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+4. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this.5. Terminal Time (time)
+If the column contains information about the time at which the measurements were taken or when the treatment group was euthanized, label it as time. Be careful as these columns could also be group columns, where the treatment groups differ in when they were euthanized. They can also be biomarker columns, where the metrics differ based on what time they were measured. Do not add any additional information.6. Biomarker (biomarker)
+If the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>
+# Table
+Caption: Zootechnical parameters of ewes chronically exposed or not to BPS
+| Unnamed_0.mean | Unnamed_0.SD | Body weight (kg).mean | Body weight (kg).SD | Body condition score.mean | Body condition score.SD | Plasma glucose (mg/L).mean | Plasma glucose (mg/L).SD | Plasma NEFA (micromol/L).mean | Plasma NEFA (micromol/L).SD | Plasma BPS (nM).mean | Plasma BPS (nM).SD |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Mean | SEM.R0 | 53.2 | 2.1 | 2.02 | 0.12 | 638 | 29.6 | 173 | 48.3 | 0.29 | 0.29 |
+| Mean | SEM.R50 | 51.9 | 1.4 | 2.08 | 0.08 | 674 | 35.6 | 164 | 23.8 | 2.95 | 0.8 |
+| Mean | SEM.WF0 | 64.0 | 1.7 | 2.78 | 0.08 | 731 | 57.9 | 326 | 57.9 | 0.12 | 0.12 |
+| Mean | SEM.WF50 | 62.9 | 1.7 | 2.98 | 0.06 | 822 | 81.5 | 276 | 93.1 | 2.14 | 0.36 |
+| p-value.Diet effect | < 0.001 | < 0.001 | 0.039 | 0.035 | 0.294 |
+| p-value.BPS effect | 0.511 | 0.136 | 0.260 | 0.611 | < 0.001 |
+| p-value .Diet x BPS effect | 1.000 | 0.387 | 0.661 | 0.761 | 0.506 |
+Footnotes:
+A body condition score is graded from 1 to 5, 2 corresponding to a slim ewe and 4 corresponding to a fat ewe. Tukey post-hoc tests are indicated by letters and values with different letters are significantly different (p < 0.05). Two-way ANOVA p-values are presented for the effects of diet, dietary exposure to BPS and the interaction of these effects. Bold text indicates significant differences (p < 0.05)
+
+---
+<Unnamed_0.mean|group>
+<Unnamed_0.SD|variation>
+<Body weight (kg).mean|biomarker|Body weight|mean|kg>
+<Body weight (kg).SD|biomarker|Body weight|variation|kg>
+<Body condition score.mean|biomarker|Body condition score|mean|none>
+<Body condition score.SD|biomarker|Body condition score|variation|none>
+<Plasma glucose (mg/L).mean|biomarker|Plasma glucose|mean|mg/L>
+<Plasma glucose (mg/L).SD|biomarker|Plasma glucose|variation|mg/L>
+<Plasma NEFA (micromol/L).mean|biomarker|Plasma NEFA|mean|micromol/L>
+<Plasma NEFA (micromol/L).SD|biomarker|Plasma NEFA|variation|micromol/L>
+<Plasma BPS (nM).mean|biomarker|Plasma BPS|mean|nM>
+<Plasma BPS (nM).SD|biomarker|Plasma BPS|variation|nM>
