@@ -22,7 +22,6 @@ def chatgpt_request(prompt: str, max_tokens: int = 500, temperature = 0):
     api_key = os.getenv("OPENAI_API_KEY")
 
     url = f"{endpoint}openai/deployments/{model}/chat/completions?api-version={version}"
-    print(url)
 
     headers = {
         "Content-Type": "application/json",
@@ -165,6 +164,8 @@ def link_groups(pmc, tid, methods, table_groups, text_groups):
     for group1_raw, group2_raw in pairings:
         group1 = group1_raw.strip().lower()
         group2 = group2_raw.strip().lower()
+        if group2 in ["no match", "nomatch"]:
+            continue
         for col in table_groups.columns:
             if pd.isna(table_groups.at[group1, col]):
                 table_groups.at[group1, col] = text_groups.at[group2, col]

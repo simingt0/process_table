@@ -1,0 +1,64 @@
+PMC5373957
+---
+T2
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles. If you are unsure if a label is applicable or not, just omit it; not every column has to have a label.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.
+2. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If the dosage information is directly linked to a column that gives information on what medication is used (it should contain multiple medications, indicating which one was used in each treatment group), indicate the column title in additional information, prefacing with 'link:'. Note that this linked column could be the same column as the one being labeled if that column lists different medications used and their respective dosages. If the column is instead related to the dosage of a singular medication/treatment, then return the name of that as additional information, prefacing with 'name:'. Also, if there is data on the units, add the units as additional information, prefacing the list entry with 'units:', with each different form of units as its own element in the list. Note that in the list of additional information, while there can only be one item for 'link' or 'name', there could be multiple 'units' listed. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column before answering. If there is no units information, do not add any additional information. A dosage label linked to a column may look like this: <medication|dose|link:Treatment Medication|units:mg/kg|units:mug/kg>. One that is about a specific treatment may look like this: <Treatment.Tamoxifen|dose|name:Tamoxifen|units:mug/kg>
+3. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+4. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this.5. Terminal Time (time)
+If the column contains information about the time at which the measurements were taken or when the treatment group was euthanized, label it as time. Be careful as these columns could also be group columns, where the treatment groups differ in when they were euthanized. They can also be biomarker columns, where the metrics differ based on what time they were measured. Do not add any additional information.6. Biomarker (biomarker)
+If the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. The name should be specific enough that it is unique (ie. 'Lung ITO concentration' is a good name for a column titled 'Lung.ITO concentration (mg/kg)'). This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>
+# Table
+Caption: Concentration of silver (mug Ag/g) in tissues following i.v. administration (1 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats.
+| Tissue | Liver.mean | Liver.SD | Blood.mean | Blood.SD | Spleen.mean | Spleen.SD | Lungs.mean | Lungs.SD | Heart.mean | Heart.SD | Kidney.mean | Kidney.SD | Brain.mean | Brain.SD | Skin.mean | Skin.SD | Muscle.mean | Muscle.SD | Adipose.mean | Adipose.SD | Bone.mean | Bone.SD | Stomach and Small Intestine.mean | Stomach and Small Intestine.SD | Cecum and Large Intestine.mean | Cecum and Large Intestine.SD | Pancreas.mean | Pancreas.SD | Placenta.mean | Placenta.SD |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AgAc.24 h | 1.03 | 0.399 | 0.663 | 0.195 | 2.95 | 0.927 | 1.38 | 0.958 | 0.162 | 0.0306 | 0.405 | 0.0944 | 0.0358 | 0.000661 | 0.224 | 0.0488 | 0.0833 | 0.0616 | 0.0453 | 0.0191 | 0.311 | 0.0455 | 0.377 | 0.215 | 0.414 | 0.118 | 0.196 | 0.0561 | 0.881 | 0.337 |
+| AgAc.48 h | 0.511 | 0.534 | 0.180 | 0.033 | 0.524 | 0.493 | 1.31 | 0.906 | 0.0584 | 0.000479 | 0.233 | 0.0364 | 0.0233 | 0.00150 | 0.265 | 0.141 | 0.0556 | 0.0210 |  | 0.119 | 0.0370 | 0.145 | 0.0958 | 0.443 | 0.175 | 0.170 | 0.116 | 0.756 | 0.184 |
+| 20 nm AgNP.24 h | 0.312 | 0.044 | 0.375 | 0.0485 | 1.42 | 0.499 | 0.519 | 0.103 | 0.127 | 0.0168 | 0.431 | 0.0520 | 0.0297 | 0.196 | 0.147 | 0.0284 | 0.00378 |  | 0.243 | 0.0780 | 0.319 | 0.0378 | 0.976 | 0.431 | 0.321 | 0.204 | 0.696 | 0.0682 |
+| 20 nm AgNP.48 h | 0.228 | 0.130 | 0.214 | 0.0916 | 1.14 | 0.636 | 0.397 | 0.0950 | 0.0863 | 0.222 | 0.0843 | 0.0424 | 0.194 | 0.0735 | 0.0146 | 0.00525 |  | 0.144 | 0.0789 | 0.167 | 0.148 | 0.370 | 0.222 | 0.138 | 0.0553 | 0.926 | 0.436 |
+| 110 nm AgNP.24 h | 2.28 | 1.69 | 0.594 | 0.0566 | 6.79 | 2.16 | 0.436 | 0.0839 | 0.119 | 0.0204 | 0.472 | 0.0968 | b | 0.188 | 0.107 |  |  | 0.120 | 0.0386 | 0.214 | 0.165 | 0.554 | 0.150 | 0.0732 | 0.0214 | 0.719 | 0.0364 |
+| 110 nm AgNP .48 h | 2.71 | 1.63 | 0.348 | 0.0720 | 3.60 | 0.467 | 0.305 | 0.0831 | 0.104 | 0.0144 | 0.373 | 0.161 |  | 0.248 | 0.189 |  |  | 0.136 | 0.0299 | 0.136 | 0.0376 | 0.459 | 0.153 | 0.0831 | 0.0485 | 1.15 | 0.239 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had levels above quantitation limit.
+<LOQ = below limit of quantitation = quantitation limit; 0.0125 mug/g for tissues.
+
+---
+<Tissue|group>
+<Liver.mean|biomarker|Liver|mean|mug Ag/g>
+<Liver.SD|biomarker|Liver|variation|mug Ag/g>
+<Blood.mean|biomarker|Blood|mean|mug Ag/g>
+<Blood.SD|biomarker|Blood|variation|mug Ag/g>
+<Spleen.mean|biomarker|Spleen|mean|mug Ag/g>
+<Spleen.SD|biomarker|Spleen|variation|mug Ag/g>
+<Lungs.mean|biomarker|Lungs|mean|mug Ag/g>
+<Lungs.SD|biomarker|Lungs|variation|mug Ag/g>
+<Heart.mean|biomarker|Heart|mean|mug Ag/g>
+<Heart.SD|biomarker|Heart|variation|mug Ag/g>
+<Kidney.mean|biomarker|Kidney|mean|mug Ag/g>
+<Kidney.SD|biomarker|Kidney|variation|mug Ag/g>
+<Brain.mean|biomarker|Brain|mean|mug Ag/g>
+<Brain.SD|biomarker|Brain|variation|mug Ag/g>
+<Skin.mean|biomarker|Skin|mean|mug Ag/g>
+<Skin.SD|biomarker|Skin|variation|mug Ag/g>
+<Muscle.mean|biomarker|Muscle|mean|mug Ag/g>
+<Muscle.SD|biomarker|Muscle|variation|mug Ag/g>
+<Adipose.mean|biomarker|Adipose|mean|mug Ag/g>
+<Adipose.SD|biomarker|Adipose|variation|mug Ag/g>
+<Bone.mean|biomarker|Bone|mean|mug Ag/g>
+<Bone.SD|biomarker|Bone|variation|mug Ag/g>
+<Stomach and Small Intestine.mean|biomarker|Stomach and Small Intestine|mean|mug Ag/g>
+<Stomach and Small Intestine.SD|biomarker|Stomach and Small Intestine|variation|mug Ag/g>
+<Cecum and Large Intestine.mean|biomarker|Cecum and Large Intestine|mean|mug Ag/g>
+<Cecum and Large Intestine.SD|biomarker|Cecum and Large Intestine|variation|mug Ag/g>
+<Pancreas.mean|biomarker|Pancreas|mean|mug Ag/g>
+<Pancreas.SD|biomarker|Pancreas|variation|mug Ag/g>
+<Placenta.mean|biomarker|Placenta|mean|mug Ag/g>
+<Placenta.SD|biomarker|Placenta|variation|mug Ag/g>

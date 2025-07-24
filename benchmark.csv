@@ -1,9 +1,9 @@
 PMID,PMCID,notes
 28422745,PMC5514907,all fulltext
-33371333,PMC7767363,lab test data
-30947706,PMC6449948,lab test and frequency test in same table
-29567262,PMC9322224,lab test data
-27696470,PMC5373957,bunch of weird lab test data
+33371333,PMC7767363,lab test data (works)
+30947706,PMC6449948,lab test and frequency test in same table (LLM forgot whitespace in col_name)
+29567262,PMC9322224,lab test data (works)
+27696470,PMC5373957,bunch of weird lab test data (works i think)
 32025747,PMC7716188,all fulltext
 39550580,PMC11568600,lab test data
 34595563,PMC8536644,individual subject lab test

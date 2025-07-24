@@ -4,6 +4,7 @@ import re
 from difflib import get_close_matches
 import json
 import logging
+import numpy as np
 
 logger = logging.getLogger(__name__)
 
@@ -445,21 +446,49 @@ def separate_m_and_SD(md_table):
     """
     Separates all +- into mean and SD, adding ".mean" and ".SD" to the end of the column titles.
     """
-    rows = md_table.split("\n")
-    row0 = rows[0].strip("|").strip().split(" | ")
-    row2 = rows[2].strip("|").strip().split(" | ")
-    row0_new = "|"
-    row1_new = "|"
-    for i in range(len(row0)):
-        if "+-" in row2[i]:
-            row0_new += " " + row0[i] + ".mean | " + row0[i] + ".SD |"
-            row1_new += " --- | --- |"
+    df = markdown_to_dataframe(md_table)
+    result = pd.DataFrame(index=df.index)
+
+    for col in df.columns:
+        s = df[col].astype(str)
+        print(col)
+        print(s)
+
+        # check if any value contains '+-'
+        if not s.str.contains(r"\+-", na=False).any():
+            # no split needed — copy original
+            result[col] = df[col]
         else:
-            row0_new += " " + row0[i] + " |"
-            row1_new += " --- |"
-    rows_2_and_on = "\n".join(row.replace('+-', '|') for row in rows[2:])
-    new_table = row0_new + "\n" + row1_new + "\n" + rows_2_and_on
-    return new_table 
+            # prepare output Series
+            mean = pd.Series(index=df.index, dtype=object)
+            sd   = pd.Series(index=df.index, dtype=object)
+
+            # detect spaced vs non‑spaced '+-'
+            mask_spaced = s.str.contains(r" \+- ", na=False)
+            mask_nosp   = ~mask_spaced & s.str.contains(r"\+-", na=False)
+
+            # split on ' +- '
+            if mask_spaced.any():
+                parts = s[mask_spaced].str.split(r" \+\- ", n=1, expand=True)
+                mean[mask_spaced] = parts[0].str.strip()
+                sd[mask_spaced]   = parts[1].str.strip()
+
+            # split on '+-'
+            if mask_nosp.any():
+                parts = s[mask_nosp].str.split(r"\+-", n=1, expand=True)
+                mean[mask_nosp] = parts[0].str.strip()
+                sd[mask_nosp]   = parts[1].str.strip()
+
+            # all others: mean = original, SD = NaN
+            mask_none = ~(mask_spaced | mask_nosp)
+            mean[mask_none] = s[mask_none]
+            sd[mask_none]   = np.nan
+
+            # insert the two new columns in place of the original
+            result[f"{col}.mean"] = mean
+            result[f"{col}.SD"]   = sd
+    
+    return dataframe_to_markdown(result)
 
 def combine_m_and_SD(md_table):
     """

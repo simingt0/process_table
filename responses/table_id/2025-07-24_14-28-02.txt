@@ -1,0 +1,313 @@
+PMC5373957
+---
+# Instructions
+You will be given the abstract of a research paper which includes at least one animal toxicity study then a list of all the tables included in that paper, each one labeled with its title. For each table identify it as one of three categories: treatment group table (G), biomarker table (B), or other (O). Treatment group tables should contain information on the specific treatment groups, such as the medications, the dosages, the sample size, etc. Tables that only give information on the chemicals used (such as the sourcing) should not be labeled G and should instead be labeled O. Even if the table meets these criteria, only label the table G if it describes the groups of specifically an animal toxicity study within the paper. Otherwise, label it O. Biomarker tables may contain treatment group dosage information, but the main difference between is that biomarker tables should contain biomarker data observed from the treatment groups. This can frequency data (such as survival or number occurences of a condition) or metric data (such as ALT levels or compound concentration), and the table must describe the results of specifically an animal toxicity study within the paper to be labeled B. Otherwise, label it O. Any other irrelevant papers should be labeled O, such as results of in vitro assays or gene expression tables. For each table on a new line, include the label in the following format in the order that the tables are given: <table name|label>. Do not include any extra text in your answer or extra whitespace inside the labels. Here is an example input and output:
+# Example Input
+<abstract>Abstract
+Background: Compound ABC is a novel small molecule with potential therapeutic applications in metabolic disorders. To evaluate its safety profile, we conducted two complementary toxicity studies: an in vitro cytotoxicity assay and an in vivo rodent toxicity assessment.
+Methods:
+In vitro assay: Human hepatocellular carcinoma (HepG2) and rat cardiomyoblast (H9c2) cell lines were exposed to ABC at concentrations of 1-200 µM for 24, 48, and 72 hours. Cell viability was measured by MTT assay, and apoptosis was assessed by flow cytometry using Annexin V/PI staining and caspase-3 activation.
+In vivo study: Male and female Sprague-Dawley rats (n = 10 per sex per group) received daily oral doses of ABC at 0 (vehicle control), 10, 50, or 200 mg/kg for 28 days. Clinical observations, body weight, and food consumption were recorded. At study termination, hematology, serum biochemistry (ALT, AST, BUN, creatinine), and organ histopathology (liver, kidney, heart) were evaluated.
+Results:
+In vitro, ABC induced a concentration- and time-dependent decrease in cell viability, with IC₅₀ values of 45 µM (HepG2) and 120 µM (H9c2) at 48 h. Apoptotic indices increased significantly at ≥50 µM, accompanied by a 3-fold rise in caspase-3 activity. In vivo, no mortality or adverse clinical signs were observed at ≤50 mg/kg. Rats dosed at 200 mg/kg exhibited transient body weight suppression (5% lower vs. control), mild elevations in ALT and creatinine (1.4- and 1.3-fold, respectively), and minimal hepatocellular vacuolation on histology. No significant changes were seen in hematological parameters or cardiac histopathology.
+Conclusions: ABC demonstrates moderate cytotoxicity in vitro, primarily via apoptosis, and is well tolerated in rats at doses up to 50 mg/kg/day. The no-observed-adverse-effect level (NOAEL) in this 28-day study is 50 mg/kg. These findings support further preclinical development of ABC, with emphasis on mechanistic studies of hepatic metabolism and long-term safety.</abstract>
+<example table 1>Caption: Overview of dosing regimens for both in vitro and in vivo studies.
+| Study | Model | Group | Dose / Concentration | Frequency / Exposure | Route | Replicates (n) |
+| --- | --- | --- | --- | --- | --- | --- |
+| In vitro | HepG2 & H9c2 cell lines | Control | 0 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | Low | 10 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | Medium | 50 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vitro | HepG2 & H9c2 cell lines | High | 100 µM | 48 h single exposure | N/A | 3 per timepoint |
+| In vivo | Sprague-Dawley rat | Control | 0 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | Low | 10 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | Medium | 50 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+| In vivo | Sprague-Dawley rat | High | 200 mg/kg/day | Once daily 28 days | Oral gavage | 10 rats/sex/group |
+Footnotes:
+1 In vitro replicates refer to independent wells measured per concentration and timepoint.
+2 In vivo 'n' indicates number of animals per sex in each treatment group.
+</example table 1>
+<example table 2>Caption: Summary of cell-based toxicity endpoints following 48 h exposure to ABC.
+| Group | Viability (% of control) | Apoptotic Cells (%) | Caspase-3 Activity (fold of control) |
+| --- | --- | --- | --- |
+| Control (0 µM) | 100 +- 5 | 5 +- 1 | 1.0 +- 0.1 |
+| Low (10 µM) | 95 +- 4 |  8 +- 2 | 1.2 +- 0.1 |
+| Medium (50 µM) | 60 +- 6 | 25 +- 3 | 3.0 +- 0.2 |
+| High (100 µM) | 30 +- 5 | 50 +- 4 | 5.5 +- 0.4 |
+Footnotes:
+3 Viability measured by MTT assay, expressed as percent of untreated control.
+4 Apoptotic fraction determined by Annexin V/PI staining via flow cytometry.
+5 Caspase-3 activity normalized to control, measured enzymatically.
+</example table 2>
+<example table 3>Caption: Key serum biomarker changes in Sprague-Dawley rats after 28 days of ABC dosing.
+| Group | ALT (U/L) | AST (U/L) | Creatinine (mg/dL) | BUN (mg/dL) |
+| --- | --- | --- | --- | --- |
+| Control (0 mg/kg) | 35 +- 5 | 42 +- 6 | 0.6 +- 0.1 | 14 +- 2 |
+| Low (10 mg/kg) | 38 +- 6 | 45 +- 7 | 0.7 +- 0.1 | 15 +- 2 |
+| Medium (50 mg/kg) | 45 +- 7 | 52 +- 8 | 0.8 +- 0.1 | 18 +- 3 |
+| High (200 mg/kg) | 50 +- 8 | 60 +- 10 | 0.9 +- 0.1 | 20 +- 3 |
+Footnotes:
+6 Alanine aminotransferase (ALT) and aspartate aminotransferase (AST) reflect hepatic function.
+7 BUN: blood urea nitrogen, indicates renal function.
+</example table 3>
+# Example output
+<example table 1|G>
+<example table 2|O>
+<example table 3|B>
+# Input
+<abstract>Here is presented a comprehensive investigation of the distribution of polyvinylpyrrolidone (PVP)-stabilized AgNP (20 or 110 nm) in pregnant rats after a single injection or oral gavage dose. The biological impacts of AgNP exposure were evaluated by metabolomic analysis, and measurement of biomarkers of cardiovascular injury, oxidative stress, and inflammation. The investigation provided a basic understanding of the distribution, internal dose, persistence, metabolomics, and elimination of AgNP following exposure in pregnant rats.
+Few investigations have been conducted on the disposition and fate of silver nanoparticles (AgNP) in pregnancy. The distribution of a single dose of polyvinylpyrrolidone (PVP)-stabilized AgNP was investigated in pregnant rats. Two sizes of AgNP, 20 and 110 nm, and silver acetate (AgAc) were used to investigate the role of AgNP diameter and particle dissolution in tissue distribution, internal dose, and persistence. Dams were administered AgNP or AgAc intravenously (i.v.) (1 mg/kg) or by gavage (p.o.) (10 mg/kg), or vehicle alone, on gestation day 18 and euthanized at 24 or 48 h post-exposure. The silver concentration in tissues was measured using inductively-coupled plasma mass spectrometry. The distribution of silver in dams was influenced by route of administration and AgNP size. The highest concentration of silver (mug Ag/g tissue) at 48 h was found in spleen for i.v. administered AgNP, and in lungs for AgAc. At 48 h following p.o. administration of AgNP, the highest concentration was measured in cecum and large intestine, and for AgAc in placenta. Silver was detected in placenta and fetuses for all groups. Markers of cardiovascular injury, oxidative stress marker, cytokines, and chemokines were not significantly elevated in exposed dams compared to vehicle-dosed control. NMR metabolomics analysis of urine indicated that AgNP and AgAc exposure impact the carbohydrate, and amino acid metabolism. This study demonstrates that silver crosses the placenta and is transferred to the fetus regardless of the form of silver.</abstract>
+<T1>Caption: Methods for analysis of AgNP stock standard solutions and characteristics.
+| Characterization Assay | Method ID | 20 nm AgNP (NIEHS-2) | 110 nm AgNP (NIEHS-4) |
+| --- | --- | --- | --- |
+| Endotoxin Quantification - Kinetic Turbidity (EU/mL) | STE-1.2 | 1.1 | <0.5 |
+| Hydrodynamic Size/Size Distribution by DLS (Z-Avg [nm]) | PCC-1 | 26 | 112.3 |
+| Size by TEM (nm) | PCC-7 | 20.5 | 111.3 |
+| Surface Charge by Zeta Potential (mV) | PCC-2 | -37.1 | -25.9 |
+| Silver concentration by ICP-MS (mg/g) | PCC-8 | 1.09 | 1.10 |
+Footnotes:
+Two populations observed; <9% were smaller than 10 nm, the remainder averaged 20 nm
+Two populations observed; <13% were smaller than 60 nm, the remainder averaged 111 nm
+</T1>
+<T2>Caption: Concentration of silver (mug Ag/g) in tissues following i.v. administration (1 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats.
+| Tissue | AgAc.24 h | AgAc.48 h | 20 nm AgNP.24 h | 20 nm AgNP.48 h | 110 nm AgNP.24 h | 110 nm AgNP .48 h |
+| --- | --- | --- | --- | --- | --- | --- |
+| Liver | 1.03+-0.399 | 0.511+-0.534 | 0.312+-0.044 | 0.228+-0.130 | 2.28+-1.69 | 2.71+-1.63 |
+| Blood | 0.663+-0.195 | 0.180+-0.033 | 0.375+-0.0485 | 0.214+-0.0916 | 0.594+-0.0566 | 0.348+-0.0720 |
+| Spleen | 2.95+-0.927 | 0.524+-0.493 | 1.42+-0.499 | 1.14+-0.636 | 6.79+-2.16 | 3.60+-0.467 |
+| Lungs | 1.38+-0.958 | 1.31+-0.906 | 0.519+-0.103 | 0.397+-0.0950 | 0.436+-0.0839 | 0.305+-0.0831 |
+| Heart | 0.162+-0.0306 | 0.0584+-0.000479 | 0.127+-0.0168 | 0.0863 | 0.119+-0.0204 | 0.104+-0.0144 |
+| Kidney | 0.405+-0.0944 | 0.233+-0.0364 | 0.431+-0.0520 | 0.222+-0.0843 | 0.472+-0.0968 | 0.373+-0.161 |
+| Brain | 0.0358+-0.000661 | 0.0233+-0.00150 | 0.0297 | 0.0424 | b |  |
+| Skin | 0.224+-0.0488 | 0.265+-0.141 | 0.196+-0.147 | 0.194+-0.0735 | 0.188+-0.107 | 0.248+-0.189 |
+| Muscle | 0.0833+-0.0616 | 0.0556+-0.0210 | 0.0284+-0.00378 | 0.0146+-0.00525 |  |  |
+| Adipose | 0.0453+-0.0191 |  |  |  |  |  |
+| Bone | 0.311+-0.0455 | 0.119+-0.0370 | 0.243+-0.0780 | 0.144+-0.0789 | 0.120+-0.0386 | 0.136+-0.0299 |
+| Stomach and Small Intestine | 0.377+-0.215 | 0.145+-0.0958 | 0.319+-0.0378 | 0.167+-0.148 | 0.214+-0.165 | 0.136+-0.0376 |
+| Cecum and Large Intestine | 0.414+-0.118 | 0.443+-0.175 | 0.976+-0.431 | 0.370+-0.222 | 0.554+-0.150 | 0.459+-0.153 |
+| Pancreas | 0.196+-0.0561 | 0.170+-0.116 | 0.321+-0.204 | 0.138+-0.0553 | 0.0732+-0.0214 | 0.0831+-0.0485 |
+| Placenta | 0.881+-0.337 | 0.756+-0.184 | 0.696+-0.0682 | 0.926+-0.436 | 0.719+-0.0364 | 1.15+-0.239 |
+| Fetus | 0.0603+-0.0106 | 0.0759+-0.019 | 0.0445+-0.00763 | 0.0549+-0.0174 | 0.0316+-0.000507 | 0.0492+-0.00674 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had levels above quantitation limit.
+<LOQ = below limit of quantitation = quantitation limit; 0.0125 mug/g for tissues.
+</T2>
+<T3>Caption: Percent recovered of administered dose of silver in tissues following i.v. administration (1 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats
+| Tissue | AgAc.24 h | AgAc.48 h | 20 nm AgNP.24 h | 20 nm AgNP.48 h | 110 nm AgNP.24 h | 110 nm AgNP .48 h |
+| --- | --- | --- | --- | --- | --- | --- |
+| Liver | 4.33+-1.63 | 2.08+-2.02 | 1.44+-0.203 | 1.02+-0.635 | 8.69+-6.04 | 12.1+-7.11 |
+| Blood | 4.88+-1.39 | 1.33+-0.257 | 2.80+-0.346 | 1.57+-0.664 | 4.41+-0.418 | 2.55+-0.516 |
+| Spleen | 0.529+-0.124 | 0.114+-0.118 | 0.274+-0.0631 | 0.193+-0.110 | 1.44+-0.587 | 0.780+-0.0878 |
+| Lungs | 0.534+-0.402 | 0.496+-0.325 | 0.204+-0.0454 | 0.138+-0.0379 | 0.157+-0.0247 | 0.0974+-0.0139 |
+| Heart | 0.0504+-0.005 | 0.0181+-0.00348 | 0.0404+-0.00715 | 0.0234 | 0.0332+-0.00344 | 0.0317+-0.000950 |
+| Kidney | 0.248+-0.0583 | 0.125+-0.0233 | 0.265+-0.0367 | 0.125+-0.0454 | 0.274+-0.0505 | 0.221+-0.0734 |
+| Brain | 0.0213+-0.00126 | 0.0215+-0.000908 | 0.0169 | 0.0240 | b |  |
+| Skin | 4.34+-0.995 | 5.49+-2.95 | 3.89+-3.00 | 3.80+-1.47 | 3.75+-2.11 | 5.23+-4.08 |
+| Muscle | 3.42+-2.53 | 2.44+-0.901 | 1.19+-0.158 | 0.605+-0.137 |  |  |
+| Adipose | 0.324+-0.143 |  |  |  |  |  |
+| Bone | 2.21+-0.302 | 0.902+-0.273 | 1.77+-0.609 | 0.995+-0.486 | 0.881+-0.275 | 1.05+-0.214 |
+| Stomach and Small Intestine | 1.11+-0.567 | 0.530+-0.197 | 1.36+-0.442 | 0.593+-0.419 | 0.681+-0.533 | 0.627+-0.250 |
+| Cecum and Large Intestine | 1.33+-0.0429 | 1.49+-0.599 | 3.63+-1.58 | 1.15+-0.563 | 0.167+-0.0650 | 0.145+-0.387 |
+| Pancreas | 0.141+-0.0523 | 0.109+-0.0832 | 0.161+-0.114 | 0.103+-0.0475 | 0.0843+-0.047 | 0.0797+-0.037 |
+| Placenta | 1.41+-0.304 | 1.60+-0.470 | 1.28+-0.274 | 2.10+-1.10 | 1.26+-0.181 | 1.93+-0.483 |
+| Fetus | 0.529+-0.0521 | 1.01+-0.214 | 0.379+-0.108 | 0.835+-0.253 | 0.263+-0.0333 | 0.751+-0.0456 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had levels above quantitation limit.
+<LOQ = below limit of quantitation = quantitation limit; 0.0125 mug/g for tissues.
+</T3>
+<T4>Caption: Total percent recovery of administered dose 48 h following i.v. (1 mg/kg) or p.o. (10 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats.
+| Sample | AgAc.i.v. | AgAc.p.o. | 20 nm AgNP.i.v. | 20 nm AgNP.p.o. | 110 nm AgNP.i.v. | 110 nm AgNP .p.o. |
+| --- | --- | --- | --- | --- | --- | --- |
+| Tissues | 17.7+-6.90 | 0.601+-0.198 | 12.9+-4.01 | 0.53+-0.29 | 26.95+-4.97 | 0.430+-0.159 |
+| Urine | 0.0722+-0.0244 | b | 0.0297+-0.0044 | 0.0268 |  |  |
+| Feces | 38.9+-11.2 | 88.4+-20.9 | 9.68+-5.94 | 27.2+-8.97 | 5.97+-2.62 | 92.7+-6.76 |
+| Overall | 56.7+-5.96 | 89.0+-20.7 | 22.6+-9.30 | 27.7+-8.73 | 32.92+-6.96 | 93.1+-6.66 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had levels above the reportable limit
+<LOQ = below limit of quantitation = quantitation limit; 0.050 mug/g for feces, 0.005 mug/g for urine, and 0.0125 mug/g for tissues.
+Data for feces from 0-48 h
+</T4>
+<T5>Caption: Concentration of silver (mug Ag/g) in tissues following p.o. administration (10 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats.
+| Tissue | AgAc.24 h | AgAc.48 h | 20 nm AgNP.24 h | 20 nm AgNP.48 h | 110 nm AgNP.24 h | 110 nm AgNP .48 h |
+| --- | --- | --- | --- | --- | --- | --- |
+| Liver | 0.187+-0.106 | 0.324+-0.380 | 0.0592+-0.0293 | 0.0380+-0.0126 | 0.0205+-0.0150 | 0.0170+-0.00377 |
+| Blood | b | 0.117+-0.0168 | 0.124+-0.0120 | 0.0646+-0.00519 |  |  |
+| Spleen | 0.0802+-0.0648 | 0.104+-0.0702 | 0.220+-0.0329 | 0.172 | 0.172 |  |
+| Lungs | 0.137+-0.0239 | 0.177 | 0.965 |  |  |  |
+| Heart | 0.0604 |  |  |  |  |  |
+| Kidney | 0.461+-0.506 | 0.147+-0.0413 | 0.187+-0.0545 | 0.0868+-0.0136 | 0.104+-0.0387 | 0.0795+-0.0179 |
+| Brain |  |  |  |  |  |  |
+| Stomach and Small Intestine | 1.55+-2.51 | 0.0726+-0.0286 | 0.0657+-0.0324 | 0.0307+-0.0141 | 0.584+-0.468 | 0.0193+-0.00657 |
+| Cecum and Large Intestine | 16.0+-25.6 | 0.400+-0.0248 | 3.76+-2.24 | 0.884+-0.750 | 3.02+-1.04 | 0.901+-0.449 |
+| Placenta | 0.751+-0.0249 | 0.919+-0.271 | 0.518+-0.0302 | 0.354+-0.307 | 0.201+-0.125 | 0.351+-0.106 |
+| Fetus | 0.0537+-0.000831 | 0.0663+-0.0165 | 0.0266+-0.00239 | 0.0207+-0.0180 | 0.0211+-0.00183 | 0.0353+-0.00848 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had concentrations > quantitation limit.
+<LOQ = below limit of quantitation = quantitation limit; 0.0125 mug/g for tissues.
+</T5>
+<T6>Caption: Percent recovered of administered dose of silver following p.o. administration (10 mg/kg) of AgAc, 20 nm AgNP or 110 nm AgNP to pregnant rats.
+| Tissue | AgAc.24 h | AgAc.48 h | 20 nm AgNP.24 h | 20 nm AgNP.48 h | 110 nm AgNP.24 h | 110 nm AgNP .48 h |
+| --- | --- | --- | --- | --- | --- | --- |
+| Liver | 0.0836+-0.0628 | 0.134+-0.150 | 0.0287+-0.0143 | 0.0168+-0.00584 | 0.00967+-0.00739 | 0.00753+-0.00139 |
+| Blood | b | 0.0866+-0.0117 | 0.0993+-0.0127 | 0.0525+-0.00494 |  |  |
+| Spleen | 0.00165+-0.00155 | 0.00233+-0.00116 | 0.00540+-0.00181 | 0.00402 | 0.00402 |  |
+| Lungs | 0.00403+-0.000107 | 0.00628 | 0.00316 |  |  |  |
+| Heart | 0.00229 |  |  |  |  |  |
+| Kidney | 0.0286+-0.0307 | 0.00785+-0.00210 | 0.0123+-0.00380 | 0.00535+-0.000782 | 0.00631+-0.00260 | 0.00444+-0.00107 |
+| Brain |  |  |  |  |  |  |
+| Stomach and Small Intestine | 0.524+-0.841 | 0.0270+-0.007 | 0.276+-0.175 | 0.144+-0.048 | 0.239+-0.214 | 0.0079+-0.004 |
+| Cecum and Large Intestine | 7.06+-11.48 | 0.139+-0.084 | 15.0+-12.28 | 2.37+-1.95 | 0.975+-0.130 | 0.314+-0.151 |
+| Placenta | 0.112+-0.00432 | 0.161+-0.0216 | 0.0908+-0.00605 | 0.116+-0.00232 | 0.0372+-0.0258 | 0.0638+-0.0104 |
+| Fetus | 0.0531+-0.000121 | 0.0863+-0.0244 | 0.0230+-0.00103 | 0.0486+-0.00456 | 0.0205+-0.00326 | 0.0511+-0.00691 |
+Footnotes:
+All data are reported as Mean +- SD (n= 3)
+Only one rat had concentrations > quantitation limit.
+<LOQ = below limit of quantitation = quantitation limit; 0.0125 mug/g for tissues.
+</T6>
+<T7>Caption: Markers of cardiovascular injury from serum of pregnant rats at 24 or 48 h following i.v. or p.o. administration of AgAc, 20 or 110 nm AgNP.
+| Sample | Exposure duration | Route | PAI-1 (mean +- std.) | vWF (mean +- std.) |
+| --- | --- | --- | --- | --- |
+| Vehicle | 24 h | i.v. | 1,314+-156 | 222+-49.6 |
+| Vehicle | 48 h | 1,632+-1073 | 272+-236 |  |
+| AgAc | 24 h | 1,328+-437 | 258+-135 |  |
+| AgAc | 48 h | 970+-266 | 502+-167 |  |
+| 20 nm AgNP | 24 h | 1,723+-482 | 291+-77.3 |  |
+| 20 nm AgNP | 48 h | 759 | 322 |  |
+| 110 nm AgNP | 24 h | 62.1+-87.9 | 126+-58.2 |  |
+| 110 nm AgNP | 48 h | 406+-72.9 | 88.1+-77.1 |  |
+| Vehicle | 24 h | p.o. | 315+-68.4 | 71.5+-101 |
+| Vehicle | 48 h | 406+-73 | 88.1+-77.1 |  |
+| AgAc | 24 h | 398+-53.3 | 119+-29.6 |  |
+| AgAc | 48 h | 151+-95.6 | 26.5+-41.7 |  |
+| 110 nm AgNP | 24 h | 307+-56.2 | ND |  |
+| 110 nm AgNP | 48 h | 265+-116 | 6.73+-11.7 |  |
+Footnotes:
+All data are reported as Mean +- SEM ng/ml plasma of duplicates from n = 3.
+ND = not detected
+n=1 (for vehicle - Error for all readings on rats 2 and 3, for 20 nm AgNP 48 h - only one sample analyzed.)
+</T7>
+<T8>Caption: Cytokine/Chemokine expression for pregnant rats exposed i.v. to AgAc, 20 nm AgNP and vehicle after 24 or 48 h. All data are reported as mean +- SEM pg/ml of plasma of duplicates.
+| Cytokine | Vehicle.24 h | Vehicle.48 h | AgAc.24 h | AgAc.48 h | 20 nm AgNP.24 h | 20 nm AgNP .48 h |
+| --- | --- | --- | --- | --- | --- | --- |
+| Eotaxin | 146 | 336+-475 | ND | ND | ND | 55.3 |
+| IL-1beta | ND | ND | ND | ND | ND | ND |
+| IL-4 | 263 | 779+-1,072 | 44.5+-77.2 | ND | ND | ND |
+| IL-5 | ND | ND | ND | ND | ND | ND |
+| IL-6 | 489 | 3,561+-5,036 | 91.5+-158 | 4.66+-8.07 | 30.3+-27.2 | ND |
+| MCP-1 | 78.1 | 57.7+-81.6 | 57.4+-52.1 | 42.2+-36.5 | 62.8+-42.7 | ND |
+| TNF-alpha | ND | ND | ND | ND | ND | ND |
+| VEGF | ND | ND | ND | ND | ND | ND |
+Footnotes:
+All data are reported as Mean +- SD pg/ml of plasma of duplicates (n= 3)
+ND = not detected
+n=1 (for vehicle - Error for all readings on rats 2 and 3, for 20 nm AgNP 48 h - only one sample analyzed.)
+</T8>
+<T9>Caption: Library matched metabolites that are deemed to be important for differentiating pregnant rats administered a single i.v. (1 mg/kg) dose of 110 nm AgNP from vehicle at 48 h. Metabolites often fall in multiple bins, which is noted by the parenthesis.
+| Library Matched Metabolite | AgAc vs Vehicle.VIPRange | AgAc vs Vehicle.Fold Change range | 20 nm AgNP vs Vehicle.VIP Range | 20 nm AgNP vs Vehicle.Fold Change range | 110 nm AgNP vs Vehicle.VIP Range | 110 nm AgNP vs Vehicle .Fold Change range |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1-Methylnicotinamide | 1.4 | (-1.7) |  |  |  |  |
+| 1-Methylnicotinamide | Lactose | Trigonelline | 1.3 | (-1.1) | 1.6 | (-1.2) |
+| 2-Oxoglutarate (1-2 bins) |  |  | 3.1 | 1.2 | 3.7 - 3.9 | (-2.3) - (-2.1) |
+| 3-Hydroxyphenylacetate (1-2 bins) | 1.1 | (-1.9) | 1.1 - 1.2 | (-2.8) - (-2.7) |  |  |
+| 3-Hydroxyphenylacetate | N-acetylglutamine | 1.7 | (-1.3) | 2.1 | (-1.7) | 1.0 |
+| Acetate | 3.8 | 1.4 |  |  | 4.0 | 2.9 |
+| Acetoacetate |  |  | 1.0 | 1.1 | 2.3 | 1.7 |
+| Acetoin | 2-Hydroxyisobutyrate |  |  | 1.0 | (-1.2) |  |
+| Allantoin |  |  |  |  | 3.5 | (-1.9) |
+| Choline |  |  | 1.0 | (-1.1) |  |  |
+| Citrate (1-2 bins) | 1.4 | (-1.3) | 4.9 | 1.3 | 1.1 - 4.4 | (-1.5) - 1.5 |
+| Creatinine |  |  | 2.2 | (-1.1) | 2.1 | (-1.3) |
+| Dimethylamine |  |  |  |  | 3.1 | (-2.3) |
+| Dimethylsulfone |  |  | 1.4 | (-1.2) |  |  |
+| Formate | 1.2 | (-1.7) |  |  |  |  |
+| Glucose |  |  |  |  | 1.3 | (-1.4) |
+| Glucose | Lactose |  |  | 1.5 | (-1.3) | 1.0 |
+| Glucose | Sucrose |  |  | 1.3 | (-1.1) |  |
+| Glutamine | 3.4 | (-1.6) | 3.1 | (-1.8) | 1.9 | (-1.7) |
+| Hippurate (3 bins) |  |  | 2.6 - 3.8 | 1.6 |  |  |
+| Hippurate | Glycolate | 3.0 | 1.1 | 3.7 | 1.2 |  |
+| Homocystine | 2.2 | (-1.3) | 2.7 | (-1.8) |  |  |
+| Isoleucine |  |  | 1.1 | (-1.1) |  |  |
+| Lactate |  |  | 1.8 | (-1.2) | 1.8 | 1.5 |
+| Leucine | Isoleucine | Fatty acids | 1.4 | 1.1 |  |  |
+| Methionine |  |  |  |  | 1.3 | 1.7 |
+| N-Acetylglutamine |  |  | 1.6 | (-1.2) |  |  |
+| N-Acetylglutamine | Glutamine | Methionine |  |  | 1.1 | (-1.1) |
+| N-Acetylglycine | N-Acetylaminoacids |  |  | 2.2 | (-1.1) |  |
+| Proline (1-2 bins) | 1.3 | (-1.1) | 1.3 | -1.1 | 1.2 | (-1.3) |
+| Succinate |  |  |  |  | 4.1 | 3.6 |
+| Sucrose |  |  | 1.1 | (-1.1) |  |  |
+| Taurine | Betaine | TMAO | 3.1 | (-1.1) |  |  |
+| Trans-Aconitate | 1.4 | (-1.2) |  |  |  |  |
+| Unknowns (5 - 13 bins) | 1.1 - 1.6 | (-1.8) - (-1.1) | 1.0 - 1.4 | (-2.2) - 1.3 | 1.1 - 2.4 | (-8.3) - 2.0 |
+Footnotes:
+VIP = variable importance for projection
+A negative fold change means that the vehicle median was higher than the AgNP median, while a positive fold change means that the AgNP median was higher than the vehicle median.
+</T9>
+<T10>Caption: Library matched metabolites that are deemed to be important for separating pregnant rats administered a single p.o. (10 mg/kg) dose of 20 nm AgNP from vehicle at 48 h. Metabolites often fall in multiple bins, which is noted by the parenthesis.
+| Library Matched Metabolite | AgAc vs Vehicle.VIPRange | AgAc vs Vehicle.Fold Change range | 20 nm AgNP vs Vehicle.VIP Range | 20 nm AgNP vs Vehicle.Fold Change range | 110 nm AgNP vs Vehicle.VIP Range | 110 nm AgNP vs Vehicle .Fold Change range |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1-Methylnicotinamide | Lactose | Trigonelline | 1.2 | (-1.2) |  |  |
+| 2-Oxoglutarate (2 bins) |  |  | 3.1 - 3.3 | 1.5 - 1.6 |  |  |
+| 3-Hydroxyphenylacetate |  |  |  |  | 1.0 | (-1.5) |
+| 3-Hydroxyphenylacetate | N-Acetylglutamine |  |  | 1.5 | (-1.6) | 1.3 |
+| Acetate | 5.5 | 2.3 | 1.3 | (-1.3) |  |  |
+| Acetoacetate | trans-Aconitate |  |  | 2.3 | (-1.2) |  |
+| Alanine | 1.1 | 1.1 |  |  | 1.1 | 1.0 |
+| Allantoin | 3.3 | (-1.7) |  |  | 1.3 | (-1.6) |
+| Benzorate (2-3 bins) | 1.7 - 2.5 | 2.9 - 11.5 |  |  | 1.2 - 1.8 | 1.3 - 2.7 |
+| Citrate (2 bins) |  |  | 4.9 - 5.6 | (-1.4) |  |  |
+| Dimethylsulfone |  |  | 1.0 | 1.1 | 1.7 | 1.1 |
+| Glucose | 1.6 | (-1.4) |  |  |  |  |
+| Glucose | Lactose |  |  | 1.1 | 1.2 |  |
+| Glucose | Sucrose | 2.7 | 1.8 | 1.4 | 1.2 |  |
+| Glucose | Taurine | 2.2 | (-1.5) |  |  |  |
+| Hippurate (3 bins) |  |  |  |  | 2.9 - 4.4 | 1.6 |
+| Hippurate | Glycolate |  |  |  |  | 4.4 |
+| Homocystine |  |  |  |  | 1.7 | (-1.2) |
+| Isoleucine | 1.0 | 1.1 |  |  |  |  |
+| Lactate (2 bins) | 1.8 - 3.5 | 1.2 -2.0 | 1.1 | 1.1 |  |  |
+| Lactose | Glucose | 2.3 | 1.9 |  |  |  |
+| Leucine | Isoleucine | Fatty acids |  |  | 1.7 | 1.3 |
+| N,N-Dimethylglycine | 2.1 | 1.4 |  |  |  |  |
+| N-Acetylglutamine | 1.5 | (-1.1) | 1.5 | (-1.2) | 1.8 | (-1.1) |
+| N-Acetylglycine | N-Acetylaminoacids |  |  | 1.2 | (-1.0) |  |
+| Proline |  |  | 1.0 | (-1.1) | 1.3 | 1.1 |
+| Succinate | 4.9 | 2.0 | 2.8 | (-1.6) |  |  |
+| Sucrose |  |  | 1.5 | 1.3 |  |  |
+| Sucrose | Creatinine |  |  | 1.6 | 1.2 |  |
+| Trans-Aconitate |  |  | 1.2 | (-1.4) |  |  |
+| Valine/Leucine |  |  | 1.4 | 1.4 |  |  |
+| Unknowns (3-8 bins) | 1.0 - 2.8 | (-1.6) - 1.5 | 1.1 - 3.4 | (-1.1) - 1.2 | 1.4 - 2.1 | (-1.2) - 1.2 |
+Footnotes:
+VIP = variable importance for projection
+A negative fold change means that the vehicle median was higher than the AgNP median, while a positive fold change means that the AgNP median was higher than the vehicle median.
+</T10>
+<T11>Caption: List of the most perturbed pathways in the library matched metabolomics analysis and the metabolites that distinguish the AgAc, 20 nm or 110 nm AgNP and the vehicle control 48 h post i.v. or p.o. exposure.
+| Treatment | Route | Most perturbed pathway | p-Value | Pathway metabolites that differ from silver and vehicle |
+| --- | --- | --- | --- | --- |
+| AgAc vs Vehicle | i.v. | Ala,Ser,Cys,Met,His,Pro,Gly,Glu, and Gln metabolism and transport | 9.0x10 | BetaineGlycolic acidL-GlutamineL-Proline |
+| AgAc vs Vehicle | p.o. | Carbohydrate metabolism: Sucrose metabolism and transport | 5.4x10 | D-SucroseD-GlucoseLactose |
+| 20 nm AgNP vs Vehicle | i.v. | Ala,Ser,Cys,Met,His,Pro,Gly,Glu, and Gln metabolism and transport | 3.6x10 | 2-Oxoglutaric acidGlycolic acidL-GlutamineL-MethionineL-Proline |
+| 20 nm AgNP vs Vehicle | p.o. | TCA metabolism and transport | 2.1x10 | 2-OxoglutaricCitric acidSuccinic acid |
+| 110 nm AgNP vs Vehicle | i.v. | TCA metabolism and transport | 2.1x10 | 2-Oxoglutaric acidCitric acidSuccinic acid |
+| 110 nm AgNP vs Vehicle | p.o. | Alanine, Glycine, and Cysteine metabolism and transport | 3.6x10 | Glycolic acidL-AlanineL-Leucine |
+Footnotes:
+Ala (Alanine), Ser (Serine), Cys (Cystine), Met (Methionine), His (Histidine), Pro (Proline), Gly (Glycine), Glu (Glutamic acid), Gln (Glutamine)
+</T11>
+
+---
+<T1|O>
+<T2|B>
+<T3|B>
+<T4|O>
+<T5|B>
+<T6|B>
+<T7|B>
+<T8|B>
+<T9|O>
+<T10|O>
+<T11|O>
