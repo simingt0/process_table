@@ -3,9 +3,9 @@ PMID,PMCID,notes
 33371333,PMC7767363,lab test data (works)
 30947706,PMC6449948,lab test and frequency test in same table (LLM forgot whitespace in col_name)
 29567262,PMC9322224,lab test data (works)
-27696470,PMC5373957,bunch of weird lab test data (works i think)
+27696470,PMC5373957,bunch of weird lab test data (works)
 32025747,PMC7716188,all fulltext
-39550580,PMC11568600,lab test data
-34595563,PMC8536644,individual subject lab test
+39550580,PMC11568600,lab test data (works besides p-values)
+34595563,PMC8536644,individual subject lab test (still cannot process subject data)
 27439414,PMC5043003,ordinary lab test and frequency data as well as individual and observation data
 38626325,PMC11131026,weird lab test and frequency tables

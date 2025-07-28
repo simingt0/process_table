@@ -1,0 +1,46 @@
+PMC6449948
+---
+Tab2
+---
+# Instructions
+You will be given a table describing the results of an animal toxicity study. Your task is to identify label each of the columns with any of 8 types. Remember that each column can have multiple labels or none at all and that some types can be used to label multiple columns. Each label should be indicated as a list of information, each one occupying its own line with the columns being labelled in order from left to right. The first two elements should be the column header and the labels, followed by any additional information as instructed below. Format the lists within triangle brackets with terms separated by |'s like so: <intestinal lesions|count|any other information requested>. If there are multiple labels, separate them into multiple lists with the same first element but different labels. If no labels are applicable to a column, do not add any labels and continue to the next column. Do not add any other text besides your labels and do not add any extra whitespace within the labels. Below are the labels with instructions on what additional information to retrieve for each. Make sure to only select from these types, omitting any labels if not applicable, and always label with the specific word associated with each type, as notated in the titles. If you are unsure if a label is applicable or not, just omit it; not every column has to have a label.
+# Labels
+1. Group Name (group)
+If the column contains information on the group name, it should be labeled as group. If the column is a group name column, do not label it with any other types even if it references other types of information such as the treatment medication or dosage. No additional information should be added.
+2. Treatment Dosage (dose)
+If the column contains information on the dosage amount of a medication, label it with dose. If the dosage information is directly linked to a column that gives information on what medication is used (it should contain multiple medications, indicating which one was used in each treatment group), indicate the column title in additional information, prefacing with 'link:'. Note that this linked column could be the same column as the one being labeled if that column lists different medications used and their respective dosages. If the column is instead related to the dosage of a singular medication/treatment, then return the name of that as additional information, prefacing with 'name:'. Also, if there is data on the units, add the units as additional information, prefacing the list entry with 'units:', with each different form of units as its own element in the list. Note that in the list of additional information, while there can only be one item for 'link' or 'name', there could be multiple 'units' listed. Remember that this information can come from the column title or other text in the table, just be sure to verify the information is specifically about this column before answering. If there is no units information, do not add any additional information. A dosage label linked to a column may look like this: <medication|dose|link:Treatment Medication|units:mg/kg|units:mug/kg>. One that is about a specific treatment may look like this: <Treatment.Tamoxifen|dose|name:Tamoxifen|units:mug/kg>
+3. Sample Size (size)
+If the column contains information about the groups' sample sizes, label it as size. Note that some counted biomarkers could contain information about this when representing the frequency (ie. one way of representing this is [count]/[sample size]). Do not add any additional information.
+4. Animal Model (animal)
+If the column contains information on what animal model was used for the groups, label it as animal. However, only label it if the information is the species (mouse, rat, zebrafish, etc.), not the strain (CD-1, Sprague-Dawley, etc.). If the species is the same across all groups, include that as additional information. If else, add no additional information. There should only be one column labeled this.5. Terminal Time (time)
+If the column contains information about the time at which the measurements were taken or when the treatment group was euthanized, label it as time. Be careful as these columns could also be group columns, where the treatment groups differ in when they were euthanized. They can also be biomarker columns, where the metrics differ based on what time they were measured. Do not add any additional information.6. Biomarker (biomarker)
+If the column contains biomarker data, label it as biomarker. As the first piece of additional information, write the name of the biomarker, excluding any irrelevant information. The name should be specific enough that it is unique (ie. 'Lung ITO concentration' is a good name for a column titled 'Lung.ITO concentration (mg/kg)'). This may be the same as the name of the column. In the second piece of information, categorize the biomarker as one of 4 types: mean, variation, frequency, or severity (label them exactly as written here). Mean data would be any data that expresses the mean of some metric (ie. ALT levels or WBC count). Variation would be data on the variation of this kind of data, such as the SD or SE. For both mean and variation data, write the units as the third piece of additional information. Frequency data is data on how often a certain condition occurs within the group population specifically (ie. survival rate, occurence of lesions) (note that even if a biomarker describes the frequency of a condition, if that condition's subject is not the group, it should be labeled as mean ie. offspring survival rate). For frequency data, choose out of one of the following units as the third piece of additional information (label exactly as written): count, percent, decimal. Count is the number of incidences, percent is the percentage representation of the frequency, and decimal is the decimal representation (between 0 and 1). Severity data describes the severity of some condition and MUST be in reference to some frequency biomarker. Do not add any more additional information for severity biomarkers. Some columns may include multiple biomarkers, in which case multiple labels should be written for them, even if one of the biomarkers is only present in some of the cells. An example of how a biomarker label would look like is this: <ALT (U/L)|biomarker|ALT|mean|U/L>
+# Table
+Caption: Effect of velogenic viscerotropic (VVNDV) AF2240 and tamoxifen in mortality rate, body and tumour weight of mice
+| Header | Group | Animal number.Beginning | Animal number.End | Animal number.Mortality rate (%) | Body weight +- SD.Beginning.mean | Body weight +- SD.Beginning.SD | Body weight +- SD.End.mean | Body weight +- SD.End.SD | Tumour weight (g).mean | Tumour weight (g).SD | Inhibition(%) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| None | CC | 6 | 6 | 0 | 16.66 | 0.70 | 21.26 | 1.24 * | 1.45 | 0.43 | - |
+| None | CT | 6 | 6 | 0 | 16.48 | 0.09 | 20.88 | 0.79 * | 1.21 | 0.41 | 16.55 |
+| CNDV | 8HA NDV | 6 | 6 | 0 | 16.77 | 0.11 | 19.49 | 0.30 * | NG | nan | 100 |
+| CNDV | 16HA NDV | 6 | 6 | 0 | 16.64 | 0.32 | 19.30 | 0.06 * | NG | nan | 100 |
+| CNDV | 32HA NDV | 6 | 6 | 0 | 16.86 | 0.10 | 19.45 | 0.10 * | NG | nan | 100 |
+| CNDV | 64HA NDV | 6 | 6 | 0 | 16.54 | 0.31 | 19.66 | 0.13 * | NG | nan | 100 |
+| CNDV + T | 8HA NDV | 6 | 6 | 0 | 16.93 | 0.41 | 19.33 | 0.16 * | NG | nan | 100 |
+| CNDV + T | 16HA NDV | 6 | 6 | 0 | 16.86 | 0.14 | 19.50 | 0.30 * | NG | nan | 100 |
+| CNDV + T | 32HA NDV | 6 | 6 | 0 | 16.87 | 0.06 | 21.00 | 0.40 * | 2.27 | 0.28 | -56.55 |
+Footnotes:
+Results expressed in mean +- S.D. *p < 0.05 compared with beginning body weight; #p < 0.05 compared with cancer control (CC). CT, allotransplanted + tamoxifen; CNDV, allotransplanted + virus; CNDV+T, allotransplanted + virus + Tamoxifen; NG, negative
+
+---
+<Group|group>
+<Animal number.Beginning|size>
+<Animal number.End|size>
+<Animal number.Mortality rate (%)|biomarker|Mortality rate|frequency|percent>
+<Body weight +- SD.Beginning.mean|biomarker|Body weight beginning|mean|g>
+<Body weight +- SD.Beginning.SD|biomarker|Body weight beginning|variation|g>
+<Body weight +- SD.End.mean|biomarker|Body weight end|mean|g>
+<Body weight +- SD.End.SD|biomarker|Body weight end|variation|g>
+<Tumour weight (g).mean|biomarker|Tumour weight|mean|g>
+<Tumour weight (g).SD|biomarker|Tumour weight|variation|g>
+<Inhibition(%)|biomarker|Inhibition|mean|percent> 
+<Header|animal|mouse>

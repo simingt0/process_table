@@ -1,0 +1,94 @@
+PMC6449948
+---
+# Instructions
+You will be given the methods of a research paper which includes at least one animal toxicity study then a list of all the tables included in that paper, each one labeled with its title. Your goal is to identify each table as either a biomarker table (B), or other (O). Treatment group tables should contain information on the specific treatment groups, such as the medications, the dosages, the sample size, etc. Tables that only give information on the chemicals used (such as the sourcing) should not be labeled G and should instead be labeled O. Even if the table meets these criteria, only label the table G if it describes the groups of specifically an animal toxicity study within the paper. Otherwise, label it O. Biomarker tables may contain treatment group dosage information, but the main difference between is that biomarker tables should contain biomarker data observed from the treatment groups. This can frequency data (such as survival or number occurences of a condition) or metric data (such as ALT levels or compound concentration), and the table must describe the results of specifically an animal toxicity study within the paper to be labeled B. Otherwise, label it O. Any other irrelevant papers should be labeled O, such as results of in vitro assays or gene expression tables. For each table on a new line, include the label in the following format in the order that the tables are given: <table name|label>. Do not include any extra text in your answer or extra whitespace inside the labels.
+# Example output
+<example table 1|O>
+<example table 2|O>
+<example table 3|B>
+# Input
+<methods>Methods
+Incubation of embryonated eggs
+Propagation of NDV virus was performed based on the method reported by Blaskovis and Styk. Embryonated chicken eggs aged 9 to 10 days were obtained from Linggi Poultry Farm, Negeri Sembilan, Malaysia. Upon arrival, the eggs were sprayed with 70% ethanol and wiped thoroughly with tissue paper to prevent contamination. The eggs were then kept in a 37  C-humidified incubator for 24 h. The embryos were candled daily to monitor its viability. Same method was also used to determine the margin of air sac of the embryos, which were marked with a pencil prior to inoculation of the virus. All procedures were carried out under biological safety cabinet to minimize any contamination.
+Virus source and seed virus dilution
+The velogenic viscerotropic NDV strain AF2240 was isolated from a local outbreak in the late 1960s and was obtained from Institute of Bioscience of the Universiti Putra Malaysia. Preparation of seed virus depends on the number of eggs used. Briefly, 10-fold of virus dilutions were prepared. First, three centrifuge tubes were filled with 9 ml of phosphate buffer saline (PBS) and the subsequent tubes were filled with 27 ml PBS. Approximately 1 ml of virus was filtered using 0.45 muM filter and added to the first centrifuge tube containing 9 ml PBS and suspended for several times to get 1 in 10 dilutions of the virus. By using a syringe, approximately 1 ml of the dilution was transferred to the second centrifuge tube before being suspended several times. This process was repeated until the third centrifuge tube. Finally, 3 ml of dilution from the third centrifuge tube was transferred to the fourth centrifuge tube containing 27 ml PBS to obtain a dilution of 10- 4 NDV AF2240 which was used for the inoculation of virus in the embryonated chicken eggs.
+Virus inoculation
+Virus was inoculated in the eggs as per the method used by Alexander with slight modification. A small hole approximately 1 mm in diameter was made using a sterile needle right above the air sac margin. By using a syringe, 0.1 ml of virus dilution was inoculated into each egg. Then the eggs were sterilized using 70% ethanol before using melted candle or sterile tape to seal the hole. The eggs were then kept inside the incubator and checked for dead embryos using candling after 48 h. The eggs, which found to have dead embryos were removed and kept in the refrigerator at 4  C. The eggs were monitored daily for 96 h or until 90% of the embryos died. All the eggs were kept in the refrigerator overnight to ensure that the blood vessel is constricted before virus harvesting process. This can avoid collection of blood during harvesting of the allantoic fluid.
+Virus harvesting
+The eggs were left under a biological safety cabinet at room temperature for 30 min to avoid excessive condensation on the shells once removed from the refrigerator. The eggs shells above the air sac were then removed and the membranes were punctured to collect the allantoic fluid. If there were any visible contamination, the eggs were immediately rejected. To confirm the presence of NDV in the allantoic fluid, a rapid test using chicken red blood cells was conducted. The allantoic fluids collected were kept in sterile tubes. Immediately after all the allantoic fluids were harvested, the clarification and purification of the virus was carried out.
+Virus clarification and purification
+In brief, the clarification of allantoic fluid was done at 6000 g, 4  C for 10 min by using a refrigerated centrifuge. The supernatants were then centrifuged at 20,000 rpm, 4  C for 3 h. Again, the supernatant was discarded while the pellet was re-suspended and dissolved in 1 ml NTE buffer (NaCl, Tris-HCl, EDTA, pH 8.0). In addition, 30, 40, 50 and 60% of sucrose gradients were prepared in ultra-clear tubes and kept overnight at 4  C. A few drops of virus in NTE buffer were added to the sucrose solution by using a sterile pipette until all the tubes were equally balanced. The tubes were then centrifuged at 38,000 rpm, 4  C for 4 h by using pre-cooled SW41 rotor (Beckman Coulter, USA). After the centrifugation, observation and marking of the purified band of virus was made under inverted microscope. The band was collected and transferred into polyalomer tubes. The tubes were topped-up with NTE buffer and balanced before subjected to centrifugation at 20,000 rpm at 4  C for 2 h. The pellets obtained were dissolved in 1 ml NTE buffer and filtered using 0.4 mum filter. Finally, the suspensions were kept at -80  C until further use.
+Preparation of chicken red blood cells for virus titration
+Blood was withdrawn from the jugular vein of chicken by using syringe that filled with a mixture of PBS and EDTA to prevent the blood from clotting. The blood was transferred into 15 ml tube and topped-up with PBS, then centrifuged at 1000 rpm at room temperature for 10 min. The supernatant was discarded and the red blood cells were re-suspended in PBS and centrifuged again. This process was repeated for 3 more times. For virus titration purpose, 50 mul of the RBC was diluted in 100 ml PBS to get 0.5% suspension of RBC cell in PBS.
+Haemagglutination (HA) test
+For HA test, 2nd to 24th well of 96-well plate were filled up with 50 mul of PBS while the 1st well was filled up with 100 mul of purified virus. 50 mul of purified virus was transferred from the 1st well into the 2nd well to make a two-fold dilution and this continued until the 23rd well. Then, 50 mul of the 0.5% RBC suspension was added into all wells and left for 30 min at room temperature. The 1st well was served as positive control whereas the 24th well served as negative control. Any appearance of red button was observed in all wells except the 24th well that represented the virus HA titre.
+NDV titre for treatment
+Viruses were prepared from titre of 108 (28) where it was neatly harvested from chicken eggs. Then the viruses were diluted to 8 HA, 16 HA, 32 HA and 64 HA unit of NDV as described in the Table 1 below.
+Cell culture
+Mouse mammary tumour cell line (4 T1) was obtained from the American Type Culture Collection (ATCC). Cell was cultured in RPMI-1640 medium that was supplemented with 10% fetal bovine serum and 1% penicillin/streptomycin. Cells were maintained at 37  C in a humidified atmosphere of 5% CO2 in air. Culture medium was replaced every 2 to 3 days until the cell become 90% confluence before being subculture or used in the further experiment.
+Animals and xenograft mouse mammary tumour model
+Healthy BALB/c mice weighing 15-20 g of age between 6 and 7 weeks old were obtained from Institute of Medical Research (IMR, Malaysia). The animals were reared in the animal house of Faculty of Medicine and Health Sciences, Universiti Putra Malaysia, where they were kept in a sterile plastic cage under hygienic conditions and were provided with food and water ad labium. Studies were conducted in Cancer Research Laboratory of Institute of Bioscience. All the animal works were conducted in accordance with institutional guidelines for Animal Care and Use Committee (ACUC), Faculty of Medicine and Health Sciences, Universiti Putra Malaysia. A concentration of 1 x 104 cells/ml (0.1 cc injection per mouse) was used to induced tumour in the mice. The animals were not subjected to any form of suffering during the induction process. Subcutaneous (s.c.) injection of 4 T1 breast tumour cells was made into the mammary gland by gently penetrating the skin. All animals used in this experiment were humanely euthanized by CO2 asphyxiation upon meeting the criteria for tumour burden usually considered to be >=150mm3.
+Experimental design and NDV treatment
+Total 90 mice were used in this study and they divided into 15 groups (10 allotransplanted and 5 normal) with each group consisted of 6 mice. The normal category comprised of 5 groups of mice that were treated with 8, 16, 32 and 64 HA NDV without xenotransplant of cancer cells (NDV), while, a group that is only treated with normal feeding (without NDV and cancer cells) was served as control (NC). On the other hand, another 10 groups were allotransplanted with 4 T1 breast cancer cells, which are under xenotransplantation category. Out of 10 groups, 4 groups were received 0.1 cc of 0.5 mug/ml Tamoxifen in combination with 8, 16, 32 and 64 HA of NDV, respectively (CNDV+T); another 4 groups were treated with 0.1 cc of 8, 16, 32 and 64 HA of NDV only (CNDV), respectively. A group of allotransplanted mice without subjected to any virus or tamoxifen was served as cancer control (CC), while, another group was only treated with 0.1 cc of 0.5 mug/ml tamoxifen was served as positive control (CT).
+Tumour, body weight and mortality
+The body weight and tumour weight of the mice were measured on the first and last day after inoculation with NDV and allotransplanted with 4 T1 breast cancer cells. The mortality rate of the mice for each group was also assessed every day until day 28 to determine the effect of NDV, NDV + Tamoxifen on the survival rate of the mice.
+Analysis of liver function
+For assessment of liver function, plasma enzyme activities of total bilirubin level, alanine aminotransferase (ALT) and aspartate aminotransferase (AST) were determined using an automated enzyme activity analyser (Beckman, USA).
+Cytokine determination by Cytometric Bead Array (CBA)
+Measurement of interleukin-6 (IL-6) (Cat. No: 555240), interleukin-10 (IL-10) (Cat. No: 555252) interleukin-12p70 (IL-12p70) (Cat. No: 555256), interferon-gamma (IFN-gamma) (Cat. No: 555138), monocyte chemoattractant protein-1 (MCP-1) (Cat. No: 555260), and tumour necrosis factor-alpha (TNF-alpha) (Cat. No: 558874), were performed using a mouse inflammation cytometric bead array kits (CBA; BD Biosciences, Malaysia). The assay protocol was done strictly according to the manufacturer's instructions and the samples were analyzed with flow cytometer incorporated BD FACSComp  software.
+Determination of cytokines by Enzyme-Linked Immunosorbent Spot (ELISPOT)
+Spleen cells suspension was prepared according to the method by Yang et al. with slight modified. Spleen was removed and placed in plates containing Hank's balanced salt solution (HBSS) under sterile techniques. Spleen was then cut into small pieces and mashed through a nylon sieve. Clumps and debris were removed by allowing them to settle down before the cell suspension was transferred to clean centrifuge tube. Cell suspension was then centrifuged at 200 g, 4  C for 15 min. Supernatant was discarded and cells were gently re-suspended with red cell lysing buffer in order to lyse erythrocytes. Again, the cell suspension was centrifuged at 200 g, 4  C for 5 min to remove cell debris and ghosts. After 2 washing in cold HBSS, the mononuclear cells were counted by trypan blue exclusion. Cell concentration was adjusted to the 1.5 to 3.0 x 105 cells/ml in cell culture medium and kept on ice until further use. The ELISPOT assays were conducted by using the IL-6, IL-10, MCP-1, TNF-alpha, IFN-gamma and IL-12p70 ELISPOT kit (BD Biosciences, Malaysia) according to the manufacturer's protocol. Samples were run in quadruplicates. The numbers of spots were enumerated manually by inspection under a dissecting microscope and automated ELISPOT plate reader.
+Statistical analysis
+Data are expressed as Mean +- S.D. and analyses were done using Statistical Package for Social Sciences (SPSS version 22). Comparison between groups was determined by ANOVA and Dunnet test as post-hoc analysis was applied. P < 0.05 was considered as significant.</methods>
+<Tab1>Caption: Showed preparation of virus titres from 108 to get 8, 16, 32 and 64 HA units
+| Virus Titre | Dilution |
+| --- | --- |
+| 8 HA virus titre | 1 part of NDV (10) or 100 ul + 900 mul PBS |
+| 16 HA virus titre | 1 part of NDV (10) or 100 ul + 800 mul PBS |
+| 32 HA virus titre | 1 part of NDV (10) or 100 ul + 700 mul PBS |
+| 64 HA virus titre | 1 part of NDV (10) or 100 ul + 600 mul PBS |
+</Tab1>
+<Tab2>Caption: Effect of velogenic viscerotropic (VVNDV) AF2240 and tamoxifen in mortality rate, body and tumour weight of mice
+| Group | Animal number.Beginning | Animal number.End | Animal number.Mortality rate (%) | Body weight +- SD.Beginning | Body weight +- SD.End | Tumour weight (g) | Inhibition(%) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| CC | 6 | 6 | 0 | 16.66 +- 0.70 | 21.26 +- 1.24 * | 1.45 +- 0.43 | - |
+| CT | 6 | 6 | 0 | 16.48 +- 0.09 | 20.88 +- 0.79 * | 1.21 +- 0.41 | 16.55 |
+| CNDV | CNDV | CNDV | CNDV | CNDV | CNDV | CNDV | CNDV |
+| 8HA NDV | 6 | 6 | 0 | 16.77 +- 0.11 | 19.49 +- 0.30 * | NG | 100 |
+| 16HA NDV | 6 | 6 | 0 | 16.64 +- 0.32 | 19.30 +- 0.06 * | NG | 100 |
+| 32HA NDV | 6 | 6 | 0 | 16.86 +- 0.10 | 19.45 +- 0.10 * | NG | 100 |
+| 64HA NDV | 6 | 6 | 0 | 16.54 +- 0.31 | 19.66 +- 0.13 * | NG | 100 |
+| CNDV + T | CNDV + T | CNDV + T | CNDV + T | CNDV + T | CNDV + T | CNDV + T | CNDV + T |
+| 8HA NDV | 6 | 6 | 0 | 16.93 +- 0.41 | 19.33 +- 0.16 * | NG | 100 |
+| 16HA NDV | 6 | 6 | 0 | 16.86 +- 0.14 | 19.50 +- 0.30 * | NG | 100 |
+| 32HA NDV | 6 | 6 | 0 | 16.87 +- 0.06 | 21.00 +- 0.40 * | 2.27 +- 0.28 | -56.55 |
+| 64HA NDV | 6 | 6 | 0 | 16.66 +- 0.06 | 20.59 +- 0.36 * | 3.64 +- 0.23 | -151.03 |
+Footnotes:
+Results expressed in mean +- S.D. *p < 0.05 compared with beginning body weight; #p < 0.05 compared with cancer control (CC). CT, allotransplanted + tamoxifen; CNDV, allotransplanted + virus; CNDV+T, allotransplanted + virus + Tamoxifen; NG, negative
+</Tab2>
+<Tab3>Caption: Activities of ALT, AST and the level of total bilirubin in different groups of mice
+| Liver Function Tests. Groups | Liver Function Tests.Total Bilirubin [mg/dl] | Liver Function Tests.Aspartate Transaminase (AST) [U/l] | Liver Function Tests .Alanine Transaminase (ALT) [U/l] |
+| --- | --- | --- | --- |
+| NC | 3.43 +- 0.40 | 120.67 +- 1.53 | 36.00 +- 2.00 |
+| CC | 2.13 +- 0.95 | 214.67 +- 1.53 * | 53.67 +- 1.53 |
+| CT | 5.27 +- 0.59 | 265.00 +- 2.00 * | 95.67 +- 1.53 * |
+| NDV8 | 4.43 +- 0.40 | 153.33 +- 1.53 | 38.67 +- 1.53 |
+| NDV16 | 5.75 +- 0.35 | 125.33 +- 93.82 | 41.67 +- 1.53 |
+| NDV32 | 4.87 +- 0.35 | 105.00 +- 1.00 | 47.00 +- 1.00 |
+| NDV64 | 5.13 +- 0.67 | 115.00 +- 11.27 | 52.67 +- 2.51 |
+| CNDV8 | 4.47 +- 0.35 | 98.67 +- 1.53 | 26.33 +- 1.15 |
+| CNDV16 | 3.00 +- 0.50 | 173.33 +- 1.53 | 57.00 +- 1.00 |
+| CNDV32 | 2.87 +- 0.35 | 121.00 +- 2.00 | 49.00 +- 1.00 |
+| CNDV64 | 3.40 +- 0.40 | 153.67 +- 1.53 | 49.33 +- 0.58 |
+| CNDV8 + T | 2.77 +- 0.45 | 166.67 +- 56.62 | 103.00 +- 2.00 * |
+| CNDV16 + T | 2.43 +- 0.40 | 108.00 +- 1.00 | 56.33 +- 1.53 |
+| CNDV32 + T | 10.67 +- 4.72 * | 122.33 +- 2.52 | 160.33 +- 25.66 * |
+| CNDV64 + T | 14.33 +- 4.04 * | 170.67 +- 1.53 | 146.33 +- 32.52 * |
+Footnotes:
+NC normal control, CC cancer contro; CT allotransplanted + Tamoxifen, NDV virus alone; CNDV, allotransplanted + virus; CNDV + T, allotransplanted + virus + Tamoxifen; n = 6. Data are shown as mean +- S.D. *p < 0.05 compared with NC
+</Tab3>
+
+---
+<Tab1|O>
+<Tab2|B>
+<Tab3|B>

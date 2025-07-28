@@ -5,6 +5,7 @@ from difflib import get_close_matches
 import json
 import logging
 import numpy as np
+import math
 
 logger = logging.getLogger(__name__)
 
@@ -448,8 +449,10 @@ def separate_m_and_SD(md_table):
     """
     df = markdown_to_dataframe(md_table)
     result = pd.DataFrame(index=df.index)
+    first_col = df.columns[0]
+    result[first_col] = df[first_col]
 
-    for col in df.columns:
+    for col in df.columns[1:]:
         s = df[col].astype(str)
         print(col)
         print(s)
@@ -495,7 +498,7 @@ def combine_m_and_SD(md_table):
     Joins .mean and .sd columns into +- format (reverses separate_m_and_SD)
     """
     rows = [row.strip("|").split(" | ") for row in md_table.split("\n")]
-    rows_new = ["|"] * (len(rows)-1)
+    rows_new = ["|"] * (len(rows))
     for col in range(len(rows[0])):
         if rows[0][col][-5:].lower() == ".mean":
             if col < len(rows[0])-1 and rows[0][col+1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col+1].strip()[:-3].lower().strip():
@@ -514,7 +517,7 @@ def combine_m_and_SD(md_table):
             continue
         rows_new[0] += " " + rows[0][col].strip() + " |"
         rows_new[1] += " --- |"
-        for row in range(2, len(rows)-1):
+        for row in range(2, len(rows)):
             rows_new[row] += " " + rows[row][col].strip() + " |"
         continue
     return "\n".join(rows_new)
@@ -529,7 +532,7 @@ def remove_headers(md_table):
         elt0 = split[0].strip()
         same = True
         for i in range(1, len(split)):
-            if elt0 != split[i].strip():
+            if not split[i] is None and elt0 != split[i].strip():
                 same = False
                 break
         if same:
@@ -540,10 +543,10 @@ def remove_headers(md_table):
             header_col.append(last_header)
     formatted_md = "\n".join(rows)
     if not all(header is None for header in header_col):
-        print(header_col)
+        # print(header_col)
         formatted_df = markdown_to_dataframe(formatted_md)
         # print(formatted_df)
-        formatted_df.insert(0, "Header", header_col)
+        formatted_df.insert(0, "Category Header", header_col)
         # print(formatted_df)
         return dataframe_to_markdown(formatted_df)
     return formatted_md
