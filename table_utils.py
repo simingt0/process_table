@@ -447,6 +447,7 @@ def separate_m_and_SD(md_table):
     """
     Separates all +- into mean and SD, adding ".mean" and ".SD" to the end of the column titles.
     """
+    print(md_table)
     df = markdown_to_dataframe(md_table)
     result = pd.DataFrame(index=df.index)
     first_col = df.columns[0]
@@ -454,9 +455,7 @@ def separate_m_and_SD(md_table):
 
     for col in df.columns[1:]:
         s = df[col].astype(str)
-        print(col)
         print(s)
-
         # check if any value contains '+-'
         if not s.str.contains(r"\+-", na=False).any():
             # no split needed — copy original
@@ -497,30 +496,64 @@ def combine_m_and_SD(md_table):
     """
     Joins .mean and .sd columns into +- format (reverses separate_m_and_SD)
     """
-    rows = [row.strip("|").split(" | ") for row in md_table.split("\n")]
-    rows_new = ["|"] * (len(rows))
-    for col in range(len(rows[0])):
-        if rows[0][col][-5:].lower() == ".mean":
-            if col < len(rows[0])-1 and rows[0][col+1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col+1].strip()[:-3].lower().strip():
-                rows_new[0] += " " + rows[0][col].strip()[:-5] + " |"
-                rows_new[1] += " --- |"
-                for row in range(2, len(rows)-1):
-                    rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col+1].strip() + " |"
-                continue
-            elif col > 0 and rows[0][col-1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col-1].strip()[:-3].lower().strip():
-                rows_new[0] += " " + rows[0][col].strip()[:-5].strip() + " |"
-                rows_new[1] += " --- |"
-                for row in range(2, len(rows)-1):
-                    rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col-1].strip() + " |"
-                continue
-        elif rows[0][col].strip()[-3:].lower() == ".sd":
-            continue
-        rows_new[0] += " " + rows[0][col].strip() + " |"
-        rows_new[1] += " --- |"
-        for row in range(2, len(rows)):
-            rows_new[row] += " " + rows[row][col].strip() + " |"
-        continue
-    return "\n".join(rows_new)
+    # rows = [row.strip("|").split(" | ") for row in md_table.split("\n")]
+    # rows_new = ["|"] * (len(rows))
+    # for col in range(len(rows[0])):
+    #     if rows[0][col][-5:].lower() == ".mean":
+    #         if col < len(rows[0])-1 and rows[0][col+1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col+1].strip()[:-3].lower().strip():
+    #             rows_new[0] += " " + rows[0][col].strip()[:-5] + " |"
+    #             rows_new[1] += " --- |"
+    #             for row in range(2, len(rows)-1):
+    #                 rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col+1].strip() + " |"
+    #             continue
+    #         elif col > 0 and rows[0][col-1].strip()[-3:].lower() == ".sd" and rows[0][col].strip()[:-5].lower().strip() == rows[0][col-1].strip()[:-3].lower().strip():
+    #             rows_new[0] += " " + rows[0][col].strip()[:-5].strip() + " |"
+    #             rows_new[1] += " --- |"
+    #             for row in range(2, len(rows)-1):
+    #                 rows_new[row] += " " + rows[row][col].strip() + " +- " + rows[row][col-1].strip() + " |"
+    #             continue
+    #     elif rows[0][col].strip()[-3:].lower() == ".sd":
+    #         continue
+    #     rows_new[0] += " " + rows[0][col].strip() + " |"
+    #     rows_new[1] += " --- |"
+    #     for row in range(2, len(rows)):
+    #         rows_new[row] += " " + rows[row][col].strip() + " |"
+    #     continue
+    # return "\n".join(rows_new)
+
+    df = markdown_to_dataframe(md_table)
+    cols = list(df.columns)
+
+    # 1) Identify all base‑names that have both a .mean and .sd
+    pairs = {}
+    for col in cols:
+        if isinstance(col, str) and '.' in col:
+            base, suffix = col.rsplit('.', 1)
+            suffix = suffix.lower()
+            if suffix in ('mean', 'sd'):
+                pairs.setdefault(base.strip().lower(), {})[suffix] = col
+
+    # 2) For each complete pair, create the merged column, drop the old two, insert the new
+    for base_lc, d in pairs.items():
+        if 'mean' in d and 'sd' in d:
+            mean_col = d['mean']
+            sd_col   = d['sd']
+            # original base name (preserves casing of the .mean column)
+            base_name = mean_col.rsplit('.', 1)[0]
+
+            # build the "x +- y" strings
+            combined = df[mean_col].astype(str) + " +- " + df[sd_col].astype(str)
+
+            # find where to insert
+            insert_at = df.columns.get_loc(mean_col)
+
+            # drop the old columns
+            df = df.drop([mean_col, sd_col], axis=1)
+
+            # insert the merged column
+            df.insert(loc=insert_at, column=base_name, value=combined)
+
+    return dataframe_to_markdown(df)
 
 def remove_headers(md_table):
     rows = md_table.split("\n")
@@ -546,7 +579,7 @@ def remove_headers(md_table):
         # print(header_col)
         formatted_df = markdown_to_dataframe(formatted_md)
         # print(formatted_df)
-        formatted_df.insert(0, "Category Header", header_col)
+        formatted_df.insert(0, "Subcategory", header_col)
         # print(formatted_df)
         return dataframe_to_markdown(formatted_df)
     return formatted_md

@@ -1,0 +1,191 @@
+PMC5043003
+---
+# Instructions
+You will be given the methods of a research paper which includes at least one animal toxicity study then a list of all the tables included in that paper, each one labeled with its title. Your goal is to identify each table as either a biomarker table (B), or other (O). Biomarker tables may contain treatment group dosage information, but the main difference between is that biomarker tables should contain biomarker data observed from the treatment groups. This can frequency data (such as survival or number occurences of a condition) or metric data (such as ALT levels or compound concentration), and the table must describe the results of specifically an animal toxicity study within the paper to be labeled B. Otherwise, label it O. Any tables from other irrelevant studies should be labeled O, such as results of in vitro assays or gene expression tables. Additionally, tables where the data is qualitative observations should also be labeled O, as should any tables that give individual data instead of summary statistics (do not confuse this with frequency metrics, which should be labeled B). For each table on a new line, include the label in the following format in the order that the tables are given: <table name|label>. Do not include any extra text in your answer or extra whitespace inside the labels.
+# Example output
+<example table 1|O>
+<example table 2|O>
+<example table 3|B>
+# Input
+<methods>Materials and methods
+Plant material
+Maize was produced in Pla de Foixa (Girona, Catalonia, Spain, 42 05'N, 3 E) during the growing season of 2013. This area is close to the sea and has a Mediterranean climate. The soil type is Xerofluven oxiaquic, coarse-loamy, mixed, calcareous and thermic. Three varieties were produced, all commercially cultivated in that region: a GM maize MON810 and its near-isogenic non-GM comparator as well as an additional conventional variety (Table 1). The seeds were purchased at the local market. About 1.5 ha of each variety was sown. There was no maize cultured in neighbouring fields that had been sown at the same period of time, so that the probability of cross-pollination was minimized. Maize was cultivated following standard agricultural practices in the area, including N, P and K fertilization (up to 300, 100 and 175 kg/ha, respectively). Weeds were controlled by pre-emergence application of 4 L HARNESS  GTZ per ha (41 % Acetochlor + 19.5 % Terbuthylazine) and by post-emergence application of 0.6 L ELITE PLUS per ha (4 % nicosulfuron) and 1 L Callisto  per ha (480 g/L mesotrione) or MUSTANG (30 % 2,4-D and 0.6 % florasulam), if needed. No insecticide was applied. In-furrow irrigations were supplied when needed during the cropping season. Maize was planted at a density of 80,000 plants ha-1 with 75-cm row spacing and 14-cm seed spacing.
+Agronomic, morphologic, phenological and health parameters were monitored and were as usual in the region. Specifically, Sesamia nonagrioides and Ostrinia nubilalis infestations were not detected in the near-isogenic (DKC6666) and the GM (DKC6667-YG) maize, but 3.3 % of SY-NEPAL plants were infested. There was some fungal infection in non-GM plants, and Fusarium spp. was detected in 2.5 and 1.3 % of DKC6666 and SY-NEPAL stalks, respectively. There was no relevant viral infection. A good yield (i.e. 12,000-13,000 kg/ha) was achieved. Meteorological data were recorded (Electronic Supplementary Material, Fig. 1). The central part of each plot was independently harvested, and kernels were removed from the cobs on-site by machine. They had grain moisture levels in the usual range and were dried in a biological dryer, kept below 60  C, down to a moisture level of 13-14 %.
+Diet preparation and analyses
+Two tons of DKC6666 maize, two tons of DKC6667-YG maize and one ton of SY-NEPAL maize were transported to Mucedola srl (Milan, Italy). The kernels were then milled (mesh size: 1 mm), coded and used to prepare the feed. The formulation of the diets was standard for all trials of the project (Zeljenkova et al.) except for the maize varieties used. It was isoproteic, isocaloric and adjusted to the dietary requirements of the rat strain Wistar Han RCC used in the feeding trials. Besides the milled maize, the formulation mainly consisted of other plant-derived ingredients, including wheat, wheat middlings, soybean meal and soy oil, while it did not contain animal-derived ingredients. Four different diets in pellet form (Table 1) were prepared in two batches, whereby the resulting pellets were dried at a temperature <50  C, coded in a blinded fashion and sent to the Slovak Medical University (Bratislava, Slovakia) for the feeding trials as vacuum-packed, gamma-irradiated batches (irradiation dose = 25 kGy).
+Both batches of all four diets were analysed. Before dispatched to RIKILT Wageningen UR (Wageningen University and Research Centre, Wageningen, The Netherlands), small maize and diet subsamples were retained at the animal feed producing facility (Mucedola srl) for analysis. Diet samples of 1.5 kg each were sent to RIKILT Wageningen UR, where the feed pellets were milled and re-mixed. Thereafter, subsamples were dispatched to Covance (Madison, WI, USA). A list of the parameters measured, the analytical methods used and the institutions that performed the individual analyses is shown in Table 1 of the Electronic Supplementary Material. The feed analyses were performed in certified laboratories.
+Study design
+The sample size of 20 rats per group, as described in the OECD TG 452 (OECD), was chosen. A power analysis revealed that this group size would have a 85 % chance of detecting a standardized effect size (SES: the difference in means between control and treated groups divided by the standard deviation [SD]) of 1.0 SD by assuming the cage with two rats to be the experimental unit, at a 5 % significance level and by performing a two-sided test to compare the effects of the control and GMO diets in rats.
+The total number of animals was 160, with 20 animals (10 cages) per gender and dietary treatment. Three dietary treatments represent the groups "control", "11 % GMO" and "33 % GMO". An additional group being fed a conventional maize variety with the same sample size per gender and group was included. Consequently, the factor "group" has four levels, namely "control", "11 % GMO", "33 % GMO" and "conventional 2".1
+Experimental unit
+As recommended by EFSA (EFSA Scientific Committee), two animals of the same gender were housed per cage and the cage was taken as the experimental unit.
+Rat feeding trial
+The rat feeding trial was conducted by taking into account the OECD TG 452 (OECD) and recommendations included in the EFSA Guidance on conducting repeated-dose 90-day oral toxicity study in rodents on whole food/feed (EFSA Scientific Committee). The trials were performed in compliance with GLP in the experimental animal house at the Department of Toxicology of the Slovak Medical University in Bratislava (Slovakia). Five-week old male and female Wistar Han RCC rats were purchased from Harlan (San Pietro al Natisone, Italy), and the study was started 1 week after delivery of the animals at the animal testing facility (i.e. in January 2014). Twenty animals with a uniform weight (+-3-5 % of the mean) per group were used, two animals were placed in one cage (=experimental unit), and each animal was allocated to the individual cages by dose group and sex in such a way that the average weight between the treatment groups was similar. The feeding trial was started as follows: (1) feeding start for males on day 1 and (2) feeding start for females 1 day later. A detailed examination of all animals to verify their health condition (see "Periodical health status observations" section) was carried out just before the start of the feeding trials. Feed and water were supplied ad libitum. Feed consumption was determined once weekly during the first 13 weeks, every 2 weeks thereafter, and reported as the total amount of feed consumed by two animals in one cage per week or 2 weeks, respectively.
+As mentioned before, two batches of each individual diet were produced. In the case of the male rats, the 2nd batch of the 33 % GMO and conventional 2 diets was fed from week 34 onwards, while the 2nd batch of the control and 11 % GMO diets was fed from week 33 onwards. In the case of the female rats, the 2nd batch of the control and 33 % GMO diets was fed from week 34 onwards, while the 2nd batch of the 11 % GMO and conventional 2 diets was fed from week 33 onwards.
+Periodical health status observations
+Rats were inspected twice daily for changes in skin, fur, eyes, mucous membranes, occurrence of secretions and excretions as well as activity level and change in behaviour. A detailed physical examination of each animal out of the cage was performed prior to the beginning of the feeding trial, on day 1, once weekly during the first 13 weeks and once monthly thereafter to identify changes in skin, fur, eyes, mucous membranes, occurrence of secretions and excretions, and autonomic activity such as lacrimation, piloerection, pupil size, unusual respiratory patterns as well as activity level and change in behaviour. At the end of the feeding trials, a functional assessment of changes in gait, posture and response to handling as well as the presence of clonic or tonic movements or bizarre behaviour (self-mutilation, walking backwards) was carried out. Sensory reactivity to auditory, visual and proprioceptive stimuli was recorded. An ophthalmologic examination of both eyes of all animals in the conscious state was performed prior to the beginning of the feeding trial and 2 weeks before the end of the study. The eyes and the peribulbar structures were examined macroscopically after pupillary dilatation induced by instillation of a 0.5 % tropicamide solution. Each animal was weighed 48 h after its arrival at the experimental animal house of the Slovak Medical University, on the randomization day (i.e. one day before the beginning of the feeding trial), on the first day of the feeding trial, once weekly during the first 13 weeks, once every 2 weeks thereafter and at the end of the study.
+Haematology and clinical biochemistry analyses
+At the end of months 3 and 6, blood samples from the tail vein of 10 males and 10 females per group after 16-18 h fasting were taken for the haematological analyses (with EDTA as anticoagulant) as well as for the clinical biochemistry analyses (without anticoagulant), thereby making use of the same animals at both points in time. At month 12, samples were taken from all animals in the 4 groups after 16-18 h fasting for the haematological analyses (with EDTA as anticoagulant) as well as for the clinical biochemistry analyses (without anticoagulant).
+The order in which blood samples were taken for the haematology analyses is shown in Table 2 of the Electronic Supplementary Material. No later than four hours after collection of the blood samples, the following haematology parameters were measured by making use of a Sysmex K-4500 automated haematology analyser (Sysmex, Kobe, Japan): white blood cell count (WBC), red blood cell count (RBC), haemoglobin concentration (HGB), haematocrit (HCT), mean cell volume (MCV), mean corpuscular haemoglobin (MCH), mean corpuscular haemoglobin concentration (MCHC), platelet count (PLT) and lymphocyte count (LYM). For the differential leucocyte count, blood smears were stained with the May-Grunwald and Giemsa-Romanowski dyes and thereafter examined by light microscopy; the percentage of lymphocytes, neutrophils, eosinophils, basophils and monocytes were determined by examining 200 cells.
+The order in which blood samples were taken for the biochemistry analyses is also shown in Table 2 of the Electronic Supplementary Material. The parameters alkaline phosphatase (ALP), alanine aminotransferase (ALT), aspartate aminotransferase (AST), albumin (ALB), total protein (TP), glucose (GLU), creatinine (CREA), urea (U), cholesterol (CHOL), triglycerides (TRG), calcium (Ca), chloride (Cl), potassium (K), sodium (Na) and phosphorus (P) were measured maximally 4 h after collection of the blood samples in serum with an Ortho Clinical Vitros  250 Chemistry System (Ortho-Clinical Diagnostics, Raritan, NJ, USA), whereas coagulation parameters were not determined.
+Urinalysis
+An analysis of urine was performed at months 3, 6 and 12 on 10 male and 10 female rats using the same animals throughout. Urine was collected from each individual rat in metabolic cages for 16 h. The parameters total protein, glucose, ketone, leucocyte number, erythrocyte number, bilirubin, urobilinogen, nitrate and pH were analysed with Combur10Test  UX test strips (Roche Diagnostics, Mannheim, Germany) and semi-quantitatively evaluated by reflectance photometry with a Urilux S analyser (Roche Diagnostics). Osmolality was measured with the Advanced  Model 3300 micro-osmometer from Advanced Instruments (Norwood, MA, USA).
+Gross necropsy and histopathology
+At the end of the study, rats were anaesthetized after a 16- to 18-h fasting period with 10 mg/kg bw xylazine and 75 mg/kg bw ketamine. The order in which necropsy was performed is also shown in Table 2 of the Electronic Supplementary Material. Blood samples were taken from the abdominal aorta and in four cases from the inferior vena cava for possible omics analyses being outside the scope of this publication. Thereafter, the successive necropsy of the thoracic cavity, the abdominal cavity, the genital organs and, following decapitation, the head was performed. Moreover, the wet weight of the kidneys, spleen, liver, adrenal glands, lung, heart, thymus, pancreas, uterus, ovaries, testes, epididymides and brain of all animals was recorded. Organ samples were stored in neutrally buffered 10 % formalin, except for the eyes and the male reproductive tissues, which were immersed in Bouin's solution, and sent to TOPALAB (Kosice, Slovakia) for their histopathological examination.
+A complete microscopic examination of the brain (including cerebrum, cerebellum and medulla/pons), spinal cord (at the cervical, mid-thoracic and lumbar level), pituitary, thyroid, parathyroid, thymus, oesophagus, salivary glands, stomach, small and large intestines, liver, pancreas, kidneys, adrenals, spleen, heart, trachea and lungs (preserved by inflation with fixative and then immersion), aorta, gonads, uterus, female mammary gland, prostate, urinary bladder, lymph nodes, peripheral nerve, bone marrow and skin from all animals in the control and high dose groups was performed. In order to do so, the formalin-fixed tissue samples were washed, dehydrated and embedded in paraffin. Thereafter, 4-microm-thick sections were stained with haematoxylin and eosin for the light microscopic examination of the tissue structure. All tissues from animals killed before the end of the study (animal Nos. 15, 131 and 159), and all tissues from animals fed the conventional 2 and 11 % GMO diets showing macroscopic alterations were also examined (see Electronic Supplementary Material Tables 8 and 9).
+Statistics
+The raw data of the trial were collated in Excel files. Data were screened for their structure, and data and variable definitions were settled (Appendix 1 in Schmidt et al.). Based on these definitions, a SAS analysis data set was created by using SAS Software version 9.4 (SAS Institute Inc., Cary, NC). Mean values per cage were calculated for all endpoints except for feed consumption. The feed efficiency per week until week 13 and per 2 weeks thereafter (weight gain [g]/feed intake [g] x 100) and the relative organ weights (organ weight [g]/body weight [g] x 100) were computed. Data were screened for outliers and extreme values (Appendix 2 in Schmidt et al.). For each gender-group, factor level combination and all variables, box-and-whisker plots were created to identify extreme values (variable values outside 1.5* interquartile range). Extreme values were marked in the Excel sheet of original data for easier identification of irregular patterns or suspicious animals. Growth curves of all animals were plotted (scatter plots, weight against study day) and visually inspected for irregular patterns (Appendix 2 in Schmidt et al.). To describe the data, summary statistics including means, standard deviations, 95 % confidence intervals, medians, number of valid values, minima and maxima were calculated and tabulated. Additionally to the box-and-whisker plots, plots of means and 95 % confidence intervals were drawn. Descriptive analysis was performed separately for each gender and group and on an animal basis (Appendix 3 in Schmidt et al.).
+The body weight, feed consumption and feed efficiency data (per cage) were analysed by applying mixed models and by using the restricted maximum likelihood (REML) algorithm with AR covariance structure, combined and separately for male and female animals. The group (four levels) was considered a fixed factor. The factor week (time in weeks from the start of the experiment) was considered a continuous fixed factor (Appendix 4 in Schmidt et al.). For least square mean body weights and for all other endpoints, SES and their 95 % confidence intervals were calculated for each observation date (i.e. 3, 6 and 12 months) according to Nakagawa and Cuthill (; for details, see Schmidt et al.). The GMO and the conventional 2 groups were compared to the control group (three comparisons: 11 % GMO-control, 33 % GMO-control and conventional 2-control) (Appendix 5 in Schmidt et al.). The SES estimates are displayed as graphs displaying both statistical significance and the +-1.0 SD interval (as assumed in the sample size calculation based on an EFSA guidance document [EFSA Scientific Committee ]) for each of the endpoint comparison results (Fig. 1). All endpoints are shown on the same graph (separately for the male and female rats), thereby forming an overall pattern and allowing the assessment of group comparisons at a glance. In addition, in order to compare the temporal courses of the haematology and clinical biochemistry endpoints (per cage), mixed models and the restricted maximum likelihood (REML) algorithm with AR covariance structure were applied. The group (four levels) was considered a fixed factor. The factor time (observation points in time at 3, 6 and 12 months) was considered a continuous fixed factor (Appendix 6 in Schmidt et al.).
+A "classical" statistical analysis was also performed. In a first step, the generic assumptions underlying the ANOVA post hoc tests were checked: for the normality of the data, Kolmogorov-Smirnov (with Lilliefors correction) tests were performed. For residuals, scaled-by-predicted plots, residual histograms and residual QQ plots were generated (Appendix 7 in Schmidt et al.). For variance homogeneity, Levene's test was performed. Based on this test and following a decision tree (OECD; Schmidt et al.), the appropriate test procedure was chosen (Appendix 10 in Schmidt et al.): an ANOVA with post hoc Dunnett test was applied in the case of quantitative data being independent observations with normally distributed residuals and equal variances in the groups. For qualitative data and quantitative data, in which the ANOVA assumptions were not met, the Kruskal-Wallis followed by the Wilcoxon test was applied. Group means and standard deviations (data per cage) of all endpoints were listed in form of tables (Appendix 8 in Schmidt et al.). The significances obtained with the above-mentioned decision tree-based "classical" statistical analysis procedure as well as the significances identified by SES confidence intervals are shown in Tables 4, 5 and 8 listing the haematology, clinical biochemistry and relative organ weight data of the feeding trial, respectively.
+To illustrate and compare the consequences of applying several parametric and nonparametric methods, all endpoints were analysed by three commonly used tests, namely an ANOVA followed by both the t and the Dunnett test as well as the Kruskal-Wallis test followed by the Wilcoxon test. The resulting significances were compared to each other and to the significances identified by SES confidence intervals (Appendices 9 and 10 in Schmidt et al.).
+In this paper, when comparing haematology and clinical biochemistry parameters as well as relative organ weights between a control and a second group, the wording "significantly different" is based on the interpretation of the calculated SES estimates (Fig. 1). Furthermore, in those cases, in which the classical statistical analysis methods revealed differences between the control group and the 11 % GMO and/or 33 % GMO group not identified by the SES confidence intervals, these are mentioned in "Results" section.
+Stakeholder consultations
+A key characteristic of the GRACE project is to allow for a broad involvement of stakeholders and to ensure utmost transparency of the research process. The main stakeholder groups targeted were competent authorities, industry, civil society organizations, and researchers interested or experienced in animal feeding studies with GM food/feed. The groups contacted were much broader and also included, for example, agricultural, professional and international organizations.
+A draft study plan was sent per e-mail to 738 stakeholders. A total of 122 comments were received from eight individuals or organizations. These comments were discussed by the study team and taken into account when finalizing the study plan. Study team members answered in a written form the stakeholder comments, thereby allowing them to track if and how their comments were taken into consideration and to understand the underlying reasons for taking them into account or not.
+In a similar way, the draft results, interpretations and conclusions were subjected to stakeholder scrutiny in the course of the final round of stakeholder consultations on GRACE results. More than 1300 stakeholders were contacted, 27 participated in a workshop held in October 2015, and 6 of the workshop participants provided additional 41 comments in writing. In order to facilitate this process, draft documents and raw data were made available to registered participants that had agreed to sign a non-disclosure agreement. Again, all comments were considered when completing interpretation and conclusions, and written responses were prepared by the study team.
+All comments and the written responses of the study team members were documented in consultation reports and published at the project website alongside with the draft and revised study plan (http://www.grace-fp7.eu). Stakeholder participation was not selected in any way: all interested stakeholder representatives could participate. In each consultation step, representatives of all main stakeholder groups targeted were involved and actively contributing.
+Comparison of the SES analysis approach versus the classical statistical analysis approach
+The significances identified by SES analysis and those identified by the appropriate classical statistical tests, which were selected according to a decision tree described by the OECD as well as by Schmidt et al., were 99 % in agreement. In the case of 609 endpoint comparisons, the SES approach detected 21 significant differences, whereby four of them were not identified by the classical approach. The classical decision tree-based approach found 19 significant differences, and two of them were not identified by the SES approach.
+If solely the Kruskal-Wallis test followed by the Wilcoxon test was applied to all 609 endpoint comparisons, 11 significant differences were detected. If solely the ANOVA followed by the Dunnett test was applied to all 609 endpoint comparisons, 12 significant differences were observed. If solely the ANOVA followed by the t test was applied to all 609 endpoint comparisons, 39 significant differences were detected.</methods>
+<Tab5>Caption: Mean values +- standard deviations (SD) of clinical biochemistry parameters in the serum of male and female Wistar Han RCC rats at 3, 6 and 12 months
+| Parameter | Males.Control | Males.Conventional 2 | Males.11 % GMO | Males.33 % GMO | Females.Control | Females.Conventional 2 | Females.11 % GMO | Females .33 % GMO |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| At 3 months | At 3 months | At 3 months | At 3 months | At 3 months | At 3 months | At 3 months | At 3 months | At 3 months |
+| ALP (microkat/l) | 1.18 +- 0.12 | 1.09 +- 0.20 | 1.10 +- 0.22 | 1.13 +- 0.19 | 0.62 +- 0.07 | 0.61 +- 0.12 | 0.69 +- 0.06 | 0.58 +- 0.20 |
+| ALT (microkat/l) | 0.47 +- 0.08 | 0.42 +- 0.07 | 0.46 +- 0.03 | 0.52 +- 0.09 | 0.49 +- 0.37 | 0.34 +- 0.11 | 0.52 +- 0.22 | 0.51 +- 0.14 |
+| AST (microkat/l) | 2.07 +- 0.19 | 1.67 +- 0.16 | 2.27 +- 0.64 | 2.50 +- 0.33 | 2.68 +- 1.02 | 1.78 +- 0.61 | 3.06 +- 1.24 | 3.44 +- 0.75 |
+| ALB (g/l) | 38.44 +- 2.08 | 37.91 +- 1.17 | 39.34 +- 2.61 | 39.16 +- 2.74 | 46.64 +- 3.29 | 45.18 +- 3.53 | 45.73 +- 0.78 | 48.47 +- 2.39 |
+| TP (g/l) | 63.53 +- 1.83 | 62.80 +- 0.46 | 64.95 +- 3.45 | 64.25 +- 2.89 | 70.07 +- 2.80 | 67.46 +- 3.69 | 68.78 +- 1.44 | 71.76 +- 2.81 |
+| GLU (mmol/l) | 6.46 +- 0.57 | 6.54 +- 0.83 | 6.26 +- 0.87 | 6.06 +- 0.68 | 6.62 +- 0.50 | 6.78 +- 1.40 | 7.29 +- 0.59 | 6.10 +- 0.78 |
+| CREA (micromol/l) | 48.21 +- 6.06 | 50.29 +- 6.44 | 48.10 +- 2.56 | 46.99 +- 4.65 | 50.72 +- 6.91 | 54.41 +- 8.42 | 49.39 +- 3.22 | 52.28 +- 7.31 |
+| U (mmol/l) | 6.21 +- 0.59 | 6.73 +- 0.67 | 5.88 +- 0.58 | 5.97 +- 0.48 | 6.18 +- 0.41 | 6.31 +- 0.80 | 6.61 +- 0.42 | 6.57 +- 0.64 |
+| CHOL (mmol/l) | 2.03 +- 0.18 | 2.10 +- 0.13 | 1.93 +- 0.08 | 1.99 +- 0.12 | 1.88 +- 0.33 | 1.71 +- 0.15 | 2.13 +- 0.26 | 1.87 +- 0.14 |
+| TRG (mmol/l) | 0.80 +- 0.12 | 1.05 +- 0.22 | 0.88 +- 0.20 | 0.80 +- 0.15 | 0.71 +- 0.16 | 0.61 +- 0.09 | 0.57 +- 0.07 | 0.67 +- 0.14 |
+| Ca (mmol/l) | 2.50 +- 0.04 | 2.48 +- 0.04 | 2.45 +- 0.07 | 2.44 +- 0.03 | 2.57 +- 0.06 | 2.58 +- 0.06 | 2.56 +- 0.02 | 2.56 +- 0.02 |
+| Cl (mmol/l) | 104.80 +- 1.04 | 104.60 +- 0.96 | 103.20 +- 0.97 | 102.60 +- 1.39 | 101.70 +- 2.71 | 103.10 +- 1.64 | 100.20 +- 3.58 | 100.00 +- 1.32 |
+| K (mmol/l) | 4.80 +- 0.18 | 4.78 +- 0.19 | 5.37 +- 1.14 | 5.50 +- 1.27 | 5.13 +- 0.86 | 4.66 +- 0.32 | 5.02 +- 0.62 | 5.48 +- 0.84 |
+| Na (mmol/l) | 144.50 +- 1.46 | 143.50 +- 0.50 | 144.10 +- 1.67 | 144.20 +- 1.92 | 141.90 +- 3.13 | 143.40 +- 1.95 | 141.60 +- 2.22 | 141.30 +- 1.15 |
+| P (mmol/l) | 2.08 +- 0.16 | 2.08 +- 0.20 | 2.36 +- 0.39 | 2.43 +- 0.35 | 2.02 +- 0.41 | 2.00 +- 0.29 | 1.91 +- 0.13 | 1.99 +- 0.27 |
+| At 6 months | At 6 months | At 6 months | At 6 months | At 6 months | At 6 months | At 6 months | At 6 months | At 6 months |
+| ALP (microkat/l) | 1.26 +- 0.13 | 1.42 +- 0.12 | 1.31 +- 0.23 | 1.17 +- 0.21 | 0.63 +- 0.15 | 0.60 +- 0.16 | 0.59 +- 0.21 | 0.53 +- 0.08 |
+| ALT (microkat/l) | 0.39 +- 0.05 | 0.43 +- 0.11 | 0.40 +- 0.03 | 0.45 +- 0.21 | 0.59 +- 0.37 | 0.61 +- 0.26 | 0.48 +- 0.30 | 0.58 +- 0.37 |
+| AST (microkat/l) | 2.42 +- 0.19 | 3.26 +- 1.21 | 2.54 +- 0.48 | 3.38 +- 0.81 | 3.15 +- 1.60 | 3.42 +- 1.24 | 3.13 +- 1.08 | 3.87 +- 1.45 |
+| ALB (g/l) | 38.17 +- 2.54 | 36.83 +- 1.53 | 38.60 +- 0.64 | 39.20 +- 1.04 | 45.18 +- 3.26 | 46.91 +- 2.83 | 45.68 +- 1.97 | 47.17 +- 4.00 |
+| TP (g/l) | 68.31 +- 3.76 | 66.91 +- 2.78 | 68.53 +- 1.40 | 69.17 +- 1.42 | 72.59 +- 3.15 | 75.29 +- 3.15 | 75.00 +- 2.54 | 75.53 +- 3.55 |
+| GLU (mmol/l) | 7.05 +- 1.09 | 7.89 +- 0.98 | 6.15 +- 0.40 | 6.07 +- 1.00 | 7.85 +- 0.44 | 7.56 +- 0.64 | 7.00 +- 0.63 | 6.07 +- 1.46 |
+| CREA (micromol/l) | 44.38 +- 6.29 | 42.74 +- 4.79 | 42.45 +- 3.78 | 44.72 +- 3.72 | 41.60 +- 2.55 | 42.31 +- 2.61 | 44.29 +- 1.43 | 48.92 +- 8.42 |
+| U (mmol/l) | 5.54 +- 0.91 | 5.84 +- 0.61 | 5.27 +- 0.12 | 5.29 +- 0.20 | 6.39 +- 0.56 | 5.81 +- 0.51 | 6.23 +- 0.31 | 6.11 +- 0.49 |
+| CHOL (mmol/l) | 2.26 +- 0.19 | 2.41 +- 0.22 | 2.21 +- 0.14 | 2.37 +- 0.19 | 2.08 +- 0.32 | 2.11 +- 0.30 | 2.47 +- 0.21 | 2.20 +- 0.25 |
+| TRG (mmol/l) | 1.17 +- 0.36 | 1.10 +- 0.07 | 1.12 +- 0.18 | 1.08 +- 0.21 | 0.71 +- 0.17 | 0.72 +- 0.06 | 0.58 +- 0.15 | 0.58 +- 0.23 |
+| Ca (mmol/l) | 2.63 +- 0.07 | 2.61 +- 0.11 | 2.62 +- 0.04 | 2.62 +- 0.09 | 2.57 +- 0.07 | 2.59 +- 0.05 | 2.59 +- 0.04 | 2.54 +- 0.05 |
+| Cl (mmol/l) | 103.90 +- 1.39 | 101.40 +- 1.29 | 102.80 +- 0.76 | 103.10 +- 1.75 | 100.90 +- 1.39 | 99.70 +- 2.36 | 100.50 +- 2.06 | 100.30 +- 2.56 |
+| K (mmol/l) | 4.97 +- 0.44 | 5.16 +- 0.18 | 5.24 +- 0.25 | 5.63 +- 0.64 | 4.90 +- 0.48 | 4.94 +- 0.22 | 5.15 +- 0.70 | 5.36 +- 0.98 |
+| Na (mmol/l) | 146.30 +- 1.30 | 144.20 +- 1.04 | 146.80 +- 0.57 | 146.50 +- 0.79 | 143.70 +- 1.79 | 144.40 +- 1.98 | 143.30 +- 2.51 | 144.80 +- 2.31 |
+| P (mmol/l) | 1.65 +- 0.20 | 1.51 +- 0.27 | 2.05 +- 0.28 | 2.01 +- 0.23 | 1.36 +- 0.19 | 1.37 +- 0.07 | 1.64 +- 0.22 | 1.87 +- 0.47 |
+| At 12 months | At 12 months | At 12 months | At 12 months | At 12 months | At 12 months | At 12 months | At 12 months | At 12 months |
+| ALP (microkat/l) | 1.31 +- 0.24 | 1.23 +- 0.20 | 1.42 +- 0.23 | 1.17 +- 0.23 | 0.59 +- 0.25 | 0.51 +- 0.07 | 0.56 +- 0.13 | 0.53 +- 0.14 |
+| ALT (microkat/l) | 0.80 +- 0.34 | 0.75 +- 0.34 | 0.71 +- 0.11 | 0.70 +- 0.21 | 0.68 +- 0.17 | 0.79 +- 0.33 | 0.61 +- 0.16 | 0.86 +- 0.34 |
+| AST (microkat/l) | 2.58 +- 0.79 | 2.48 +- 0.63 | 2.50 +- 0.49 | 2.76 +- 0.62 | 2.46 +- 0.79 | 2.69 +- 0.71 | 2.39 +- 0.57 | 3.36 +- 1.06 |
+| ALB (g/l) | 40.04 +- 1.94 | 39.46 +- 1.65 | 40.52 +- 1.47 | 39.76 +- 1.94 | 42.62 +- 2.07 | 42.85 +- 3.01 | 43.62 +- 3.40 | 42.77 +- 2.48 |
+| TP (g/l) | 69.39 +- 1.93 | 68.64 +- 2.45 | 69.75 +- 1.57 | 68.06 +- 2.50 | 71.69 +- 2.70 | 71.92 +- 2.70 | 72.70 +- 3.90 | 70.14 +- 2.92 |
+| GLU (mmol/l) | 6.28 +- 1.13 | 6.17 +- 0.75 | 5.32 +- 0.49 | 5.65 +- 1.08 | 5.47 +- 0.51 | 5.77 +- 0.80 | 5.51 +- 0.95 | 4.91 +- 0.65 |
+| CREA (micromol/l) | 42.53 +- 4.38 | 40.31 +- 3.53 | 42.03 +- 3.24 | 39.40 +- 4.37 | 41.50 +- 2.96 | 42.07 +- 4.30 | 44.91 +- 2.66 | 42.85 +- 4.61 |
+| U (mmol/l) | 5.24 +- 0.71 | 5.52 +- 0.51 | 5.20 +- 0.69 | 5.12 +- 0.69 | 5.31 +- 0.67 | 4.81 +- 0.32 | 5.58 +- 0.66 | 5.34 +- 0.38 |
+| CHOL (mmol/l) | 2.76 +- 0.34 | 2.69 +- 0.37 | 2.55 +- 0.29 | 2.73 +- 0.49 | 2.20 +- 0.39 | 2.46 +- 0.52 | 2.55 +- 0.42 | 2.24 +- 0.29 |
+| TRG (mmol/l) | 1.44 +- 0.43 | 1.57 +- 0.64 | 1.41 +- 0.54 | 1.45 +- 0.46 | 1.05 +- 0.29 | 1.01 +- 0.30 | 0.98 +- 0.28 | 0.90 +- 0.23 |
+| Ca (mmol/l) | 2.66 +- 0.07 | 2.66 +- 0.10 | 2.64 +- 0.06 | 2.61 +- 0.05 | 2.60 +- 0.03 | 2.61 +- 0.04 | 2.62 +- 0.07 | 2.59 +- 0.04 |
+| Cl (mmol/l) | 105.70 +- 2.50 | 105.30 +- 2.12 | 104.45 +- 1.54 | 103.70 +- 2.24 | 101.90 +- 1.91 | 101.40 +- 1.91 | 102.55 +- 1.50 | 102.95 +- 1.54 |
+| K (mmol/l) | 5.41 +- 0.27 | 5.53 +- 0.49 | 5.76 +- 0.51 | 5.54 +- 0.31 | 4.71 +- 0.23 | 4.41 +- 0.20 | 4.67 +- 0.50 | 4.88 +- 0.64 |
+| Na (mmol/l) | 145.50 +- 2.17 | 145.15 +- 1.49 | 145.80 +- 1.23 | 143.65 +- 1.72 | 141.80 +- 1.09 | 142.45 +- 1.54 | 142.35 +- 1.08 | 142.70 +- 1.55 |
+| P (mmol/l) | 1.89 +- 0.19 | 1.98 +- 0.26 | 2.12 +- 0.15 | 1.95 +- 0.21 | 1.52 +- 0.25 | 1.46 +- 0.31 | 1.57 +- 0.27 | 1.63 +- 0.32 |
+Footnotes:
+ALP alkaline phosphatase, ALT alanine aminotransferase, AST aspartate aminotransferase, ALB albumin, TP total protein, GLU glucose, CREA creatinine, U urea, CHOL cholesterol, TRG triglycerides, Ca calcium, Cl chloride, K potassium, Na sodium, P phosphorus
+110, 10 and 20 male rats fed the diet containing 33 % near-isogenic non-GM maize for 3, 6 or 12 months, respectively, were analysed
+210, 10 and 20 male rats fed the diet containing 33 % conventional 2 maize for 3, 6 or 12 months, respectively, were analysed
+310 (9 in the case of ALT), 10 and 20 (18 in the case of Alb, TP and K) male rats fed the diet containing 11 % GMO maize for 3, 6 or 12 months, respectively, were analysed
+49 (8 in the case of ALT), 10 (9 in the case of ALT) and 19 (17 in the case of ALB, TP and K) male rats fed the diet containing 33 % GMO maize for 3, 6 or 12 months, respectively, were analysed
+510, 10 and 19 female rats fed the diet containing 33 % near-isogenic non-GM maize for 3, 6 or 12 months, respectively, were analysed
+610 (9 in the case of CHOL), 10 and 20 female rats fed the diet containing 33 % conventional 2 maize for 3, 6 or 12 months, respectively, were analysed
+710 (9 in the case of ALT), 10 and 19 (17 in the case of ALP) female rats fed the diet containing 11 % GMO maize for 3, 6 or 12 months, respectively, were analysed
+710 (9 in the case of ALP), 10 (9 in the case of ALP) and 20 (19 in the case of AST, TP, CHOL, TRG, Ca, K and P, 18 in the case of ALP, ALT and ALB) female rats fed the diet containing 33 % GMO maize for 3, 6 or 12 months, respectively, were analysed
+aStatistically significant difference to the control value based on one-way ANOVA and post hoc t test (p <= 0.05) as well as with the Dunnett test (p <= 0.05)
+(a)Statistically significant difference to the control value (p < 0.05) based on one-way ANOVA and post hoc t test, post hoc Dunnett test not significant
+bStatistically significant difference to the control value (p < 0.05) based on the Wilcoxon test
+cStatistically significant difference to the control value based on the 95 % confidence interval of the SES
+</Tab5>
+<Tab6>Caption: Urinalysis data of male rats fed the control, conventional 2, 11 % GMO or 33 % GMO diet for 3, 6 and 12 months
+| Point in time (months) | Number of animals | pH.5 | pH.6 | pH.6.5 | pH.7 | pH.8 | Osmolality (mOsm/kg H2O) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Control | Control | Control | Control | Control | Control | Control | Control |
+| 3 | 10 | 1 | 2 | 6 | 1 | 0 | 357.1 +- 122.7 |
+| 6 | 10 | 2 | 2 | 5 | 1 | 0 | 398.6 +- 109.7 |
+| 12 | 10 | 1 | 2 | 5 | 2 | 0 | 564.1 +- 191.5 |
+| Conv. 2 | Conv. 2 | Conv. 2 | Conv. 2 | Conv. 2 | Conv. 2 | Conv. 2 | Conv. 2 |
+| 3 | 10 | 0 | 1 | 7 | 2 | 0 | 441.7 +- 219.6 |
+| 6 | 10 | 5 | 1 | 3 | 1 | 0 | 518.5 +- 152.6 |
+| 12 | 10 | 1 | 4 | 5 | 0 | 0 | 501.2 +- 88.7 |
+| 11 % GMO | 11 % GMO | 11 % GMO | 11 % GMO | 11 % GMO | 11 % GMO | 11 % GMO | 11 % GMO |
+| 3 | 10 | 0 | 0 | 4 | 6 | 0 | 407.4 +- 134.2 |
+| 6 | 10 | 0 | 5 | 2 | 3 | 0 | 463.2 +- 137.7 |
+| 12 | 10 | 2 | 6 | 1 | 1 | 0 | 604.3 +- 211.8 |
+| 33 % GMO | 33 % GMO | 33 % GMO | 33 % GMO | 33 % GMO | 33 % GMO | 33 % GMO | 33 % GMO |
+| 3 | 10 | 0 | 0 | 2 | 7 | 1 | 488.4 +- 274.8 |
+| 6 | 10 | 0 | 3 | 2 | 4 | 1 | 540.0 +- 269.8 |
+| 12 | 10 | 1 | 2 | 2 | 5 | 0 | 589.9 +- 213.9 |
+Footnotes:
+Glucose, bilirubin and urobilinogen were negative in all analysed urine samples
+</Tab6>
+<Tab7>Caption: Urinalysis data of female rats fed the control, conventional 2, 11 % GMO or 33 % GMO diet for 3, 6 and 12 months
+| Point in time (months) | Number of animals | Osmolality (mOsm/kg H2O) |
+| --- | --- | --- |
+| Control | Control | Control |
+| 3 | 10 | 484.5 +- 120.2 |
+| 6 | 10 | 432.0 +- 105.6 |
+| 12 | 9 | 588.6 +- 142.9 |
+| Conv. 2 | Conv. 2 | Conv. 2 |
+| 3 | 10 | 402.6 +- 190.9 |
+| 6 | 10 | 478.9 +- 206.7 |
+| 12 | 10 | 465.0 +- 219.5 |
+| 11 % GMO | 11 % GMO | 11 % GMO |
+| 3 | 10 | 444.1 +- 220.0 |
+| 6 | 10 | 463.2 +- 137.7 |
+| 12 | 10 | 604.3 +- 211.8 |
+| 33 % GMO | 33 % GMO | 33 % GMO |
+| 3 | 10 | 488.4 +- 274.8 |
+| 6 | 10 | 540.0 +- 269.8 |
+| 12 | 10 | 589.9 +- 213.9 |
+Footnotes:
+Glucose, bilirubin, urobilinogen and nitrate were negative in all analysed urine samples
+</Tab7>
+<Tab8>Caption: Relative weight of the organs (cage mean +- SD) of male and female Wistar Han RCC rats in the 1-year feeding trial with the GM maize MON810
+| Female rats. Organ | Relative organ weights (organ weight/body weight x 100).Control | Relative organ weights (organ weight/body weight x 100).Conventional 2 | Relative organ weights (organ weight/body weight x 100).11 % GMO | Relative organ weights (organ weight/body weight x 100) .33 % GMO |
+| --- | --- | --- | --- | --- |
+| Kidney (right) | 0.280 +- 0.032 | 0.306 +- 0.027 | 0.307 +- 0.025 | 0.300 +- 0.015 |
+| Kidney (left) | 0.262 +- 0.025 | 0.278 +- 0.024 | 0.282 +- 0.030 | 0.278 +- 0.018 |
+| Spleen | 0.227 +- 0.041 | 0.227 +- 0.036 | 0.229 +- 0.028 | 0.226 +- 0.027 |
+| Liver | 2.559 +- 0.235 | 2.667 +- 0.268 | 2.639 +- 0.203 | 2.583 +- 0.149 |
+| Adrenal gland (right) | 0.009 +- 0.001 | 0.009 +- 0.001 | 0.009 +- 0.001 | 0.009 +- 0.001 |
+| Adrenal gland (left) | 0.009 +- 0.002 | 0.010 +- 0.002 | 0.010 +- 0.003 | 0.010 +- 0.002 |
+| Lung | 0.305 +- 0.027 | 0.317 +- 0.030 | 0.326 +- 0.028 | 0.318 +- 0.024 |
+| Heart | 0.248 +- 0.021 | 0.252 +- 0.017 | 0.259 +- 0.018 | 0.259 +- 0.012 |
+| Thymus | 0.119 +- 0.019 | 0.120 +- 0.013 | 0.123 +- 0.012 | 0.137 +- 0.022 |
+| Pancreas | 0.185 +- 0.024 | 0.201 +- 0.022 | 0.184 +- 0.025 | 0.176 +- 0.023 |
+| Uterus | 0.177 +- 0.051 | 0.219 +- 0.046 | 0.235 +- 0.075 | 0.203 +- 0.055 |
+| Ovary (right) | 0.012 +- 0.003 | 0.009 +- 0.003 | 0.013 +- 0.003 | 0.011 +- 0.003 |
+| Ovary (left) | 0.012 +- 0.003 | 0.009 +- 0.003 | 0.012 +- 0.003 | 0.010 +- 0.001 |
+| Brain | 0.600 +- 0.052 | 0.612 +- 0.063 | 0.646 +- 0.057 | 0.627 +- 0.052 |
+Footnotes:
+1The organs of 20 (19 in the case of the right adrenal gland), 20, 20 and 19 male rats fed the control, conventional 2, 11 % GMO or 33 % GMO diet, respectively, were evaluated
+2The organs of 19, 20, 19 and 20 female rats fed the control, conventional 2, 11 % GMO or 33 % GMO diet, respectively, were evaluated
+aStatistically significant difference to control group based on one-way ANOVA, post hoc t test (p < 0.05), post hoc Dunnett test
+(p < 0.05)
+(a)Statistically significant difference to control group (p < 0.05) based on one-way ANOVA and post hoc t test, post hoc Dunnett test not significant
+bStatistically significant difference to control group (p < 0.05) based on Wilcoxon test
+cStatistically significant difference to control group based on 95 % confidence interval of the SES
+</Tab8>
+
+---
+<Tab5|B>
+<Tab6|O>
+<Tab7|O>
+<Tab8|B>

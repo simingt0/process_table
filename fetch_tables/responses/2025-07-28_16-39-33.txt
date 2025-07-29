@@ -1,0 +1,75 @@
+PMC11131026
+---
+# Instructions
+You will be given the methods of a research paper which includes at least one animal toxicity study then a list of all the tables included in that paper, each one labeled with its title. Your goal is to identify each table as either a biomarker table (B), or other (O). Biomarker tables may contain treatment group dosage information, but the main difference between is that biomarker tables should contain biomarker data observed from the treatment groups. This can frequency data (such as survival or number occurences of a condition) or metric data (such as ALT levels or compound concentration), and the table must describe the results of specifically an animal toxicity study within the paper to be labeled B. Otherwise, label it O. Any tables from other irrelevant studies should be labeled O, such as results of in vitro assays or gene expression tables. Additionally, tables where the data is qualitative observations should also be labeled O, as well as any tables with individual subject data instead of summary statistics (do not confuse this with frequency metrics, which should be labeled B). For each table on a new line, include the label in the following format in the order that the tables are given: <table name|label>. Do not include any extra text in your answer or extra whitespace inside the labels.
+# Example output
+<example table 1|O>
+<example table 2|O>
+<example table 3|B>
+# Input
+<methods>Materials and methods
+Animals
+Sixty-three 6-week-old male Wistar rats from the colony of Japan SLC, Inc. (Shizuoka, Japan) were purchased and housed under temperature conditions of between 22 C and 25 C. The rats were maintained under a cycle of 12-hour lighting, within a specific-pathogen-free laboratory room at the Laboratory of Animal Experiments, Graduate School of Medical Sciences, Kyushu University. The rats were provided a commercial diet and water ad libitum. Intratracheal administration was conducted in 8-week-old rats after an acclimatization period of 2 weeks. Experiments were conducted in accordance with the Regulations for Animal Experiments at Kyushu University (A20-020-0) and the Basic Policy on the Conduct of Animal Experiments at the Research Institutes of the Ministry of Education, Culture, Sports, Science, and Technology Public Notice No. 71, 2006, Japan.
+ITO nanoparticle preparation
+ITO NPs with a particle size of 18 nm (scanning electron microscopy) and 20 wt% H2O were purchased from Sigma-Aldrich Japan, Tokyo, Japan. The mean secondary particle size of ITO NPs in the distilled water dispersion was 131.5 nm, measured using the dynamic light scattering particle size analyzer (Nanotrac WAVE II EX150; MicrotracBEL Corp., Osaka, Japan) after pretreatment with ultrasonic homogenizer (US-150E; NIHONSEIKI KAISHA Ltd, Tokyo, Japan) at 150 W for 3 minutes.
+Experimental design
+In preliminary experiments, 10 and 30 mg In/kg body weight (BW) ITO NPs were intratracheally administered to rats. Some rats in the 30 mg In/kg BW group became severely debilitated, and 5 of the 11 rats died of severe chronic nephropathy within 20 weeks. Therefore, in this experiment, the ITO NP dose was set at 20 mg In/kg BW, and half of the dose was set at 10 mg In/kg BW.
+The rats, with a mean +- SE weight of 187.6 +- 0.8 g, were randomly divided into 3 groups: control group (n = 20), a group treated with a dose of 10 mg In/kg BW of ITO NPs (ITO 10 mg group, n = 20), and a group treated with a dose of 20 mg In/kg BW of ITO NPs (ITO 20 mg group, n = 23). No significant differences in BW were observed among the groups at the start of the experiment. The ITO NPs were diluted with sterile distilled water before each administration. Rats in the ITO 10 mg and ITO 20 mg groups received a single intratracheal administration of ITO NPs at doses of 10 and 20 mg In/kg BW, respectively. The control group received 1 mL/kg of distilled water via a single intratracheal administration. Rats were anesthetized with isoflurane at the time of administration.
+Five to 7 surviving rats in each group were euthanized using sevoflurane at 1, 4, 12, or 20 weeks after administration, and then autopsied. Blood was collected from the posterior vena cava, and serum was separated by centrifugation. Serum was stored at -80 C to measure indium concentration. The resected internal organs (the lungs, mediastinal lymph nodes, kidneys, liver, and spleen) were weighed. Portions of the obtained fresh organs were stored at -80 C to measure the indium concentration. Other organs were fixed in 10% neutral-buffered formalin for subsequent evaluation of histopathological changes and detection of ITO NPs.
+Determination of indium concentrations
+The serum was digested with 4 mL of 68% ultrapure nitric acid (TAMAPURE-AA-100; Tama Chemicals Co., Ltd, Kanagawa, Japan) and 2 mL of 35% ultrapure hydrogen peroxide (TAMAPURE-AA-100) using a microwave digestion apparatus (MultiwavePRO; Anton Paar Japan K.K., Tokyo, Japan). The lungs, mediastinal lymph nodes, kidneys, liver, and spleen were digested with 6 mL nitric acid and hydrogen peroxide (0.5 mL) using a microwave digestion apparatus. The digested samples were diluted to 20 mL with ultrapure water, and rhodium (Rh) solution was added as an internal standard. The final Rh concentration was set at 0.5 mug/L. All samples were analyzed by inductively coupled plasma mass spectrometry (ICP-MS 7500c; Agilent Technologies Japan, Ltd, Tokyo, Japan) at the Center of Advanced Instrumental Analysis, Kyushu University. The lower limits of quantitation (QL) of indium were 0.0001 mug/mL for serum, 0.001 mug/g for lungs, 0.01 mug/g for lymph nodes, and 0.0012 mug/g for the kidney, liver, and spleen. If the indium concentration was below the QL, half the QL value was used for statistical analyses.
+Histopathological evaluation
+The organs in 10% neutral-buffered formalin were processed in paraffin. Specimens were cut at a thickness of 4 mum and each section was stained with hematoxylin-eosin (HE). Selected chronic nephropathy sections from the kidneys were stained with periodic acid-Schiff (PAS). The sections were examined under a light microscope. Histopathological findings in the organs were scored as present or absent. If absent, the findings were considered negative. The severity of the organ lesions was graded on a 4-item scale ranging from slight to severe, indicating the approximate fraction of the structure judged to be involved (slight = 1%-10%, mild = 11%-24%, moderate = 25%-50%, and severe = 51%-100%). According to the above lesion classification, the extent of the lesion was scored from 0 to 4, with 0 being no lesions, 1 being slight, 2 being mild, 3 being moderate, and 4 being severe, and then semiquantified. The average value of each lesion was rounded off, and 0.1 to 0.4 was evaluated as "-," 0.5 to 1.4 as "+-", 1.5 to 2.4 as "+", 2.5 to 3.4 as "2+", and 3.5 or higher as "3 + ."
+In situ elemental analysis through laser ablation inductively coupled plasma mass spectrometry
+One rat in the ITO 20 mg group was euthanized at Week 20, and its kidney was used to measure the indium concentration by laser ablation inductively coupled plasma mass spectrometry (LA-ICP-MS). Paraffin-embedded and HE-stained tissue specimens were subjected to LA-ICP-MS analysis, and 2 different in situ elemental analyses were conducted: (1) The distributions of the total amounts of elements were obtained using quadrupole-based ICP-MS (Agilent 8800 ICP-MS/MS; Agilent Technologies, Tokyo, Japan) coupled with a laser ablation system (NWR213; ESI, Fremont, CA, USA). The signal intensities of 57Fe and 115In were monitored at a dwell time of 100 ms by raster scanning. Elemental distributions were visualized using iQuant2 software. (2) Distributions of indium ions and indium-containing NPs were separately obtained in fast time-resolved analysis using quadrupole-based ICP-MS (Agilent 8900 ICP-MS/MS; Agilent Technologies) coupled with an NWR213. The signal intensity of 115In was monitored with a dwell time of 0.1 ms. Subsequently, the signal intensities were analyzed using software developed by Yamashita et al.
+Statistical analysis
+Data are expressed as mean +- SE. Differences between the control and ITO groups were evaluated using the Welch t test with a closed testing procedure. Comparisons were made with the control group, starting with the high-dose group, until no significant difference was found. As it was known from previous experiments that the difference between the control and ITO groups in body and organ weights gradually increased, the tests started at Week 20 and continued retrospectively until no significant differences were found. For indium concentrations, P values were multiplied by 4 after performing closed-procedure t tests between the control and ITO groups at all time points. In all statistical comparisons, a P value <.05 was used to determine significant differences. All statistical analyses were conducted using EZR (Saitama Medical Center, Jichi Medical University, Saitama, Japan), a graphical user interface for R (R Foundation for Statistical Computing, Vienna, Austria).</methods>
+<TB1>Caption: Indium concentrations in the serum and organs in weeks after an instillation.a
+| Organ | Group | Concentration (no. of rats examined).Week 1 | Concentration (no. of rats examined).Week 4 | Concentration (no. of rats examined).Week 12 | Concentration (no. of rats examined) .Week 20 |
+| --- | --- | --- | --- | --- | --- |
+| Lung, mug/g | ITO 10 mg | 1017 +- 100(5) | 316 +- 53(5) | 212 +- 75 (5) | 86 +- 16(5) |
+| Lung, mug/g | ITO 20 mg | 1342 +- 337(5) | 420 +- 116(5) | 343 +- 97(6) | 287 +- 31(7) |
+| Mediastinal lymph node, mug/g | ITO 10 mg | 276 +- 98 (4) | 622 +- 120 (5) | 963 +- 289 (5) | 1689 +- 163 (5) |
+| Mediastinal lymph node, mug/g | ITO 20 mg | 401 +- 135 (5) | 961 +- 131 (5) | 1249 +- 362 (6) | 3823 +- 926 (6) |
+| Kidney, mug/g | ITO 10 mg | 0.79 +- 0.17(5) | 1.80 +- 0.21(5) | 4.25 +- 0.66 (5) | 4.07 +- 1.2 (5) |
+| Kidney, mug/g | ITO 20 mg | 1.81 +- 0.44(5) | 4.49 +- 1.26(5) | 21.54 +- 8.5 (6) | 17.1 +- 2.92(7) |
+| Spleen, mug/g | ITO 10 mg | 0.40 +- 0.10(5) | 0.99 +- 0.08 (5) | 4.35 +- 0.77(5) | 4.83 +- 0.84(5) |
+| Spleen, mug/g | ITO 20 mg | 0.77 +- 0.18(5) | 2.91 +- 0.88 (5) | 10.51 +- 1.76(6) | 9.05 +- 1.34(7) |
+| Liver, mug/g | ITO 10 mg | 0.28 +- 0.05(5) | 0.74 +- 0.08(5) | 1.42 +- 0.19(5) | 1.28 +- 0.43 (5) |
+| Liver, mug/g | ITO 20 mg | 0.75 +- 0.16(5) | 1.76 +- 0.46(5) | 5.65 +- 1.08(6) | 3.94 +- 0.57(7) |
+| Serum, mug/mL | ITO 10 mg | 0.11 +- 0.03(5) | 0.17 +- 0.02 (5) | 0.27 +- 0.04(5) | 0.14 +- 0.04(5) |
+| Serum, mug/mL | ITO 20 mg | 0.26 +- 0.07(5) | 0.43 +- 0.13 (5) | 0.4 +- 0.07(6) | 0.23 +- 0.05(7) |
+Footnotes:
+Abbreviation: ITO, indium-tin oxide.
+The indium concentrations are shown as the mean +- SE in the serum and organs of rats euthanized at each time point after an administration. Indium concentrations in the control group were below the limit of quantitation at all the time points. *Denotes significant difference compared with that of the control group (P < .05).
+</TB1>
+<TB2>Caption: Pathological changes
+| Pathological changes in the lungs of rats euthanized ateach time point after administration | Group | Weeks after an instillation in the lungs and kidneys._0 | Weeks after an instillation in the lungs and kidneys._1 | Weeks after an instillation in the lungs and kidneys._2 | Weeks after an instillation in the lungs and kidneys._3 |
+| --- | --- | --- | --- | --- | --- |
+| Pathological changes in the lungs of rats euthanized ateach time point after administration | Group | Week 1 | Week 4 | Week 12 | Week 20 |
+| Inflammatory response | ITO 10 mg | 2+ | 2+ | 2+ | 2+ |
+| Inflammatory response | ITO 20 mg | 3+ | 2+ | 2+ | 1+ |
+| Inflammatory response | Control | - | - | - | - |
+| Alveolar macrophage necrosis | ITO 10 mg | 2+ | 2+ | 2+ | 2+ |
+| Alveolar macrophage necrosis | ITO 20 mg | 3+ | 2+ | 2+ | 2+ |
+| Alveolar macrophage necrosis | Control | - | - | - | - |
+| Exudation with necrotic fragments in alveolar spaces | ITO 10 mg | 2+ | 2+ | 2+ | 1+ |
+| Exudation with necrotic fragments in alveolar spaces | ITO 20 mg | 2+ | 2+ | 2+ | 1+ |
+| Exudation with necrotic fragments in alveolar spaces | Control | - | - | - | - |
+| Cholesterol clefts | ITO 10 mg | - | - | +- | +- |
+| Cholesterol clefts | ITO 20 mg | - | - | +- | +- |
+| Cholesterol clefts | Control | - | - | - | - |
+| Expansion of alveolar spaces | ITO 10 mg | +- | +- | 1+ | 1+ |
+| Expansion of alveolar spaces | ITO 20 mg | 1+ | +- | 1+ | +- |
+| Expansion of alveolar spaces | Control | - | - | - | - |
+| Severity of chronic nephropathy in ratseuthanized at each time point | ITO 10 mg | - | - | +- | +- |
+| Severity of chronic nephropathy in ratseuthanized at each time point | ITO 20 mg | - | - | 1+ | 2+ |
+| Severity of chronic nephropathy in ratseuthanized at each time point | Control | - | - | - | - |
+Footnotes:
+Abbreviation: ITO, indium-tin oxide.
+The severity of the lung or kidney lesions was categorized into 5 grades. -: negative; +-: slight; 1+: mild; 2+: moderate; 3+: severe.
+</TB2>
+
+---
+<TB1|B>
+<TB2|O>
