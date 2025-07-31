@@ -1,0 +1,64 @@
+PMC5514907
+---
+# Instructions
+You will be given the methods section, a list of groups and a few paragraphs from the results section of a paper with an animal toxicity study. Your task is to determine whether each paragraph contains qualifying toxicity data. For each paragraph, check if the paragraph fits the following conditions:
+1. The paragraph describes a toxicity study specifically on in vivo animal subjects.
+2. The paragraph contains data on a treatment group, specifying what group it is describing. You can use the provided list of groups as reference, but be sure that the groups abide by condition 1.
+3. The data included is either a summary statistic of a toxicity biomarker (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or a toxicity description within a specific group (ie. 'significantly higher levels of lesions in treatment group'). The data must be specifically about toxicity as a result of the treatment; ignore any efficacy results.
+For each paragraph, provide each answer as a pair, delineated by the '|' symbol, with each pair on a different line. Answer in order that the paragraphs are given. The first term of each pair should be the first 5 words of the paragraph, including any punctuation or symbols in between them. The second term of each pair should be 'yes' if the paragraph abides by the conditions, or 'no' if it does not. For example:
+Because the mice (CD-1) were|yes
+Do not include any other text or whitespace besides your answer.
+# Methods
+MATERIALS AND METHODS
+Chemicals, synthesis and characterization of SAP
+All chemicals were purchased from Sigma-Aldrich, while sunitinib was from Selleckchem, USA. SAP was synthesized as shown in Figure 1 and described in the Supplementary Materials sections (S.I.1). Mass Spectrometry (MS) was employed to define the key spectral features necessary for the quantification of all molecules in blood and tissue as described previously. Total polar surface area (PSA) and clog P values were predicted by Chemdraw Ultra (v10, PerkinElmer Informatics). The GST-fusion proteins and the antibodies used for this study are summarized in Supplementary Tables 1 and 2 respectively.
+Computational methods
+Detailed docking and molecular dynamic analysis for all the compounds is described in the S.I.2.
+In vitro evaluation
+The trans-phosphorylation activity of VEGFR-2, PDGFR-beta, KIT, FLT3, RET and EGFR was evaluated as described before. Detailed methods and a list of the kinases used are available in the S.I.3. Cellular inhibition of autophosphorylation of VEGFR-2 and PDGFR-beta was performed as described in the S.I.4. For cellular studies, cells were used within six months of purchase and were cultured as instructed by the American Type Culture Collection (ATCC-LGC Standards, Germany). All cell lines were obtained from the ATCC while HUVEC were from Life Technologies. E0771 cells were a kind gift of Dr Fernando Rodriguez-Serrano (University of Granada) and were grown as described previously. Cell toxicity was measured by the MTT assay.
+Pharmacokinetic analysis
+All animal procedures were approved by the Bioethical Committee of BRFAA based on the European Directive 86/609. For pharmacokinetic studies, female NOD/SCID mice (Charles River, Italy) were used (8-10 weeks old, n = 6 per group). Dosing solutions of SAP (100 mumol/Kg) were prepared in 20% 2-hydroxypropyl beta-Cyclodextrin in sterile water (HP-b-CD). SAP was administered intraperitoneally (IP) or orally and blood samples were collected and prepared as described previously.
+In vivo efficacy
+For the xenograft studies, female NOD/SCID mice were injected in each flank with 3 x106 HCC1954 (HER2 amplified) or MDA-MB-231 (TNBC) cells, while for the syngeneic animal model 1 x 106 E0771 cells were implanted ectopically in the flanks or orthotopicaly in the fat-pad of the right inguinal mammary gland in female C57BL/6 mice as described before. In every case pharmacological treatment was initiated when tumors reached 100-150 mm3 by daily IP administrations of sunitinib or equimolar doses of SAP (100 mumol/Kg, in HP-b-CD). Control mice received HP-b-CD while tumor growth and phenotypic signs of discomfort such as altered behaviour, guarding, mutilation or loss of appetite were constantly monitored during the course of treatment. Experiments were terminated after 18 days, at 1h after the last administered dose by euthanizing the animals under isoflurane anesthesia. Tumors were excised, weighed and prepared for kinase activity, histopathology, immunohistochemistry (IHC) and quantification of compounds of interest by LC-MS/MS.
+Immunohistochemistry
+Excised tumors were fixed in neutral buffered formalin, paraffin embedded, sectioned and stained against CD31, Ki-67, pErk1/2 and pS6. Microvessel density was assessed by counting the number of CD31+ vessels in a 40x microscope field in a blinded fashion and presented as the amount of blood vessels/mm2. To determine proliferation indices (PI), Ki67 positive or negative cells were counted using ImageJ software (US National Institutes of Health) in 3-4 representative fields of five tumors for each treatment (on average, ~900 nuclei were counted per specimen). Images were acquired by a Leica DFC350-FX camera mounted on a Leica DMLS2 microscope.
+In vivo kinase activity
+The PathScan intracellular signaling array kit (Cell Signaling, UK) was used as per manufacturer's direction to detect the phosphorylation status in supernatants from tumor extracts (n = 10 for each treatment). Images were analyzed with ImageJ software (v1.28) by loading the image as a gray scale picture and the average intensity for each kinase was calculated as described previously.
+Toxicity evaluation
+C57BL/6 female mice (n = 8) were used, treated for one week with daily IP administrations of HP-b-CD or 100 mumol/Kg of SAP or sunitinib. Cardiotoxicity was assessed as described previously. For the hematotoxicity experiments approximately 300 muL of blood were collected from each animal in a vacutainer blood collection tube containing EDTA (BD Biosciences). Blood analysis was performed directly after sampling in a MEK-6318J/K hematology analyzer (Nihon Kohden Corp, Japan) and the parameters measured were red and white blood cell numbers, platelets hemoglobin, hematocrit, mean cell volume (MCV) and mean cell hemoglobin.
+Zebrafish experiments
+Zebrafish embryos were maintained and raised as described previously. The experimental protocols described in this study were carried out with zebrafish larvae up to 96 h post fertilization (hpf) and therefore are not subject to the regulations of European animal protection guidelines. The Tg(kdrl:gfp)s483 transgenic line was used. For the bioaccumulation experiments, synchronized 24 hpf Tg(kdrl:gfp)s483 embryos were exposed to 50 muM sunitinib or SAP with final concentration 0.1% (v/v) DMSO (vehicle) in embryo medium (0.3 g/L "Instant Ocean" Sea Salts and 0.08 g/L CaSO4*2H2O). Treatments were performed in three independent experiments with 50 embryos per experimental sample. Embryo and water samples were collected at 1 min and 24 h post treatment. After exposure, embryos were rinsed with fresh embryo medium, snap frozen in liquid nitrogen and stored at -80 C. For monitoring the antiangiogenic activity of SAP and sunitinib Tg(kdrl:gfp)s483 embryos were treated at 24 hpf with 50 muM of the compounds or vehicle and images were taken at 48 hpf.
+Statistical analyses
+Statistical analyses and calculation of all IC50 s were performed by SigmaPlot12 software and statistical significance was determined using the Student's two-tailed, two-sample unequal variance distribution t test. Comparison of means among three study groups was made by using one-way ANOVA followed by the post hoc Turkey-Kramer multiple comparison test using StatPlus (v6, Analysoft). A two-sided (P < .01) was considered statistically significant.
+# Group List
+control
+control
+SAP100
+sunitinib100
+vehicletreated
+SAPtreated
+sunitinibtreated
+HP-b-CD treated
+SAP dose 1
+SAP dose 2
+# Paragraphs
+<paragraph>
+Concentrations of sunitinib and SAP in blood and tumor tissue were measured at 1h after a final dose on d18 for both the HCC1954 and MDA-MB-231 animal models (Figure 4F). For the HCC1954 xenograft, the blood C1 h was 10.3 (+- 3.7) mumol/L for sunitinib and 12.8 (+- 1.6) mumol/L for SAP, while the respective C1 h in the tumor tissue was 7.7 (+- 2.0) mumol/L for sunitinib and 8.5 (+- 1.2) muM for SAP, generating a tumor/blood (t/b) ratio of 0.8 for sunitinib and 0.7 for SAP (Figure 4G). In the MDA-MB-231 animal model the C1 h in the blood for sunitinib and SAP was 10.8 (+- 2.1) mumol/L and 14.8 ( +- 2.4) mumol/L respectively, while the values for intratumoral drug levels were 41.6 (+- 5) mumol/L and 64.4 (+- 14.3) mumol/L. The t/b ratio for the MDA-MB-231 xenograft was 4.0 for sunitinib and 4.5 for SAP (Figure 4G). Despite the fact that sunitinib is more lipophilic in comparison to SAP (see clog P values), the high intratumoral concentrations of SAP in both xenografts may be due to a lower tissue clearance in comparison to sunitinib, a property that is favorable for tumor targeting.
+</paragraph>
+<paragraph>
+Insights into the molecular mechanism responsible for the in vivo efficacy of SAP and sunitinib were obtained by histological, immunohistochemical and target modulation analysis of tumors harvested from all animals on the day of sacrifice (d18) for both the HCC1954 and MDA-MB-231 animal models (Figure 5).
+</paragraph>
+<paragraph>
+For HCC1954 treated mice, the IHC analysis in tumor sections using antibodies against Ki-67 and CD31 showed a marked reduction in cell proliferation and reduced angiogenesis in SAP and sunitinib compared to vehicle treated specimens (Figure 5A). The Ki-67 assessed PI of mice treated with SAP was 19.2 +- 4.9%, and 22.9 +- 7.8% for sunitinib (both at P < .001 over vehicle treated mice) whereas for vehicle treated mice it was 82.3 +- 11.1%. The average number of CD31+ cells in tumor sections of mice treated with SAP were 16.6 +- 7.1 (P < .001 versus vehicle treated mice), and 21.6 +- 9.0 (P < .001 compared to vehicle treated mice) for sunitinib versus 42.4 +- 8.3 for vehicle treated mice (Figure 5A).
+</paragraph>
+<paragraph>
+In order to gain a deeper understanding of the mechanism of action of SAP in treated mice, we investigated the phosphorylation status of 18 kinases in extracts of tumor tissue and compared it to tumor extracts of vehicle and sunitinib treated mice (Figure 5B). A marked downregulation of pErk1/2 (Thr202/Tyr204), pAkt (Ser473) and pGSK3 (Ser9) was noted in SAP and sunitinib treated versus vehicle treated mice, consistent with the multikinase phosphorylation inhibition ability of sunitinib and the designed SAP analogue. High levels of pBad (Ser112) protein indicative of increased levels of apoptosis were seen in all treatment groups. The reduced levels of pErk1/2 (Thr202/Tyr204) were verified in subsequent IHC experiments (Figure 5C). A similar analysis was performed in tumor sections from the MDA-MB-231 xenografted mice (Figure 5D). In this case, the Ki-67 assessed PI of mice treated with SAP was 20.11 +- 4.5%, for sunitinib the respected value was 20.9 +- 5.6% (P < .001 for both drugs compared to vehicle treated mice), whereas for vehicle it was 97.4 +- 7.2%. The average number of CD31+ cells in tumor sections of mice treated with SAP were 25.7 +- 11.8, for sunitinib 28.1 +- 11.3 (both at P < .001 over vehicle treated mice) and for vehicle 50.6 +- 10.2.
+</paragraph>
+<paragraph>
+Analysis of the phosphorylation status of 18 kinases in extracts of tumor tissue (Figure 5E), revealed a marked decrease mainly of pErk1/2 (Thr202/Tyr204), pAkt (Ser473) and pS6 (Ser235/236) in SAP and sunitinib treated versus vehicle treated mice. Again, high levels of pBad (Ser112) protein indicative of increased levels of apoptosis were seen in all treatment groups. The reduced levels of pErk1/2 (Thr202/Tyr204) and pS6 (Ser235/236) were verified in subsequent IHC experiments (Figure 5F).</paragraph>
+---
+Concentrations of sunitinib and SAP|no
+Insights into the molecular mechanism|no
+For HCC1954 treated mice, the|no
+In order to gain a deeper|no
+Analysis of the phosphorylation status|no

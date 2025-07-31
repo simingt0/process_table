@@ -1,0 +1,57 @@
+PMC5514907
+---
+# Instructions
+You will be given the methods section of an animal toxicity paper, a list of groups derived from the text, and a paragraph containing animal toxicity data. Your goal is to extract each piece of data from the text in a standardized manner. Each piece of data should specify a treatment group, be the results of specifically an in vivo animal toxicity study, and be describing a summary statistic (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or observation of a toxicity biomarker (ie. 'significantly higher levels of lesions in treatment group'). Your answer should be a list dilineated by '|' for each piece of data, each on a new line. For each piece of data, complete the following steps to complete its list:
+1. From the provided treatment groups, add the group name of the group that is being observed in this datum or the group the most closely resembles it.
+2. Add the name of the biomarker observed.
+3. Determine which type the observation is out of three options: numerical, frequency, and descriptive (output your choice as written here). Numerical is a discrete summary statistic, usually a mean and SD. Frequency is data describing how common a condition is within the treatment group population, usually a percentage or count. Descriptive data contains no numbers and simple states an observation of the treatment group specifically inferring a toxicity caused by a treatment.
+4. Add the value of the data, omitting any units. If it is a mean +- SD, only include the mean, and write the observation verbatim if it is descriptive data. If the data is frequency and the sample size is included as well (ie. '4 out of the 10 mice'), write it in a fraction like so: count/sample_size (ie. 4/10). Remember that all numerical and frequency data should be numeric and description data should be text.
+5. Add the observation value's units. If it is frequency data, choose out of the following: percentage, decimal, count. Percentage is a value between 0 and 100, decimal is a value between 0 and 1, and count is the number of subjects in the group with the condition. If the data is descriptive, put N/A here.
+6. If the data is numerical, put the SD here. If there is no SD or if the data is frequency or descriptive, put N/A here.
+The end format looks like this:
+group|biomarker|type|value|units|SD
+Do not include any other text or whitespace besides your answer. If a piece of information requested is not available in the paragraph, put N/A in its respective spot.
+# Methods
+MATERIALS AND METHODS
+Chemicals, synthesis and characterization of SAP
+All chemicals were purchased from Sigma-Aldrich, while sunitinib was from Selleckchem, USA. SAP was synthesized as shown in Figure 1 and described in the Supplementary Materials sections (S.I.1). Mass Spectrometry (MS) was employed to define the key spectral features necessary for the quantification of all molecules in blood and tissue as described previously. Total polar surface area (PSA) and clog P values were predicted by Chemdraw Ultra (v10, PerkinElmer Informatics). The GST-fusion proteins and the antibodies used for this study are summarized in Supplementary Tables 1 and 2 respectively.
+Computational methods
+Detailed docking and molecular dynamic analysis for all the compounds is described in the S.I.2.
+In vitro evaluation
+The trans-phosphorylation activity of VEGFR-2, PDGFR-beta, KIT, FLT3, RET and EGFR was evaluated as described before. Detailed methods and a list of the kinases used are available in the S.I.3. Cellular inhibition of autophosphorylation of VEGFR-2 and PDGFR-beta was performed as described in the S.I.4. For cellular studies, cells were used within six months of purchase and were cultured as instructed by the American Type Culture Collection (ATCC-LGC Standards, Germany). All cell lines were obtained from the ATCC while HUVEC were from Life Technologies. E0771 cells were a kind gift of Dr Fernando Rodriguez-Serrano (University of Granada) and were grown as described previously. Cell toxicity was measured by the MTT assay.
+Pharmacokinetic analysis
+All animal procedures were approved by the Bioethical Committee of BRFAA based on the European Directive 86/609. For pharmacokinetic studies, female NOD/SCID mice (Charles River, Italy) were used (8-10 weeks old, n = 6 per group). Dosing solutions of SAP (100 mumol/Kg) were prepared in 20% 2-hydroxypropyl beta-Cyclodextrin in sterile water (HP-b-CD). SAP was administered intraperitoneally (IP) or orally and blood samples were collected and prepared as described previously.
+In vivo efficacy
+For the xenograft studies, female NOD/SCID mice were injected in each flank with 3 x106 HCC1954 (HER2 amplified) or MDA-MB-231 (TNBC) cells, while for the syngeneic animal model 1 x 106 E0771 cells were implanted ectopically in the flanks or orthotopicaly in the fat-pad of the right inguinal mammary gland in female C57BL/6 mice as described before. In every case pharmacological treatment was initiated when tumors reached 100-150 mm3 by daily IP administrations of sunitinib or equimolar doses of SAP (100 mumol/Kg, in HP-b-CD). Control mice received HP-b-CD while tumor growth and phenotypic signs of discomfort such as altered behaviour, guarding, mutilation or loss of appetite were constantly monitored during the course of treatment. Experiments were terminated after 18 days, at 1h after the last administered dose by euthanizing the animals under isoflurane anesthesia. Tumors were excised, weighed and prepared for kinase activity, histopathology, immunohistochemistry (IHC) and quantification of compounds of interest by LC-MS/MS.
+Immunohistochemistry
+Excised tumors were fixed in neutral buffered formalin, paraffin embedded, sectioned and stained against CD31, Ki-67, pErk1/2 and pS6. Microvessel density was assessed by counting the number of CD31+ vessels in a 40x microscope field in a blinded fashion and presented as the amount of blood vessels/mm2. To determine proliferation indices (PI), Ki67 positive or negative cells were counted using ImageJ software (US National Institutes of Health) in 3-4 representative fields of five tumors for each treatment (on average, ~900 nuclei were counted per specimen). Images were acquired by a Leica DFC350-FX camera mounted on a Leica DMLS2 microscope.
+In vivo kinase activity
+The PathScan intracellular signaling array kit (Cell Signaling, UK) was used as per manufacturer's direction to detect the phosphorylation status in supernatants from tumor extracts (n = 10 for each treatment). Images were analyzed with ImageJ software (v1.28) by loading the image as a gray scale picture and the average intensity for each kinase was calculated as described previously.
+Toxicity evaluation
+C57BL/6 female mice (n = 8) were used, treated for one week with daily IP administrations of HP-b-CD or 100 mumol/Kg of SAP or sunitinib. Cardiotoxicity was assessed as described previously. For the hematotoxicity experiments approximately 300 muL of blood were collected from each animal in a vacutainer blood collection tube containing EDTA (BD Biosciences). Blood analysis was performed directly after sampling in a MEK-6318J/K hematology analyzer (Nihon Kohden Corp, Japan) and the parameters measured were red and white blood cell numbers, platelets hemoglobin, hematocrit, mean cell volume (MCV) and mean cell hemoglobin.
+Zebrafish experiments
+Zebrafish embryos were maintained and raised as described previously. The experimental protocols described in this study were carried out with zebrafish larvae up to 96 h post fertilization (hpf) and therefore are not subject to the regulations of European animal protection guidelines. The Tg(kdrl:gfp)s483 transgenic line was used. For the bioaccumulation experiments, synchronized 24 hpf Tg(kdrl:gfp)s483 embryos were exposed to 50 muM sunitinib or SAP with final concentration 0.1% (v/v) DMSO (vehicle) in embryo medium (0.3 g/L "Instant Ocean" Sea Salts and 0.08 g/L CaSO4*2H2O). Treatments were performed in three independent experiments with 50 embryos per experimental sample. Embryo and water samples were collected at 1 min and 24 h post treatment. After exposure, embryos were rinsed with fresh embryo medium, snap frozen in liquid nitrogen and stored at -80 C. For monitoring the antiangiogenic activity of SAP and sunitinib Tg(kdrl:gfp)s483 embryos were treated at 24 hpf with 50 muM of the compounds or vehicle and images were taken at 48 hpf.
+Statistical analyses
+Statistical analyses and calculation of all IC50 s were performed by SigmaPlot12 software and statistical significance was determined using the Student's two-tailed, two-sample unequal variance distribution t test. Comparison of means among three study groups was made by using one-way ANOVA followed by the post hoc Turkey-Kramer multiple comparison test using StatPlus (v6, Analysoft). A two-sided (P < .01) was considered statistically significant.
+# Group List
+| group | animal_model | sample_size | treatment1 | dose1 | units1 | treatment2 | dose2 | units2 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| control | mouse | 10 |  |  |  |  |  |  |
+| control | mouse | 8 |  |  |  |  |  |  |
+| SAP100 | mouse | 8 | SAP | 100 | mumol/Kg |  |  |  |
+| sunitinib100 | mouse | 8 | sunitinib | 100 | mumol/Kg |  |  |  |
+| vehicletreated | mouse | > | vehicle | blank | blank |  |  |  |
+| SAPtreated | mouse | > | SAP | blank | blank |  |  |  |
+| sunitinibtreated | mouse | > | sunitinib | blank | blank |  |  |  |
+| HP-b-CD treated | mouse | 8 | HP-b-CD | blank | blank |  |  |  |
+| SAP dose 1 | mouse | 6 | SAP | 100 | mumol/Kg |  |  |  |
+| SAP dose 2 | mouse | 6 | SAP | blank | blank |  |  |  |
+# Paragraph
+{'title': 'Toxicity assessment in rodents', 'text': 'Considering the known cardiotoxicity of sunitinib and related molecules, we assessed the cardiac function of vehicle or compound treated C57BL/6 female mice. Results showed that both SAP and sunitinib had a statistically significant %FS (Fractional Shortening) reduction following treatment, with SAP appearing slightly more cardiotoxic than sunitinib (Figure 6A-6B). Mice treated with SAP had a %FS reduction from the baseline measurement of 47.48 +- 0.91 to 42.38 +- 0.76, P < .0001 at one week post treatment. The respective %FS value for sunitinib dropped from 47.48 +- 1.05 to 45.42 +- 0.11, P = .0047), whereas vehicle treated mice had a non-significant fall in %FS (from 47.49 +- 1.16 to 46.34 +- 0.56) as shown in Figure 6B.', 'label': True}
+---
+SAP100|Fractional Shortening|numerical|42.38|percentage|0.76
+sunitinib100|Fractional Shortening|numerical|45.42|percentage|0.11
+control|Fractional Shortening|numerical|46.34|percentage|0.56
+SAP100|Fractional Shortening|descriptive|47.48 +- 0.91 to 42.38 +- 0.76, P < .0001|N/A|N/A
+sunitinib100|Fractional Shortening|descriptive|47.48 +- 1.05 to 45.42 +- 0.11, P = .0047|N/A|N/A
+control|Fractional Shortening|descriptive|47.49 +- 1.16 to 46.34 +- 0.56|N/A|N/A

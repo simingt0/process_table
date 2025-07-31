@@ -156,6 +156,83 @@ def link_prompt(methods, table_groups, text_groups):
     prompt = f"# Instructions\nYou will be given the methods section to a paper with an animal toxicity study as well as two tables describing the treatment groups of the paper. The first graph was derived from a graph, and the second graph was derived from the text. Your goal is to cross-reference information from both tables to identify the treatment groups in table 1. For each group in table 1, pair it with one of the groups in table 2 if you think they are referring to the same treatment group based on similarity in the metrics and group names. For each pairing, answer in the following format with each entry having its own row: <group1|group2>, where group1 is the group name from table 1 and group 2 is the group name from table 2 (here is an example: <control|Control Group>). Note that two groups could be paired even if they differ by one or two arguments. Also, the same group from table 2 can be paired to multiple groups in table 1. Make these matches in order of the rows in table 1, making sure that you include every row, even if there is no match. If none of the groups in table 2 seem like a good fit for a group in table 1, label the second group as 'NO MATCH' like so: <example group|NO MATCH>. Do not add any additional whitespace or text in your answer.\n# Methods\n{methods}\n# Table 1\n{table_groups}\n# Table 2\n{text_groups}"
     return prompt
 
+def label_batch_prompt(methods, group_list, batch):
+    prompt = f"# Instructions\nYou will be given the methods section, a list of groups and a few paragraphs from the results section of a paper with an animal toxicity study. Your task is to determine whether each paragraph contains qualifying toxicity data. For each paragraph, check if the paragraph fits the following conditions:\n1. The paragraph describes a toxicity study specifically on in vivo animal subjects.\n2. The paragraph contains data on a treatment group, specifying what group it is describing. You can use the provided list of groups as reference, but be sure that the groups abide by condition 1.\n3. The data included is either a summary statistic of a toxicity biomarker (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or a toxicity description within a specific group (ie. 'significantly higher levels of lesions in treatment group'). The data must be specifically about toxicity as a result of the treatment; ignore any efficacy results.\nFor each paragraph, provide each answer as a pair, delineated by the '|' symbol, with each pair on a different line. Answer in order that the paragraphs are given. The first term of each pair should be the first 5 words of the paragraph, including any punctuation or symbols in between them. The second term of each pair should be 'yes' if the paragraph abides by the conditions, or 'no' if it does not. For example:\nBecause the mice (CD-1) were|yes\nDo not include any other text or whitespace besides your answer.\n# Methods\n{methods}\n# Group List\n{"\n".join(group["group"] for group in group_list)}\n# Paragraphs\n<paragraph>\n{"\n</paragraph>\n<paragraph>\n".join([paragraph["text"] for paragraph in batch])}</paragraph>"
+    return prompt
+
+def data_from_text_prompt(methods, group_list_df, paragraph):
+    prompt = f"# Instructions\nYou will be given the methods section of an animal toxicity paper, a list of groups derived from the text, and a paragraph containing animal toxicity data. Your goal is to extract each piece of data from the text in a standardized manner. Each piece of data should specify a treatment group, be the results of specifically an in vivo animal toxicity study, and be describing a summary statistic (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or observation of a toxicity biomarker (ie. 'significantly higher levels of lesions in treatment group'). Your answer should be a list dilineated by '|' for each piece of data, each on a new line. For each piece of data, complete the following steps to complete its list:\n1. From the provided treatment groups, add the group name of the group that is being observed in this datum or the group the most closely resembles it.\n2. Add the name of the biomarker observed.\n3. Determine which type the observation is out of three options: numerical, frequency, and descriptive (output your choice as written here). Numerical is a discrete summary statistic, usually a mean and SD. Frequency is data describing how common a condition is within the treatment group population, usually a percentage or count. Descriptive data contains no numbers and simple states an observation of the treatment group specifically inferring a toxicity caused by a treatment.\n4. Add the value of the data, omitting any units. If it is a mean +- SD, only include the mean, and write the observation verbatim if it is descriptive data. If the data is frequency and the sample size is included as well (ie. '4 out of the 10 mice'), write it in a fraction like so: count/sample_size (ie. 4/10). Remember that all numerical and frequency data should be numeric and description data should be text.\n5. Add the observation value's units. If it is frequency data, choose out of the following: percentage, decimal, count. Percentage is a value between 0 and 100, decimal is a value between 0 and 1, and count is the number of subjects in the group with the condition. If the data is descriptive, put N/A here.\n6. If the data is numerical, put the SD here. If there is no SD or if the data is frequency or descriptive, put N/A here.\nThe end format looks like this:\ngroup|biomarker|type|value|units|SD\nDo not include any other text or whitespace besides your answer. If a piece of information requested is not available in the paragraph, put N/A in its respective spot.\n# Methods\n{methods}\n# Group List\n{table_utils.dataframe_to_markdown(group_list_df)}\n# Paragraph\n{paragraph}"
+    return prompt
+
+def data_from_text(pmc, methods, group_list_df, paragraph):
+    prompt = data_from_text_prompt(methods, group_list_df, paragraph)
+    answer = llama_request(prompt)
+    time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    with open(f"fulltext_extraction/data_from_text/{time}.txt", "w", encoding="utf-8") as file:
+        file.write(f"{pmc}\n---\n{prompt}\n---\n{answer}")
+
+    data_dict = {"num": [], "freq": [], "desc": []}
+    response_data = [datum.split("|") for datum in answer.split("\n") if "|" in datum]
+    for response_datum in response_data:
+        datum = {
+            "Animal Model": group_list_df.at[response_datum[0].strip().lower(), "animal_model"],
+            "Sample Size": group_list_df.at[response_datum[0].strip().lower(), "sample_size"],
+            "Treatment 1": group_list_df.at[response_datum[0].strip().lower(), "treatment1"],
+            "Dose 1": group_list_df.at[response_datum[0].strip().lower(), "dose1"],
+            "Units 1": group_list_df.at[response_datum[0].strip().lower(), "units1"],
+            "Treatment 2": group_list_df.at[response_datum[0].strip().lower(), "treatment2"],
+            "Dose 2": group_list_df.at[response_datum[0].strip().lower(), "dose2"],
+            "Units 2": group_list_df.at[response_datum[0].strip().lower(), "units2"],
+            "Biomarker": response_datum[1],
+        }
+        if "num" in response_datum[2].lower():
+            datum["Value"] = response_datum[3]
+            datum["Units"] = response_datum[4]
+            datum["Variation"] = response_datum[5]
+            data_dict["num"].append(datum)
+        elif "freq" in response_datum[2].lower():
+            if not response_datum[3].isnumeric() or "decimal" in response_datum[4].lower():
+                datum["Value"] = response_datum[3]
+            elif "percent" in response_datum[4].lower():
+                datum["Value"] = int(response_datum[3])/100
+            elif "count" in response_datum[4].lower():
+                if "/" in response_datum[3]:
+                    numerator, denominator = response_datum[3].split("/")
+                    datum["Value"] = int(numerator)/int(denominator)
+                elif datum["Sample Size"].isnumeric():
+                    datum["Value"] = int(response_datum[3])/int(datum["Sample Size"])
+                else:
+                    print("ERROR: Count but no sample size")
+                    datum["Value"] = None
+            data_dict["freq"].append(datum)
+        elif "desc" in response_datum[2].lower():
+            datum["Description"] = response_datum[3]
+            data_dict["desc"].append(datum)
+    return data_dict
+
+
+def label_batch(pmc, methods, group_list, batch):
+    prompt = label_batch_prompt(methods, group_list, batch)
+    answer = llama_request(prompt)
+
+    time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    with open(f"fulltext_extraction/label_batch/{time}.txt", "w", encoding="utf-8") as file:
+        file.write(f"{pmc}\n---\n{prompt}\n---\n{answer}")
+
+    label_list = [label.strip().lower() for label in answer.split("\n") if label.strip() != ""]
+    if len(label_list) != len(batch):
+        print("ERROR: # paragraphs != # labels")
+        for paragraph in batch:
+            paragraph["label"] = False
+        return
+    for i in range(len(batch)):
+        first_words, val = label_list[i].split("|", 1)
+        if first_words.strip() not in batch[i]["text"].lower(): print("ERROR: first_words not in paragraph")
+        if val.strip() == "yes": batch[i]["label"] = True
+        elif val.strip() == "no": batch[i]["label"] = False
+        else:
+            print("ERROR: Invalid label value")
+
 def format_tables(pmc, text_groups, methods, tables):
     """
     Prompts LLM for formatting instructions then performs them
@@ -230,4 +307,3 @@ def link_groups(pmc, tid, methods, table_groups, text_groups):
             print(f"g1: {group1}, col: {col}")
             if pd.isna(table_groups.at[group1, col]):
                 table_groups.at[group1, col] = text_groups.at[group2, col]
-

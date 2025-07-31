@@ -1,0 +1,13 @@
+PMC5514907
+---
+# Instructions
+You will be given the abstract, methods, and results of a paper with an animal toxicity study. Find each treatment group found in the paper that is related to an animal toxicity study. List each group and any parameters found in the following format on its own line, delimited by |: <group|species|n|treatment1|dose1|units1|treatment2|dose2|units2>. group is the name given to the group (make up a short but descriptively unique one if the paper does not give one that is different from the others), species is the animal species (not the strain), and n is the sample size. If the terminal time is used to distinguish between biomarker metrics rather than treatment groups, instead leave it blank. There are two slots for treatment medications, and in each, treatment is the medication name, dose is the numerical dosage amount, and units is the respective units. If there is only one treatment applied, leave treatment2, dose2, and units2 blank. If there is no treatment applied (ie. control group), leave all six parameters blank. Do not omit these from the list, just put the delimiters back to back with no whitespace like so: <control|mouse|10||||||>. If you are not sure of any of these, leave the space blank, and make sure to verify the source of your information before adding it to the answer. Do not include any text besides your answer. An example of a treatment group could look like this: <IBU100|rat|20|ibuprofen|100|mug/kg|||>. Make sure that each label is a list of length 9 even if some of the elements are blank.
+# Abstract
+
+# Methods
+
+# Results
+
+
+---
+There is no information provided.

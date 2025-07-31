@@ -30,12 +30,17 @@ def main():
         #parsing w/ bs4
         soup = BeautifulSoup(paper_xml, "lxml-xml")
 
+        #abstract
+        abstract_passages = [p for p in soup.find_all("passage") if p.find("infon", {"key": "section_type"}) and 
+                p.find("infon", {"key": "section_type"}).text.strip().upper() == "abstract"]
+        abstract_text_list = [p.find("text").get_text() for p in abstract_passages if p.find("text")]
+        abstract = "\n".join(abstract_text_list)
+        
         #methods
         methods_passages = [p for p in soup.find_all("passage") if p.find("infon", {"key": "section_type"}) and 
                 p.find("infon", {"key": "section_type"}).text.strip().upper() == "METHODS"]
         methods_text_list = [p.find("text").get_text() for p in methods_passages if p.find("text")]
         methods = "\n".join(methods_text_list)
-
 
         print("extracting tables")
         #tables
