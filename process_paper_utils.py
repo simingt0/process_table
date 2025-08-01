@@ -8,6 +8,7 @@ import pandas as pd
 from llama_api_client import LlamaAPIClient
 from google import genai
 from dotenv import load_dotenv
+from rapidfuzz import fuzz
 
 def fetch_xml(pmc_id: str, encoding: str = "ascii", db: str = "pmcoa") -> str:
     """
@@ -157,7 +158,12 @@ def link_prompt(methods, table_groups, text_groups):
     return prompt
 
 def label_batch_prompt(methods, group_list, batch):
-    prompt = f"# Instructions\nYou will be given the methods section, a list of groups and a few paragraphs from the results section of a paper with an animal toxicity study. Your task is to determine whether each paragraph contains qualifying toxicity data. For each paragraph, check if the paragraph fits the following conditions:\n1. The paragraph describes a toxicity study specifically on in vivo animal subjects.\n2. The paragraph contains data on a treatment group, specifying what group it is describing. You can use the provided list of groups as reference, but be sure that the groups abide by condition 1.\n3. The data included is either a summary statistic of a toxicity biomarker (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or a toxicity description within a specific group (ie. 'significantly higher levels of lesions in treatment group'). The data must be specifically about toxicity as a result of the treatment; ignore any efficacy results.\nFor each paragraph, provide each answer as a pair, delineated by the '|' symbol, with each pair on a different line. Answer in order that the paragraphs are given. The first term of each pair should be the first 5 words of the paragraph, including any punctuation or symbols in between them. The second term of each pair should be 'yes' if the paragraph abides by the conditions, or 'no' if it does not. For example:\nBecause the mice (CD-1) were|yes\nDo not include any other text or whitespace besides your answer.\n# Methods\n{methods}\n# Group List\n{"\n".join(group["group"] for group in group_list)}\n# Paragraphs\n<paragraph>\n{"\n</paragraph>\n<paragraph>\n".join([paragraph["text"] for paragraph in batch])}</paragraph>"
+    prompt = f"# Instructions\nYou will be given the methods section, a list of groups and a few paragraphs from the results section of a paper with an animal toxicity study. Your task is to determine whether each paragraph contains qualifying toxicity data. For each paragraph, check if the paragraph fits the following conditions:\n1. The paragraph describes a toxicity study specifically on in vivo animal subjects.\n2. The paragraph contains data on a treatment group, specifying what group it is describing. You can use the provided list of groups as reference, but be sure that the groups abide by condition 1.\n3. The data included is either a summary statistic of a toxicity biomarker (ie. mean +- SD, 'hepatotoxicity seen in 12/20 of group') or a toxicity description within a specific group (ie. 'significantly higher levels of lesions in treatment group'). The data must be specifically about toxicity as a result of the treatment; ignore any efficacy results.\nFor each paragraph, provide each answer as a pair, delineated by the '|' symbol, with each pair on a different line (note that this is not markdown). Answer in order that the paragraphs are given. The first term of each pair should be the first 5 words of the paragraph, including any punctuation or symbols in between them. The second term of each pair should be 'yes' if the paragraph abides by the conditions, or 'no' if it does not. For example:\nPut the first five words|no\nDo not include any other text or whitespace besides your answer.\n# Methods\n{methods}\n# Group List\n{"\n".join(group["group"] for group in group_list)}\n# Paragraphs"
+    count = 0
+    for paragraph_text in [paragraph["text"] for paragraph in batch]:
+        count += 1
+        prompt += f"\n<paragraph{count}>\n{paragraph_text}\n</paragraph{count}>"
+    prompt += f"\nYou should give {len(batch)} labels (one for each paragraph)"
     return prompt
 
 def data_from_text_prompt(methods, group_list_df, paragraph):
@@ -172,8 +178,16 @@ def data_from_text(pmc, methods, group_list_df, paragraph):
         file.write(f"{pmc}\n---\n{prompt}\n---\n{answer}")
 
     data_dict = {"num": [], "freq": [], "desc": []}
-    response_data = [datum.split("|") for datum in answer.split("\n") if "|" in datum]
+    response_data = [datum.strip().strip("|").strip().split("|") for datum in answer.split("\n") if "|" in datum]
     for response_datum in response_data:
+        if len(response_datum) < 4: continue
+        if response_datum[0].strip().lower() not in group_list_df.index:
+            max_ratio = 0
+            for row_index in group_list_df.index:
+                ratio = fuzz.ratio(response_datum[0].strip().lower(), row_index)
+                if ratio > max_ratio:
+                    max_ratio = ratio
+                    response_datum[0] = row_index
         datum = {
             "Animal Model": group_list_df.at[response_datum[0].strip().lower(), "animal_model"],
             "Sample Size": group_list_df.at[response_datum[0].strip().lower(), "sample_size"],
@@ -221,7 +235,7 @@ def label_batch(pmc, methods, group_list, batch):
 
     label_list = [label.strip().lower() for label in answer.split("\n") if label.strip() != ""]
     if len(label_list) != len(batch):
-        print("ERROR: # paragraphs != # labels")
+        print(f"ERROR: # paragraphs ({len(batch)}) != # labels ({len(label_list)})")
         for paragraph in batch:
             paragraph["label"] = False
         return
